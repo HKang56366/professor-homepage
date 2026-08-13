@@ -1,0 +1,17 @@
+# Staticman 설정
+comments:
+  allowedFields: ["name", "email", "url", "message", "recaptcha_response"]
+  branch: main
+  commitMessage: "New comment from {name}"
+  extensions: ["md"]
+  format: json
+  moderation: false
+  name: "comments"
+  path: "_data/comments/{options.slug}"
+  filename: "{@timestamp}"
+  requiredFields: ["name", "email", "message"]
+  reCaptcha:
+    enabled: true
+    siteKey: "YOUR_SITE_KEY"
+    secret: "YOUR_SECRET_KEY"
+  honeypot: "url"
