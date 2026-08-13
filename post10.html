@@ -252,6 +252,40 @@
 [8] 현대 한국어 경상방언에서 ‘누꼬?(누구야?)’에 해당하는 표현이라 할 수
 있다.</div>
         
+
+        <div class="comments-section">
+            <h2>댓글</h2>
+            
+            <div id="comments-list" class="comments-list"></div>
+            
+            <div class="comment-form">
+                <h3>의견을 남겨주세요</h3>
+                <form id="comment-form">
+                    <div class="form-group">
+                        <label for="name">이름 *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">이메일 *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">의견 *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="6LcumoMtAAAAAEF0tYDGZfFX1gM9VwaxdZw6TUsW" data-action="submit"></div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">댓글 게시</button>
+                    <span id="comment-status"></span>
+                </form>
+            </div>
+        </div>
+
         <div class="nav">
             <a href="blog.html">← 목록으로</a>
             <span>
