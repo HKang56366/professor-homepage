@@ -6,12 +6,12 @@
     <title>반복의 중요성 - 언어학 블로그</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px; }
+        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
         .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 50px; }
         .header { margin-bottom: 40px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
         h1 { color: #333; font-size: 2.2em; margin-bottom: 10px; }
         .meta { color: #666; font-size: 1em; }
-        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0; }
+        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
         .nav { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .nav a { background: #667eea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
         .nav a:hover { background: #764ba2; }
@@ -112,5 +112,32 @@ dive’도 과거의 ‘dove’를 ‘dived’가 대체하였다. 현재 변화
 <a href="post8.html">← 이전 글</a> <a href="post10.html">다음 글 →</a>            </span>
         </div>
     </div>
+
+    <script>
+        // 복사 방지 처리
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            alert('본 글의 내용 복사는 제한되어 있습니다.');
+            return false;
+        }, false);
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('우클릭은 허용되지 않습니다.');
+            return false;
+        }, false);
+
+        // 드래그 방지
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+    </script>
+
 </body>
 </html>
