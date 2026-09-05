@@ -268,6 +268,125 @@ def h2(title, name, cls="doc-h2", extra=""):
             f'<span class="sec-label">{title}</span>{extra}</h2>')
 
 
+def art_research():
+    """연구 — 모음 사각도. 음성학·음운론에서 모음을 놓는 그 자리."""
+    # 사각도 네 꼭짓점 (전설고모음 → 후설고모음 → 후설저모음 → 전설저모음)
+    tl, tr, br, bl = (86, 62), (430, 62), (368, 292), (176, 292)
+
+    def on_edge(a, b, t):
+        return (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
+
+    rows = []
+    for t in (1 / 3, 2 / 3):
+        p, q = on_edge(tl, bl, t), on_edge(tr, br, t)
+        rows.append(f'<line x1="{p[0]:.1f}" y1="{p[1]:.1f}" '
+                    f'x2="{q[0]:.1f}" y2="{q[1]:.1f}"/>')
+    mid = (f'<line x1="{(tl[0] + tr[0]) / 2:.1f}" y1="{tl[1]}" '
+           f'x2="{(bl[0] + br[0]) / 2:.1f}" y2="{bl[1]}"/>')
+
+    dots = []
+    for t in (0, 1 / 3, 2 / 3, 1):
+        for e in (0.0, 1.0):
+            p = on_edge(on_edge(tl, bl, t), on_edge(tr, br, t), e)
+            dots.append(f'<circle cx="{p[0]:.1f}" cy="{p[1]:.1f}" r="3"/>')
+    plot = "".join(dots)
+
+    # 실제로 측정한 값처럼 흩어진 점들 — 한 모음 주위의 분포
+    cloud = []
+    import math
+    for i in range(22):
+        a = i * 2.399
+        r = 16 + (i % 5) * 7
+        cloud.append(f'<circle cx="{188 + math.cos(a) * r:.1f}" '
+                     f'cy="{140 + math.sin(a) * r * 0.72:.1f}" r="1.9"/>')
+    scatter = "".join(cloud)
+
+    return f'''<svg class="page-art" viewBox="0 0 520 360" role="img"
+  aria-label="모음 사각도 위에 측정값이 흩어져 있는 그림"
+  xmlns="http://www.w3.org/2000/svg">
+  <g class="art-grid">{"".join(rows)}{mid}</g>
+  <path class="art-frame" d="M{tl[0]} {tl[1]}H{tr[0]}L{br[0]} {br[1]}H{bl[0]}Z"/>
+  <g class="art-node">{plot}</g>
+  <g class="art-scatter">{scatter}</g>
+  <ellipse class="art-ring" cx="188" cy="140" rx="46" ry="34"/>
+</svg>'''
+
+
+def art_teaching():
+    """강의 — 음절 구조 나무. 음운론 수업에서 맨 처음 그리는 그림."""
+    nodes = [("σ", 260, 54), ("O", 150, 158), ("R", 366, 158),
+             ("N", 300, 264), ("C", 432, 264)]
+    edges = [(260, 54, 150, 158), (260, 54, 366, 158),
+             (366, 158, 300, 264), (366, 158, 432, 264)]
+    lines = "".join(f'<line x1="{a}" y1="{b + 15}" x2="{c}" y2="{d - 15}"/>'
+                    for a, b, c, d in edges)
+    circles = "".join(f'<circle cx="{x}" cy="{y}" r="15"/>' for _, x, y in nodes)
+    labels = "".join(f'<text x="{x}" y="{y + 5.5}">{t}</text>' for t, x, y in nodes)
+    # 구조가 결국 말소리로 실현된다 — 마디 아래에 짧은 파형을 둔다
+    feet = "".join(f'<line x1="{x - 26 + i * 13}" y1="318" x2="{x - 26 + i * 13}" '
+                   f'y2="{318 - (6 + (i % 3) * 9)}"/>'
+                   for x in (150, 300, 432) for i in range(5))
+    return f'''<svg class="page-art" viewBox="0 0 520 360" role="img"
+  aria-label="음절 구조를 나타낸 나무 그림과 그 아래의 말소리 파형"
+  xmlns="http://www.w3.org/2000/svg">
+  <g class="art-edge">{lines}</g>
+  <g class="art-node-o">{circles}</g>
+  <g class="art-label">{labels}</g>
+  <line class="art-base" x1="86" y1="318" x2="470" y2="318"/>
+  <g class="art-foot">{feet}</g>
+</svg>'''
+
+
+def art_writing():
+    """글 — 문단이 이어지다 말소리로 풀리는 모양."""
+    import math
+    rows = []
+    y = 66
+    widths = [(0, 300), (0, 336), (0, 258), (0, 318), (0, 210)]
+    for i, (x0, w) in enumerate(widths):
+        rows.append(f'<line x1="{96 + x0}" y1="{y}" x2="{96 + x0 + w}" y2="{y}"/>')
+        y += 26
+    block1 = "".join(rows)
+
+    rows2 = []
+    y = 214
+    for w in (330, 276, 348):
+        rows2.append(f'<line x1="96" y1="{y}" x2="{96 + w}" y2="{y}"/>')
+        y += 26
+    block2 = "".join(rows2)
+
+    # 마지막 줄이 파형으로 풀린다
+    wave = []
+    for i in range(30):
+        a = (math.sin(i * 1.63) * 0.5 + math.sin(i * 0.71) * 0.32
+             + math.sin(i * 2.9) * 0.18)
+        env = math.sin(min(i / 29, 1.0) * math.pi) ** 0.6
+        hgt = abs(a) * env * 30 + 1.5
+        x = 96 + i * 11.6
+        wave.append(f'<line x1="{x:.1f}" y1="{318 - hgt:.1f}" '
+                    f'x2="{x:.1f}" y2="{318 + hgt:.1f}"/>')
+    return f'''<svg class="page-art" viewBox="0 0 520 360" role="img"
+  aria-label="문단의 줄들이 아래에서 말소리 파형으로 바뀌는 그림"
+  xmlns="http://www.w3.org/2000/svg">
+  <g class="art-text">{block1}</g>
+  <g class="art-text art-text-2">{block2}</g>
+  <line class="art-base" x1="96" y1="318" x2="432" y2="318"/>
+  <g class="art-wave">{"".join(wave)}</g>
+</svg>'''
+
+
+def doc_head(crumb, title, lede, art):
+    """문서형 쪽의 머리 — 왼쪽에 제목, 오른쪽에 그림."""
+    return f'''<div class="doc-head">
+    <div class="doc-head-text">
+      {crumb}
+      <h1 class="doc-title">{title}</h1>
+      <p class="doc-lede">{lede}</p>
+    </div>
+    <div class="doc-head-art">{art}</div>
+  </div>'''
+
+
 def hero_svg():
     """첫 화면 오른쪽 그림.
 
@@ -844,10 +963,10 @@ def build_research():
     arts = pubs_by_kind("article")
     body = f"""{nav("research.html")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">홈</a> <span>›</span> 연구</p>
-  <h1 class="doc-title">연구</h1>
-  <p class="doc-lede">음성학, 음운론, 형태론. 영어와 한국어를 함께 놓고 말소리의 실현과
-    변화를 관찰합니다.</p>
+  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 연구</p>',
+            "연구",
+            "음성학, 음운론, 형태론. 영어와 한국어를 함께 놓고 말소리의 실현과 "
+            "변화를 관찰합니다.", art_research())}
 
   {h2("연구 분야", "wave")}
   <div class="fields-long">{fields}</div>
@@ -884,9 +1003,10 @@ def build_teaching():
         secs += (h2(level, "book") + f'<ul class="courses">{rows}</ul>')
     body = f"""{nav("teaching.html")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">홈</a> <span>›</span> 강의</p>
-  <h1 class="doc-title">강의</h1>
-  <p class="doc-lede">영어와 관련된 언어학개론, 음성학, 음운론을 가르치고 있습니다.</p>
+  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 강의</p>',
+            "강의",
+            "영어와 관련된 언어학개론, 음성학, 음운론을 가르치고 있습니다.",
+            art_teaching())}
   {secs}
   {h2("수강생에게", "mail")}
   <div class="note">
@@ -939,10 +1059,10 @@ def build_index_of_posts():
               '"datePublished":"%s-%s"}' % (p[1], SITE, p[0], p[3], p[4]) for p in POSTS)))
     body = f"""{nav("blog.html")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">홈</a> <span>›</span> 글</p>
-  <h1 class="doc-title">글</h1>
-  <p class="doc-lede">언어의 변화와 그 규칙에 관한 글. 강의실에서 다 하지 못한 이야기를
-    한 달에 두 편 정도 적어 둡니다.</p>
+  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 글</p>',
+            "글",
+            "언어의 변화와 그 규칙에 관한 글. 강의실에서 다 하지 못한 이야기를 "
+            "한 달에 두 편 정도 적어 둡니다.", art_writing())}
   <ul class="chips chips-link">{chips}</ul>
 
   {h2("전체", "list", extra=f'<span class="count">{len(POSTS)}편</span>')}
@@ -1172,10 +1292,11 @@ def build_en_research():
     arts = pubs_by_kind("article")
     body = f"""{nav("research.html", "en")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">Home</a> <span>›</span> Research</p>
-  <h1 class="doc-title">Research</h1>
-  <p class="doc-lede">Phonetics, phonology, and morphology — observing how speech sounds
-    are realised and how they change, with English and Korean side by side.</p>
+  {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Research</p>',
+            "Research",
+            "Phonetics, phonology, and morphology — observing how speech sounds "
+            "are realised and how they change, with English and Korean side by side.",
+            art_research())}
   {h2("Research Areas", "wave")}
   <div class="fields-long">{fields}</div>
   <p class="doc-note">Below, papers, essays and courses are grouped by topic.</p>
@@ -1204,9 +1325,10 @@ def build_en_teaching():
         secs += (h2(lv, "book") + f'<ul class="courses">{rows}</ul>')
     body = f"""{nav("teaching.html", "en")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">Home</a> <span>›</span> Teaching</p>
-  <h1 class="doc-title">Teaching</h1>
-  <p class="doc-lede">Introduction to English linguistics, phonetics, and phonology.</p>
+  {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Teaching</p>',
+            "Teaching",
+            "Introduction to English linguistics, phonetics, and phonology.",
+            art_teaching())}
   {secs}
   <div class="note"><p>Syllabi and assignments are posted through the university LMS.
     For questions, write to <a href="mailto:{F["email_univ"]}">{F["email_univ"]}</a>.
@@ -1232,10 +1354,10 @@ def build_en_writing():
       </li>""" for n, _, t_en, ym, _, tp, _, s_en in reversed(POSTS))
     body = f"""{nav("writing.html", "en")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">Home</a> <span>›</span> Writing</p>
-  <h1 class="doc-title">Writing</h1>
-  <p class="doc-lede">Essays on language change, speech sounds, and second-language
-    learning — roughly two a month.</p>
+  {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Writing</p>',
+            "Writing",
+            "Essays on language change, speech sounds, and second-language "
+            "learning — roughly two a month.", art_writing())}
   <div class="note"><p><strong>The essays are written in Korean.</strong> Titles and
     summaries below are in English; following a link opens the Korean text.</p></div>
   {h2("All essays", "list", extra=f'<span class="count">{len(POSTS)}</span>')}
