@@ -429,13 +429,32 @@ def div_block(src, marker):
 
 
 def read_source(path):
+    """글 하나에서 문단·댓글칸·스크립트를 꺼낸다.
+
+    두 판을 모두 읽는다. 그래서 이 스크립트가 **자기가 찍어낸 결과를 다시 읽어**
+    같은 결과를 낼 수 있다(멱등). 개편 전 원본이 없어도 다시 찍을 수 있다.
+
+      개편 전: <div class="content">   하드랩된 평문
+      개편 후: <div class="essay-body"> <p> 문단들
+    """
     src = open(path, encoding="utf-8").read()
+
     a = src.find('<div class="content">')
-    b = src.find("</div>", a)
-    body = src[a + len('<div class="content">'):b]
+    if a >= 0:
+        b = src.find("</div>", a)
+        paras = paragraphs(src[a + len('<div class="content">'):b])
+    else:
+        blk = div_block(src, '<div class="essay-body">')
+        if not blk:
+            raise SystemExit(f"{path}: 본문을 찾지 못했습니다")
+        paras = [m.group(1).strip()
+                 for m in re.finditer(r"<p>(.*?)</p>", blk, re.S)]
+
     comments = div_block(src, '<div class="comments-section">')
-    scripts = re.findall(r"<script\b.*?</script>", src, re.S)
-    return body, comments, scripts
+    # 구조화 데이터(ld+json)는 매번 새로 만드므로 가져오지 않는다 — 가져오면 겹친다
+    scripts = [s for s in re.findall(r"<script\b.*?</script>", src, re.S)
+               if "application/ld+json" not in s]
+    return paras, comments, scripts
 
 
 def paragraphs(text):
@@ -887,8 +906,8 @@ def build_index_of_posts():
 
 def build_post(meta, src_dir):
     n, t_ko, t_en, ym, day, tp, summ, summ_en = meta
-    body_raw, comments, scripts = read_source(os.path.join(src_dir, f"post{n}.html"))
-    paras = "\n".join(f"<p>{p}</p>" for p in paragraphs(body_raw))
+    para_list, comments, scripts = read_source(os.path.join(src_dir, f"post{n}.html"))
+    paras = "\n".join(f"<p>{p}</p>" for p in para_list)
     date_iso = f"{ym}-{day}"
     y, mo = ym.split("-")
     disp = f"{y}년 {int(mo)}월"
