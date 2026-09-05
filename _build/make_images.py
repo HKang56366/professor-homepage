@@ -10,7 +10,7 @@
 """
 import os
 import sys
-from PIL import Image, ImageDraw, ImageEnhance, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
 SERIF = "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf"
 SANS = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
@@ -45,6 +45,44 @@ def warm(im, gamma, r_gain, b_gain, saturation, contrast, lift):
     return ImageEnhance.Contrast(im).enhance(contrast)
 
 
+# 배경 회색 처리. 사진 뒤의 현수막이 원색이라 흰 바탕 사이트에서 튄다.
+# 배경을 **잘라내지 않고 채도만 뺀다** — 마스크가 조금 어긋나도 잘린 자국이 안 생긴다.
+BG = dict(erode=5, blur=1.8, lighten=1.06,
+          # 사람에게 있는 색만 남긴다 (PIL 색상값 0~255)
+          skin_hi=34, skin_lo=239,     # 살색: 붉은 쪽 양끝
+          blue_lo=134, blue_hi=168,    # 셔츠 파랑
+          # 현수막에도 같은 파랑이 있어서, 파랑은 셔츠가 있는 아래쪽에서만 살린다
+          blue_from=600, blue_to=760)
+
+
+def gray_background(im, erode, blur, lighten, skin_hi, skin_lo,
+                    blue_lo, blue_hi, blue_from, blue_to):
+    from rembg import new_session, remove
+
+    w, h = im.size
+    person = remove(im, session=new_session("u2net")).split()[-1]
+    if erode:
+        person = person.filter(ImageFilter.MinFilter(erode))
+
+    hue = im.convert("HSV").split()[0]
+    skin = hue.point(lambda x: 255 if (x <= skin_hi or x >= skin_lo) else 0)
+    blue = hue.point(lambda x: 255 if blue_lo <= x <= blue_hi else 0)
+
+    col = Image.new("L", (1, h))
+    col.putdata([0 if y < blue_from else
+                 (255 if y > blue_to else
+                  int((y - blue_from) / (blue_to - blue_from) * 255))
+                 for y in range(h)])
+    blue = ImageChops.multiply(blue, col.resize((w, h)))
+
+    keep = ImageChops.lighter(skin, blue).filter(ImageFilter.MedianFilter(5))
+    mask = ImageChops.multiply(person, keep).filter(ImageFilter.GaussianBlur(blur))
+
+    flat = ImageEnhance.Color(im).enhance(0.0)
+    flat = ImageEnhance.Brightness(flat).enhance(lighten)
+    return Image.composite(im, flat, mask)
+
+
 INK = (17, 17, 17)
 MUTED = (118, 118, 118)
 ACCENT = (138, 47, 47)
@@ -64,6 +102,8 @@ def main(src_path, out_dir):
     im = Image.open(src_path).convert("RGB")
     print("원본:", im.size)
     im = warm(im, **TONE)
+    im = gray_background(im, **BG)
+    print("배경 회색 처리 완료")
 
     # 1) 소개 페이지용 세로 사진
     portrait = im.crop(PORTRAIT_BOX).resize((640, 800), Image.LANCZOS)
