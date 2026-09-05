@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>강희조 | 언어의 변화에 관한 글</title>
+    <link>https://hijokang.duckdns.org/blog.html</link>
+    <atom:link href="https://hijokang.duckdns.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>전남대학교 영어영문학과 부교수 강희조의 글. 음성학·음운론·형태론.</description>
+    <language>ko</language>
+    <item>
+      <title>영어의 철자는 왜 이렇게 엉망인가</title>
+      <link>https://hijokang.duckdns.org/post13.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post13.html</guid>
+      <description>‘ghoti’로 fish를 쓸 수 있다는 유명한 농담에서 시작해, 영어 철자가 어긋나게 된 여러 역사적 요인을 정리한다.</description>
+      <pubDate>01 Sep 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>음운론</category><category>영어</category><category>언어 변화</category>
+    </item>
+    <item>
+      <title>현재 진행중인 한국어의 변화</title>
+      <link>https://hijokang.duckdns.org/post12.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post12.html</guid>
+      <description>언어 변화는 오래 지나야 보인다는 통념과 달리, 지금 우리 세대 안에서 진행 중인 한국어의 변화를 짚어낸다.</description>
+      <pubDate>15 Aug 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>언어 변화</category><category>한국어</category><category>음운론</category>
+    </item>
+    <item>
+      <title>외래어 표기를 통해 알 수 있는 한국어의 특징</title>
+      <link>https://hijokang.duckdns.org/post11.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post11.html</guid>
+      <description>‘쵸코렡’이 ‘초콜릿’이 되기까지. 외래어 표기의 변화가 한국어 음운 체계의 무엇을 드러내는지 살핀다.</description>
+      <pubDate>01 Aug 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>음운론</category><category>한국어</category><category>언어 변화</category>
+    </item>
+    <item>
+      <title>빈도와 유추</title>
+      <link>https://hijokang.duckdns.org/post10.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post10.html</guid>
+      <description>한국어를 배우는 외국인의 ‘이게지’라는 실수에서, 유추가 어떻게 새로운 형태를 만들어 내는지를 읽어낸다.</description>
+      <pubDate>15 Jul 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>형태론</category><category>언어 변화</category><category>한국어</category>
+    </item>
+    <item>
+      <title>반복의 중요성</title>
+      <link>https://hijokang.duckdns.org/post9.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post9.html</guid>
+      <description>영어 불규칙 동사는 왜 생겼고 왜 아직 살아남았는가. 사용 빈도가 형태를 지킨다는 설명을 따라간다.</description>
+      <pubDate>01 Jul 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>형태론</category><category>언어 변화</category><category>영어</category>
+    </item>
+    <item>
+      <title>영어는 우리에게 무엇일까</title>
+      <link>https://hijokang.duckdns.org/post8.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post8.html</guid>
+      <description>박찬호 선수의 ‘um’ 발음을 둘러싼 옛 논란을 통해, 한국 사회가 영어에 부여해 온 의미를 짚는다.</description>
+      <pubDate>15 Jun 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>언어와 사회</category><category>영어</category><category>음성학</category>
+    </item>
+    <item>
+      <title>의사소통 수단 그 이상</title>
+      <link>https://hijokang.duckdns.org/post7.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post7.html</guid>
+      <description>드라마 속 ‘아가씨’라는 호칭에서 출발해, 사전적 정의가 그대로인 단어가 30년 만에 어떻게 다른 말이 되었는지를 본다.</description>
+      <pubDate>01 Jun 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>언어와 사회</category><category>언어 변화</category><category>한국어</category>
+    </item>
+    <item>
+      <title>다르면서도 같은 언어 III</title>
+      <link>https://hijokang.duckdns.org/post6.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post6.html</guid>
+      <description>한국어의 구개음화와 영어의 flap 실현을 나란히 놓으면, 표면의 차이를 걷어낸 아래에서 같은 음운 현상이 움직이고 있음이 드러난다.</description>
+      <pubDate>15 May 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>음운론</category><category>언어의 보편성</category><category>한국어</category>
+    </item>
+    <item>
+      <title>다르면서도 같은 언어 II</title>
+      <link>https://hijokang.duckdns.org/post5.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post5.html</guid>
+      <description>언어의 자의성 때문에 개별 언어가 서로 멀어 보이지만, 그 차이가 어디에서 오는지를 학습자의 경험과 함께 정리한다.</description>
+      <pubDate>01 May 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>언어의 보편성</category><category>외국어 습득</category>
+    </item>
+    <item>
+      <title>다르면서도 같은 언어 I</title>
+      <link>https://hijokang.duckdns.org/post4.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post4.html</guid>
+      <description>‘나는 그 사람이 아프다’라는 노래 제목의 이중주어 구문에서 시작해, 문법에 어긋난 문장이 왜 자연스럽게 읽히는지를 본다.</description>
+      <pubDate>15 Apr 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>언어의 보편성</category><category>한국어</category>
+    </item>
+    <item>
+      <title>집단지성에 의한 언어의 진화</title>
+      <link>https://hijokang.duckdns.org/post3.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post3.html</guid>
+      <description>‘요즘 젊은 사람들이 한국어를 망친다’는 한글날 단골 기사를 뒤집어, 언어 변화가 어떻게 집단의 선택으로 일어나는지 설명한다.</description>
+      <pubDate>01 Apr 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>언어 변화</category><category>언어와 사회</category><category>한국어</category>
+    </item>
+    <item>
+      <title>발음에 대한 집착으로부터의 해방</title>
+      <link>https://hijokang.duckdns.org/post2.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post2.html</guid>
+      <description>아이의 언어 습득을 다룬 다큐멘터리를 실마리로, 성인 외국어 학습자가 발음에 매달릴 때 무엇을 놓치는지를 이야기한다.</description>
+      <pubDate>15 Mar 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>음성학</category><category>외국어 습득</category>
+    </item>
+    <item>
+      <title>한국어의 미래</title>
+      <link>https://hijokang.duckdns.org/post1.html</link>
+      <guid isPermaLink="true">https://hijokang.duckdns.org/post1.html</guid>
+      <description>영어의 관계대명사처럼 한국어에 없는 문법 범주에서 출발해, 한국어가 앞으로 어느 쪽으로 움직일지를 짚는다.</description>
+      <pubDate>01 Mar 2026 09:00:00 +0900</pubDate>
+      <dc:creator>강희조</dc:creator><category>한국어</category><category>언어 변화</category><category>영어</category>
+    </item>
+  </channel>
+</rss>

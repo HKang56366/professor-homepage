@@ -1,237 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>다르면서도 같은 언어 I - 언어학 블로그</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
-        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 50px; }
-        .header { margin-bottom: 40px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
-        h1 { color: #333; font-size: 2.2em; margin-bottom: 10px; }
-        .meta { color: #666; font-size: 1em; }
-        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
-        .nav { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .nav a { background: #667eea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
-        .nav a:hover { background: #764ba2; }
-        .post-number { color: #667eea; font-size: 0.9em; font-weight: bold; }
-    
-        /* 댓글 섹션 스타일 */
-        .comments-section {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #eee;
-        }
-        
-        .comments-section h2 {
-            color: #333;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        .comments-list {
-            margin-bottom: 40px;
-            min-height: 20px;
-        }
-        
-        .comment-item {
-            background: #f9f9f9;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-        }
-        
-        .comment-author {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .comment-date {
-            font-size: 0.9em;
-            color: #999;
-            margin-bottom: 10px;
-        }
-        
-        .comment-text {
-            color: #555;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        .comment-form {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        .comment-form h3 {
-            color: #333;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-            color: #333;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1em;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-        }
-        
-        .submit-btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background: #764ba2;
-        }
-        
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        #comment-status {
-            margin-left: 15px;
-            font-weight: 500;
-        }
-        
-        .status-success {
-            color: #28a745;
-        }
-        
-        .status-error {
-            color: #dc3545;
-        }
-        
-        .no-comments {
-            color: #999;
-            font-style: italic;
-            padding: 20px;
-        }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>다르면서도 같은 언어 I | 강희조</title>
+<meta name="description" content="‘나는 그 사람이 아프다’라는 노래 제목의 이중주어 구문에서 시작해, 문법에 어긋난 문장이 왜 자연스럽게 읽히는지를 본다.">
+<link rel="canonical" href="https://hijokang.duckdns.org/post4.html">
+<meta property="og:site_name" content="강희조 | Hijo Kang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="다르면서도 같은 언어 I | 강희조">
+<meta property="og:description" content="‘나는 그 사람이 아프다’라는 노래 제목의 이중주어 구문에서 시작해, 문법에 어긋난 문장이 왜 자연스럽게 읽히는지를 본다.">
+<meta property="og:url" content="https://hijokang.duckdns.org/post4.html">
+<meta property="og:image" content="https://hijokang.duckdns.org/images/profile.jpg">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="강희조" href="https://hijokang.duckdns.org/feed.xml">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"다르면서도 같은 언어 I","description":"‘나는 그 사람이 아프다’라는 노래 제목의 이중주어 구문에서 시작해, 문법에 어긋난 문장이 왜 자연스럽게 읽히는지를 본다.","url":"https://hijokang.duckdns.org/post4.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://hijokang.duckdns.org/post4.html"},"datePublished":"2026-04-15","dateModified":"2026-04-15","inLanguage":"ko","image":"https://hijokang.duckdns.org/images/profile.jpg","about":[{"@type":"Thing","name":"Language Universals"},{"@type":"Thing","name":"Korean"}],"keywords":"언어의 보편성, 한국어","author":{"@context":"https://schema.org","@type":"Person","name":"Hijo Kang","alternateName":"강희조","jobTitle":"Associate Professor","url":"https://hijokang.duckdns.org/about.html","image":"https://hijokang.duckdns.org/images/profile.jpg","email":"mailto:hijokang@jnu.ac.kr","telephone":"+82-62-530-3165","affiliation":{"@type":"CollegeOrUniversity","name":"Chonnam National University","department":{"@type":"Organization","name":"Department of English Language and Literature"}},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Stony Brook University"},{"@type":"CollegeOrUniversity","name":"Seoul National University"}],"knowsAbout":["Phonetics","Phonology","Morphology","Korean language","English linguistics"],"knowsLanguage":["ko","en"],"sameAs":["https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG"]},"publisher":{"@type":"Person","name":"Hijo Kang","url":"https://hijokang.duckdns.org/about.html"},"isPartOf":{"@type":"Blog","name":"강희조의 글","url":"https://hijokang.duckdns.org/blog.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://hijokang.duckdns.org/"},{"@type":"ListItem","position":2,"name":"글","item":"https://hijokang.duckdns.org/blog.html"},{"@type":"ListItem","position":3,"name":"다르면서도 같은 언어 I","item":"https://hijokang.duckdns.org/post4.html"}]}</script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>다르면서도 같은 언어 I</h1>
-            <div class="meta">
-                <span class="post-number">글 4</span> | 2026년 4월
-            </div>
-        </div>
-        
-        <div class="content">
-에피톤 프로젝트는 필자가 좋아하는 가수 중 하나이다. 에피톤 프로젝트를
-대표하는 곡 중 하나가 ‘나는 그 사람이 아프다’이다. 처음 이 곡의 제목을
-보는 순간 망치로 한 대 얻어맞은 느낌을 받았다. 노래를 만든 사람의 감성이
-너무나 생생하게 느껴졌기 때문이다. 한 문장으로 이루어진 이 제목은,
-엄밀히 말하면 비문이다. 즉 한국어의 문법에 맞지 않는다. 흔히 ‘이중주어’
-구문으로 불리는 이러한 문장에서 술어가 ‘아프다’이면 두 주어 사이에는
-‘분리불가능성’이 성립해야 한다. (영어에서는 이를 ‘inalienability’라
-표현하며 인권과 관련하여서는 ‘양도불가능성’이라 번역되지만 지금의
-맥락에서는 어울리지 않아 분리불가능성이라 표현한다.) ‘나는 머리가
-아프다’나 ‘나는 마음이 아프다’와 같이 첫 번째 주어 ‘나’와 분리할 수 없는
-‘머리’나 ‘마음’이 두 번째 주어로 나와야 의미상 올바른 문장이 된다.
-그렇다면 이 제목을 지은 사람의 의도를 우리는 쉽게 알 수 있다: 그 사람은
-이미 나와 분리불가능한 관계에 있음을 암시한다. 이 얼마나 천재적인
-발상인가!
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <span class="brand-en">HIJO KANG</span>
+      <span class="brand-ko">강희조</span>
+      <span class="brand-sub">부교수 · 전남대학교 영어영문학과</span>
+    </a>
+    <nav class="gnb"><a href="about.html">소개</a><a href="research.html">연구</a><a href="teaching.html">강의</a><a href="blog.html" class='on'>글</a><a class="lang" href="en/index.html" hreflang="en">EN</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  <article class="essay">
+    <p class="crumb"><a href="index.html">홈</a> <span>›</span>
+      <a href="blog.html">글</a> <span>›</span> 글 4</p>
+    <header class="essay-head">
+      <p class="essay-kicker">언어의 보편성 · 한국어</p>
+      <h1 class="essay-title">다르면서도 같은 언어 I</h1>
+      <p class="essay-en">Different Yet the Same I</p>
+      <p class="essay-meta"><time datetime="2026-04-15">2026년 4월</time>
+        <span class="dot">·</span> 글 4
+        <span class="dot">·</span> 강희조</p>
+    </header>
 
-그런데 이러한 분리불가능성이 한국어의 문법에만 작용하는 것이 아니다.
-영어에서 명사에 과거(분사)형 접미사를 붙여 형용사처럼 사용하는 표현이
-있다. 예를 들면 ‘red-nosed man’이나 ‘blue-eyed girl’과 같은 표현들은
-명사(nose, eye)에 접미사 ‘-ed’가 붙어 형용사처럼 사용되도록 하며 ‘-을
-가진’의 의미로 사용된다. 그러나 이러한 표현이 아무런 제약 없이 사용되는
-것은 아니다. ‘검정 말을 가진 소년’을 ‘^(*)black-horsed boy’라고 표현할
-수 없으며 ‘둥근 모자를 쓴 여자’를 ‘^(*)round-hatted woman’이라고 표현할
-수 없다. 한국어의 예처럼 여기에도 ‘분리불가능성’이 문법성의 기준으로
-작용하기 때문이다. 앞선 예에서처럼 ‘코와 남자(nose-man)’, ‘눈과
-소녀(eye-girl)’ 등 수식어와 피수식어 사이에 분리불가능성이 존립할 때에만
-이러한 표현이 용납된다.
+    <div class="essay-body">
+<p>에피톤 프로젝트는 필자가 좋아하는 가수 중 하나이다. 에피톤 프로젝트를 대표하는 곡 중 하나가 ‘나는 그 사람이 아프다’이다. 처음 이 곡의 제목을 보는 순간 망치로 한 대 얻어맞은 느낌을 받았다. 노래를 만든 사람의 감성이 너무나 생생하게 느껴졌기 때문이다. 한 문장으로 이루어진 이 제목은, 엄밀히 말하면 비문이다. 즉 한국어의 문법에 맞지 않는다. 흔히 ‘이중주어’ 구문으로 불리는 이러한 문장에서 술어가 ‘아프다’이면 두 주어 사이에는 ‘분리불가능성’이 성립해야 한다. (영어에서는 이를 ‘inalienability’라 표현하며 인권과 관련하여서는 ‘양도불가능성’이라 번역되지만 지금의 맥락에서는 어울리지 않아 분리불가능성이라 표현한다.) ‘나는 머리가 아프다’나 ‘나는 마음이 아프다’와 같이 첫 번째 주어 ‘나’와 분리할 수 없는 ‘머리’나 ‘마음’이 두 번째 주어로 나와야 의미상 올바른 문장이 된다. 그렇다면 이 제목을 지은 사람의 의도를 우리는 쉽게 알 수 있다: 그 사람은 이미 나와 분리불가능한 관계에 있음을 암시한다. 이 얼마나 천재적인 발상인가!</p>
+<p>그런데 이러한 분리불가능성이 한국어의 문법에만 작용하는 것이 아니다. 영어에서 명사에 과거(분사)형 접미사를 붙여 형용사처럼 사용하는 표현이 있다. 예를 들면 ‘red-nosed man’이나 ‘blue-eyed girl’과 같은 표현들은 명사(nose, eye)에 접미사 ‘-ed’가 붙어 형용사처럼 사용되도록 하며 ‘-을 가진’의 의미로 사용된다. 그러나 이러한 표현이 아무런 제약 없이 사용되는 것은 아니다. ‘검정 말을 가진 소년’을 ‘^(*)black-horsed boy’라고 표현할 수 없으며 ‘둥근 모자를 쓴 여자’를 ‘^(*)round-hatted woman’이라고 표현할 수 없다. 한국어의 예처럼 여기에도 ‘분리불가능성’이 문법성의 기준으로 작용하기 때문이다. 앞선 예에서처럼 ‘코와 남자(nose-man)’, ‘눈과 소녀(eye-girl)’ 등 수식어와 피수식어 사이에 분리불가능성이 존립할 때에만 이러한 표현이 용납된다.</p>
+<p>언어에서 그리 중요하지 않게 생각되는 이 개념이 두 언어에서 문법성을 결정하는 기준으로 작용한다는 점이 꽤나 신기하다. 그런데 한국어와 영어를 넘어 이 개념은 다른 언어들에서도 그 존재감을 드러낸다. 그것도 더 분명하게. 서아프리카 언어 중 하나인 Mandinka어에는 두 형태의 소유격이 있다.</p>
+<p>너의 아버지 i faamaa (you father) 너의 우물 i la koloŋo (you ’s well)</p>
+<p>즉 신체 일부나 가족과 같이 분리불가능한 소유관계를 표현할 때에는 대명사만으로 표현되나 분리가능한 소유관계는 ‘la’라는 표현을 더한다. 다시 말해, 이 언어에서는 분리불가능성을 기준으로 두 가지 형태의 소유격이 존재한다. (신체 일부 뿐 아니라 가족관계도 분리불가능하다고 보는 관점이 재미있다. 하긴 우리도 자식을 ‘손가락’으로 표현하는 것을 보면 이상한 일이 아니다.) 또 다른 예로서, 유럽의 일부 언어에서는 신체 일부와 관련해서 독특한 문장구조를 확인할 수 있다. 아래는 스페인어의 예이다.</p>
+<p>그는 나의 손을 잡았다 Él me agarró la mano He (to) me held the hand</p>
+<p>이를 직역하면 ‘그는 나에게 손을 잡았다’가 된다. ‘나’와 ‘손’이 분리불가능하므로 ‘나의 손’이라는 표현 대신 ‘손’을 목적어로 쓰고 ‘손’의 소유자인 ‘나’는 ‘나에게(to me)’로 표현하는 방식이다. 이와 유사한 표현이 영어에도 있는데 ‘He hit me on the head’이다. 다만 영어의 경우는 ‘He held my hand’가 가능하므로 스페인어와는 살짝 다른 양상을 보인다. (이상의 내용은 McWhorter 2003: 182)[4]</p>
+<p>이러한 사례들을 통해 우리는 인간이 세상을 이해하는 여러 요인 중 하나가 사물을 파악할 때 그 관계가 분리가능한 것인지 또는 불가능한 것인지임을 알 수 있다. 이를 확대하면 결국 세상의 많은 것들을 우리는 개별적으로 이해한다기보다는 그 관계들을 통해 이해한다고 할 수 있고, 특히 그 관계가 밀접할 때 (혹은 분리불가능할 때), 우리 머릿속 인식세계에서도 그 두 사물은 가까이에 자리잡고 있을 것이라 추정할 수 있다. 이는 한국어에서 ‘내(나의)’라는 말 대신 ‘우리(의)’를 더 적극적으로 사용하는 데에서도 발견된다 (예를 들어, ‘내 아버지’보다는 ‘우리 아버지’). 그리고 인지과학적 관점으로 보아도, 인간이 특정 도구를 오래 사용하면 뇌가 그 도구를 신체의 일부로 받아들이는 ‘신체 도식의 확장’이 일어난다. 따라서 사랑하는 연인이나 소중한 가족을 신체 일부처럼 나와 분리가 불가능한 존재로 인식하는 것은 어찌 보면 자연스러운 일일 수 있다. 이렇게 문법에 관여하는 요인들을 정리해 보면 결국 인간이 이 세상을 파악하는 데 기초가 되는 개념들을 발견할 수 있을 것으로 기대된다. 그래서 언어를 연구하는 일은 곧 인간을 연구하는 일이라 필자는 생각한다.</p>
+<p>[4] The Power of Babel, HarperCollins Publishers, New York.</p>
+    </div>
 
-언어에서 그리 중요하지 않게 생각되는 이 개념이 두 언어에서 문법성을
-결정하는 기준으로 작용한다는 점이 꽤나 신기하다. 그런데 한국어와 영어를
-넘어 이 개념은 다른 언어들에서도 그 존재감을 드러낸다. 그것도 더
-분명하게. 서아프리카 언어 중 하나인 Mandinka어에는 두 형태의 소유격이
-있다.
+    <ul class="chips chips-link essay-tags"><li><a href="blog.html#t-universals">언어의 보편성</a></li><li><a href="blog.html#t-korean">한국어</a></li></ul>
 
-너의 아버지 i faamaa (you father)
-너의 우물 i la koloŋo (you ’s well)
+    <aside class="author">
+      <img class="author-img" src="images/profile.jpg" alt="강희조"
+        width="72" height="72" loading="lazy">
+      <div class="author-body">
+        <p class="author-name">글 · 강희조 <span class="p-en">Hijo Kang</span></p>
+        <p class="author-role">전남대학교 영어영문학과 부교수<br>
+          Ph.D. in Linguistics, Stony Brook University</p>
+        <p class="author-fields">음성학 · 음운론 · 형태론</p>
+        <p class="author-more"><a href="about.html">소개 보기 →</a>
+          <a href="research.html">연구 보기 →</a></p>
+      </div>
+    </aside>
 
-즉 신체 일부나 가족과 같이 분리불가능한 소유관계를 표현할 때에는
-대명사만으로 표현되나 분리가능한 소유관계는 ‘la’라는 표현을 더한다. 다시
-말해, 이 언어에서는 분리불가능성을 기준으로 두 가지 형태의 소유격이
-존재한다. (신체 일부 뿐 아니라 가족관계도 분리불가능하다고 보는 관점이
-재미있다. 하긴 우리도 자식을 ‘손가락’으로 표현하는 것을 보면 이상한 일이
-아니다.) 또 다른 예로서, 유럽의 일부 언어에서는 신체 일부와 관련해서
-독특한 문장구조를 확인할 수 있다. 아래는 스페인어의 예이다.
+    <nav class="pager"><a class="pg pg-prev" href="post3.html"><span class="pg-l">이전 글</span><span class="pg-t">집단지성에 의한 언어의 진화</span></a><a class="pg pg-next" href="post5.html"><span class="pg-l">다음 글</span><span class="pg-t">다르면서도 같은 언어 II</span></a></nav>
 
-그는 나의 손을 잡았다 Él me agarró la mano
-He (to) me held the hand
+    <section class="related">
+      <h2 class="rel-title">함께 읽기</h2>
+      <ul class="rels"><li><a href="post6.html"><span class="rel-k">음운론 · 언어의 보편성</span><span class="rel-t">다르면서도 같은 언어 III</span></a></li><li><a href="post5.html"><span class="rel-k">언어의 보편성 · 외국어 습득</span><span class="rel-t">다르면서도 같은 언어 II</span></a></li><li><a href="post3.html"><span class="rel-k">언어 변화 · 언어와 사회</span><span class="rel-t">집단지성에 의한 언어의 진화</span></a></li></ul>
+    </section>
 
-이를 직역하면 ‘그는 나에게 손을 잡았다’가 된다. ‘나’와 ‘손’이
-분리불가능하므로 ‘나의 손’이라는 표현 대신 ‘손’을 목적어로 쓰고 ‘손’의
-소유자인 ‘나’는 ‘나에게(to me)’로 표현하는 방식이다. 이와 유사한 표현이
-영어에도 있는데 ‘He hit me on the head’이다. 다만 영어의 경우는 ‘He held
-my hand’가 가능하므로 스페인어와는 살짝 다른 양상을 보인다. (이상의
-내용은 McWhorter 2003: 182)[4]
-
-이러한 사례들을 통해 우리는 인간이 세상을 이해하는 여러 요인 중 하나가
-사물을 파악할 때 그 관계가 분리가능한 것인지 또는 불가능한 것인지임을 알
-수 있다. 이를 확대하면 결국 세상의 많은 것들을 우리는 개별적으로
-이해한다기보다는 그 관계들을 통해 이해한다고 할 수 있고, 특히 그 관계가
-밀접할 때 (혹은 분리불가능할 때), 우리 머릿속 인식세계에서도 그 두
-사물은 가까이에 자리잡고 있을 것이라 추정할 수 있다. 이는 한국어에서
-‘내(나의)’라는 말 대신 ‘우리(의)’를 더 적극적으로 사용하는 데에서도
-발견된다 (예를 들어, ‘내 아버지’보다는 ‘우리 아버지’). 그리고 인지과학적
-관점으로 보아도, 인간이 특정 도구를 오래 사용하면 뇌가 그 도구를 신체의
-일부로 받아들이는 ‘신체 도식의 확장’이 일어난다. 따라서 사랑하는
-연인이나 소중한 가족을 신체 일부처럼 나와 분리가 불가능한 존재로
-인식하는 것은 어찌 보면 자연스러운 일일 수 있다. 이렇게 문법에 관여하는
-요인들을 정리해 보면 결국 인간이 이 세상을 파악하는 데 기초가 되는
-개념들을 발견할 수 있을 것으로 기대된다. 그래서 언어를 연구하는 일은 곧
-인간을 연구하는 일이라 필자는 생각한다.
-
-[4] The Power of Babel, HarperCollins Publishers, New York.
-        </div>
-        
-
-        <div class="comments-section">
+<div class="comments-section">
             <h2>댓글</h2>
             
             <div id="comments-list" class="comments-list"></div>
@@ -263,15 +109,25 @@ my hand’가 가능하므로 스페인어와는 살짝 다른 양상을 보인�
                 </form>
             </div>
         </div>
-
-        <div class="nav">
-            <a href="blog.html">← 목록으로</a>
-            <span>
-<a href="post3.html">← 이전 글</a> <a href="post5.html">다음 글 →</a>            </span>
-        </div>
+  </article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p class="foot-name">강희조 · Hijo Kang</p>
+      <p class="foot-line">전남대학교 영어영문학과 부교수</p>
+      <p class="foot-line">인문대 2호관 404호 · 062-530-3165</p>
+      <p class="foot-line"><a href="mailto:hijokang@jnu.ac.kr">hijokang@jnu.ac.kr</a></p>
     </div>
-
-    <script>
+    <div>
+      <p class="foot-line"><a href="https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG" rel="noopener">학과 교수 소개</a></p>
+      <p class="foot-line"><a href="feed.xml">RSS</a></p>
+      <p class="foot-line"><a href="en/index.html" hreflang="en">English</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-copy">© 2026 강희조. 이 사이트는 GitHub Pages로 운영됩니다.</div>
+</footer>
+<script>
         // 복사 방지 처리
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
@@ -296,10 +152,8 @@ my hand’가 가능하므로 스페인어와는 살짝 다른 양상을 보인�
             return false;
         }, false);
     </script>
-
-
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
         // 댓글 데이터를 저장할 변수
         let allComments = [];
         
@@ -435,6 +289,5 @@ my hand’가 가능하므로 스페인어와는 살짝 다른 양상을 보인�
             return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
         }
     </script>
-
 </body>
 </html>

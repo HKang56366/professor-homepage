@@ -1,238 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>의사소통 수단 그 이상 - 언어학 블로그</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
-        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 50px; }
-        .header { margin-bottom: 40px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
-        h1 { color: #333; font-size: 2.2em; margin-bottom: 10px; }
-        .meta { color: #666; font-size: 1em; }
-        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
-        .nav { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .nav a { background: #667eea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
-        .nav a:hover { background: #764ba2; }
-        .post-number { color: #667eea; font-size: 0.9em; font-weight: bold; }
-    
-        /* 댓글 섹션 스타일 */
-        .comments-section {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #eee;
-        }
-        
-        .comments-section h2 {
-            color: #333;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        .comments-list {
-            margin-bottom: 40px;
-            min-height: 20px;
-        }
-        
-        .comment-item {
-            background: #f9f9f9;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-        }
-        
-        .comment-author {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .comment-date {
-            font-size: 0.9em;
-            color: #999;
-            margin-bottom: 10px;
-        }
-        
-        .comment-text {
-            color: #555;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        .comment-form {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        .comment-form h3 {
-            color: #333;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-            color: #333;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1em;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-        }
-        
-        .submit-btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background: #764ba2;
-        }
-        
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        #comment-status {
-            margin-left: 15px;
-            font-weight: 500;
-        }
-        
-        .status-success {
-            color: #28a745;
-        }
-        
-        .status-error {
-            color: #dc3545;
-        }
-        
-        .no-comments {
-            color: #999;
-            font-style: italic;
-            padding: 20px;
-        }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>의사소통 수단 그 이상 | 강희조</title>
+<meta name="description" content="드라마 속 ‘아가씨’라는 호칭에서 출발해, 사전적 정의가 그대로인 단어가 30년 만에 어떻게 다른 말이 되었는지를 본다.">
+<link rel="canonical" href="https://hijokang.duckdns.org/post7.html">
+<meta property="og:site_name" content="강희조 | Hijo Kang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="의사소통 수단 그 이상 | 강희조">
+<meta property="og:description" content="드라마 속 ‘아가씨’라는 호칭에서 출발해, 사전적 정의가 그대로인 단어가 30년 만에 어떻게 다른 말이 되었는지를 본다.">
+<meta property="og:url" content="https://hijokang.duckdns.org/post7.html">
+<meta property="og:image" content="https://hijokang.duckdns.org/images/profile.jpg">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="강희조" href="https://hijokang.duckdns.org/feed.xml">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"의사소통 수단 그 이상","description":"드라마 속 ‘아가씨’라는 호칭에서 출발해, 사전적 정의가 그대로인 단어가 30년 만에 어떻게 다른 말이 되었는지를 본다.","url":"https://hijokang.duckdns.org/post7.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://hijokang.duckdns.org/post7.html"},"datePublished":"2026-06-01","dateModified":"2026-06-01","inLanguage":"ko","image":"https://hijokang.duckdns.org/images/profile.jpg","about":[{"@type":"Thing","name":"Language & Society"},{"@type":"Thing","name":"Language Change"},{"@type":"Thing","name":"Korean"}],"keywords":"언어와 사회, 언어 변화, 한국어","author":{"@context":"https://schema.org","@type":"Person","name":"Hijo Kang","alternateName":"강희조","jobTitle":"Associate Professor","url":"https://hijokang.duckdns.org/about.html","image":"https://hijokang.duckdns.org/images/profile.jpg","email":"mailto:hijokang@jnu.ac.kr","telephone":"+82-62-530-3165","affiliation":{"@type":"CollegeOrUniversity","name":"Chonnam National University","department":{"@type":"Organization","name":"Department of English Language and Literature"}},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Stony Brook University"},{"@type":"CollegeOrUniversity","name":"Seoul National University"}],"knowsAbout":["Phonetics","Phonology","Morphology","Korean language","English linguistics"],"knowsLanguage":["ko","en"],"sameAs":["https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG"]},"publisher":{"@type":"Person","name":"Hijo Kang","url":"https://hijokang.duckdns.org/about.html"},"isPartOf":{"@type":"Blog","name":"강희조의 글","url":"https://hijokang.duckdns.org/blog.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://hijokang.duckdns.org/"},{"@type":"ListItem","position":2,"name":"글","item":"https://hijokang.duckdns.org/blog.html"},{"@type":"ListItem","position":3,"name":"의사소통 수단 그 이상","item":"https://hijokang.duckdns.org/post7.html"}]}</script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>의사소통 수단 그 이상</h1>
-            <div class="meta">
-                <span class="post-number">글 7</span> | 2026년 6월
-            </div>
-        </div>
-        
-        <div class="content">
-최근에 ‘폭싹 속았수다’라는 드라마를 보던 중 충식(김선호 분)의 어머니가
-금명이(이지은 분)를 ‘아가씨’라 부르는 장면을 보게 되었다. 드라마 속에서
-금명이가 68년생으로 설정되어 있으니 1990년 전후의 상황이라고 볼 수 있다.
-지금으로부터 불과 30여 년 전이지만 역시 언어는 계속 변한다는 사실을
-깨닫게 해 주었다. 현재 2025년에 20대 여학생을 ‘아가씨’라 부른다면 어떤
-반응이 돌아올까? 아마도 기분 나쁜 눈빛을 보내며 지나가지 않을까? 30여 년
-전이나 지금이나 아가씨란 단어는 ‘결혼하지 않은 젊은 여자를 이르거나
-부르는 말’이라는 사전적 정의를 가지고 있다. 사전적 정의는 변하지
-않았으나 그 단어가 가지고 있는 ‘사회적 함축’의 의미는 많이 달라진 것으로
-보인다. 드라마의 배경인 1990년 전후에는 이 단어에 그리 특별한(즉, 이
-단어를 꺼리게 할 만한) 함축적 의미가 있지 않았다. 물론 소수의 한국어
-화자들 사이에서는 특수용어로서 일반적이지 않은 의미를 가지고 있었을 수도
-있다. 그러나 사회 전체적으로 보았을 때에는 그 영향이 크지 않았다고 볼 수
-있다. 또는 그 당시에도 어느 정도 좋지 않은 함축적 의미가 있었으나 충식의
-어머니 세대에게는 그렇지 않았을 수도 있다. 현재의 20대 여학생들이 이
-단어에 반감을 가지는 것은 한국어를 사용하는 대부분의 사람들에게 사회적
-함축의 의미가 그리 좋지 않기 때문일 것이다. 즉, ‘(술집) 아가씨’를
-떠올리기 때문이라 추측할 수 있다.[6]
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <span class="brand-en">HIJO KANG</span>
+      <span class="brand-ko">강희조</span>
+      <span class="brand-sub">부교수 · 전남대학교 영어영문학과</span>
+    </a>
+    <nav class="gnb"><a href="about.html">소개</a><a href="research.html">연구</a><a href="teaching.html">강의</a><a href="blog.html" class='on'>글</a><a class="lang" href="en/index.html" hreflang="en">EN</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  <article class="essay">
+    <p class="crumb"><a href="index.html">홈</a> <span>›</span>
+      <a href="blog.html">글</a> <span>›</span> 글 7</p>
+    <header class="essay-head">
+      <p class="essay-kicker">언어와 사회 · 언어 변화 · 한국어</p>
+      <h1 class="essay-title">의사소통 수단 그 이상</h1>
+      <p class="essay-en">More Than a Means of Communication</p>
+      <p class="essay-meta"><time datetime="2026-06-01">2026년 6월</time>
+        <span class="dot">·</span> 글 7
+        <span class="dot">·</span> 강희조</p>
+    </header>
 
-미국에서 유학하던 시절에 이와 관련된 경험을 한 적이 있다. 대학원에는
-외부의 교수를 초빙하여 특강을 듣고 저녁 식사까지 함께하는 프로그램이
-있었는데, 그 학기에 나는 이 프로그램의 담당자 중 한 명이었다. 저녁
-식사의 메뉴를 정하고, 주문하고, 식당에서 찾아와 음식을 차리고,
-마지막으로 뒷정리까지 해야 하는 일이었다. 저녁 식사 및 담소가 끝나갈
-무렵, 또 다른 담당자였던 미국인 친구에게 ‘남은 음식을 정리하자’라는 말을
-하면서 ‘remaining food’라는 표현을 사용하였다. 그 순간 그 친구가 인상을
-찌푸리며 ‘leftover’라는 표현을 사용할 것을 권했다. ‘remaining’이라는
-단어는 전쟁이 끝나고 난 뒤의 잔해를 떠올리게 하기 때문이라는 설명과
-함께. ‘remaining’의 사전적 의미만을 알고 있던 나로서는 당황스러울 수밖에
-없었고 그 단어의 함축적 의미를 배운 것으로 위안을 삼았다.
+    <div class="essay-body">
+<p>최근에 ‘폭싹 속았수다’라는 드라마를 보던 중 충식(김선호 분)의 어머니가 금명이(이지은 분)를 ‘아가씨’라 부르는 장면을 보게 되었다. 드라마 속에서 금명이가 68년생으로 설정되어 있으니 1990년 전후의 상황이라고 볼 수 있다. 지금으로부터 불과 30여 년 전이지만 역시 언어는 계속 변한다는 사실을 깨닫게 해 주었다. 현재 2025년에 20대 여학생을 ‘아가씨’라 부른다면 어떤 반응이 돌아올까? 아마도 기분 나쁜 눈빛을 보내며 지나가지 않을까? 30여 년 전이나 지금이나 아가씨란 단어는 ‘결혼하지 않은 젊은 여자를 이르거나 부르는 말’이라는 사전적 정의를 가지고 있다. 사전적 정의는 변하지 않았으나 그 단어가 가지고 있는 ‘사회적 함축’의 의미는 많이 달라진 것으로 보인다. 드라마의 배경인 1990년 전후에는 이 단어에 그리 특별한(즉, 이 단어를 꺼리게 할 만한) 함축적 의미가 있지 않았다. 물론 소수의 한국어 화자들 사이에서는 특수용어로서 일반적이지 않은 의미를 가지고 있었을 수도 있다. 그러나 사회 전체적으로 보았을 때에는 그 영향이 크지 않았다고 볼 수 있다. 또는 그 당시에도 어느 정도 좋지 않은 함축적 의미가 있었으나 충식의 어머니 세대에게는 그렇지 않았을 수도 있다. 현재의 20대 여학생들이 이 단어에 반감을 가지는 것은 한국어를 사용하는 대부분의 사람들에게 사회적 함축의 의미가 그리 좋지 않기 때문일 것이다. 즉, ‘(술집) 아가씨’를 떠올리기 때문이라 추측할 수 있다.[6]</p>
+<p>미국에서 유학하던 시절에 이와 관련된 경험을 한 적이 있다. 대학원에는 외부의 교수를 초빙하여 특강을 듣고 저녁 식사까지 함께하는 프로그램이 있었는데, 그 학기에 나는 이 프로그램의 담당자 중 한 명이었다. 저녁 식사의 메뉴를 정하고, 주문하고, 식당에서 찾아와 음식을 차리고, 마지막으로 뒷정리까지 해야 하는 일이었다. 저녁 식사 및 담소가 끝나갈 무렵, 또 다른 담당자였던 미국인 친구에게 ‘남은 음식을 정리하자’라는 말을 하면서 ‘remaining food’라는 표현을 사용하였다. 그 순간 그 친구가 인상을 찌푸리며 ‘leftover’라는 표현을 사용할 것을 권했다. ‘remaining’이라는 단어는 전쟁이 끝나고 난 뒤의 잔해를 떠올리게 하기 때문이라는 설명과 함께. ‘remaining’의 사전적 의미만을 알고 있던 나로서는 당황스러울 수밖에 없었고 그 단어의 함축적 의미를 배운 것으로 위안을 삼았다.</p>
+<p>이렇듯 어떤 단어들은 영어로 connotation이라 불리는, (사회적) 함축 의미를 두드러지게 가지고 있다. 한국어를 사용하는 사람들은 nuance라는 단어를 더 많이 사용하는데 nuance는 ‘미묘한 차이(subtle or slight degree of difference)’를 가리키는 말로 언어 외에도 감각이나 색깔과 관련되어 사용되는, 더 넓은 범위의 단어이다. 어떤 단어가 좋지 않은 함축적 의미를 갖게 되면, 자연스럽게 사람들은 그 단어의 사용을 꺼리게 된다. 그 단어를 사용함으로써 상대방에게 불쾌감을 주지 않으려는 목적으로. 필자가 어릴 때에는 ‘홀아비’와 ‘과부’라는 단어를 심심찮게 들을 수 있었다. 그러나 언제부터인가 이 두 단어는 사람들의 입에서 쉽게 나오지 않게 되었다. 그리고 이들을 대신하여 ‘이혼남’과 ‘이혼녀’라는 단어가 사용되었다. 그러나 이 대체 단어들도 그리 오래 가지 않았다. 이 두 단어 역시 사회적으로 그 함축적 의미가 좋다고 여겨지지 않았기 때문이다. 아마 이 두 단어가 사용되던 시절에 ‘이혼’이라는 단어가 그리 좋은 인상을 주지 못했던 것 같다. (물론 지금도 좋다고 말할 수는 없겠으나 상대적으로 더 그러했다.) 그리하여 또 다른 대체 단어가 등장하는데 이것이 바로 ‘돌싱’이다. ‘돌아온 싱글’의 줄임말로 그 이전의 단어들이 가지고 있던 부정적 함축 의미를 덜어내고 전성기를 맞고 있다.[7]</p>
+<p>다시 말하지만, 이 단어들의 사전적 의미는 크게 다르지 않다. 그럼에도 사람들이 옛 단어들을 버리고 새로운 단어들을 채택하는 데에는 여러 가지 이유가 있다. 앞서 언급한 대로 옛 단어가 가지고 있는 좋지 않은 함축적 의미를 표현하기 싫은 것이 가장 큰 이유일 것이고, 이전 세대가 사용한 단어들은 왠지 현재에 어울리지 않는다고 생각하기 때문일 수도 있다. 또한 언중들이 가지는 사회적 올바름의 기준이 변하기 때문이기도 한데, 21세기 들어와 ‘돌싱’이 선호되는 이유로 기존의 단어들과는 달리 남자와 여자를 구별하지 않고 있다는 점 역시 무시할 수 없다. 장애인을 차별하는 단어들이 사라져가는 것도 이와 같은 이유에서 비롯되었다고 할 수 있다.</p>
+<p>흔히 언어는 인간의 ‘의사소통의 도구’라고 불린다. 인간의 의사소통은 단순히 사전적 정의를 담은 의미만을 전달하는 것에서 그치지 않는다. 우리는 언어를 통해 서로의 감정을 전달하고, 더 나아가 각자가 가지고 있는 가치를 드러내기도 한다. 그렇기에 언어는, 단순한 도구일 뿐 아니라 인간이 인간다움을 드러내는, 어찌 보면 인간 그 자체로 보이기도 한다.</p>
+<p>[6] 물론 이 외에 아랫사람을 하대하는 느낌을 주는 등의 다른 이유가 있을 수도 있다.</p>
+<p>[7] 이를 Steven Pinker는 ‘완곡어법의 쳇바퀴(Euphemism treadmill)’이라 표현하였다. 사회적 편견을 담은 단어를 부드러운 새 단어로 교체해도 시간이 지나면 그 새 단어마저 똑같이 부정적 의미로 오염되어 다시 새로운 단어로 바꾸는 무한 반복 현상을 뜻한다.</p>
+    </div>
 
-이렇듯 어떤 단어들은 영어로 connotation이라 불리는, (사회적) 함축 의미를
-두드러지게 가지고 있다. 한국어를 사용하는 사람들은 nuance라는 단어를 더
-많이 사용하는데 nuance는 ‘미묘한 차이(subtle or slight degree of
-difference)’를 가리키는 말로 언어 외에도 감각이나 색깔과 관련되어
-사용되는, 더 넓은 범위의 단어이다. 어떤 단어가 좋지 않은 함축적 의미를
-갖게 되면, 자연스럽게 사람들은 그 단어의 사용을 꺼리게 된다. 그 단어를
-사용함으로써 상대방에게 불쾌감을 주지 않으려는 목적으로. 필자가 어릴
-때에는 ‘홀아비’와 ‘과부’라는 단어를 심심찮게 들을 수 있었다. 그러나
-언제부터인가 이 두 단어는 사람들의 입에서 쉽게 나오지 않게 되었다.
-그리고 이들을 대신하여 ‘이혼남’과 ‘이혼녀’라는 단어가 사용되었다. 그러나
-이 대체 단어들도 그리 오래 가지 않았다. 이 두 단어 역시 사회적으로 그
-함축적 의미가 좋다고 여겨지지 않았기 때문이다. 아마 이 두 단어가
-사용되던 시절에 ‘이혼’이라는 단어가 그리 좋은 인상을 주지 못했던 것
-같다. (물론 지금도 좋다고 말할 수는 없겠으나 상대적으로 더 그러했다.)
-그리하여 또 다른 대체 단어가 등장하는데 이것이 바로 ‘돌싱’이다. ‘돌아온
-싱글’의 줄임말로 그 이전의 단어들이 가지고 있던 부정적 함축 의미를
-덜어내고 전성기를 맞고 있다.[7]
+    <ul class="chips chips-link essay-tags"><li><a href="blog.html#t-society">언어와 사회</a></li><li><a href="blog.html#t-change">언어 변화</a></li><li><a href="blog.html#t-korean">한국어</a></li></ul>
 
-다시 말하지만, 이 단어들의 사전적 의미는 크게 다르지 않다. 그럼에도
-사람들이 옛 단어들을 버리고 새로운 단어들을 채택하는 데에는 여러 가지
-이유가 있다. 앞서 언급한 대로 옛 단어가 가지고 있는 좋지 않은 함축적
-의미를 표현하기 싫은 것이 가장 큰 이유일 것이고, 이전 세대가 사용한
-단어들은 왠지 현재에 어울리지 않는다고 생각하기 때문일 수도 있다. 또한
-언중들이 가지는 사회적 올바름의 기준이 변하기 때문이기도 한데, 21세기
-들어와 ‘돌싱’이 선호되는 이유로 기존의 단어들과는 달리 남자와 여자를
-구별하지 않고 있다는 점 역시 무시할 수 없다. 장애인을 차별하는 단어들이
-사라져가는 것도 이와 같은 이유에서 비롯되었다고 할 수 있다.
+    <aside class="author">
+      <img class="author-img" src="images/profile.jpg" alt="강희조"
+        width="72" height="72" loading="lazy">
+      <div class="author-body">
+        <p class="author-name">글 · 강희조 <span class="p-en">Hijo Kang</span></p>
+        <p class="author-role">전남대학교 영어영문학과 부교수<br>
+          Ph.D. in Linguistics, Stony Brook University</p>
+        <p class="author-fields">음성학 · 음운론 · 형태론</p>
+        <p class="author-more"><a href="about.html">소개 보기 →</a>
+          <a href="research.html">연구 보기 →</a></p>
+      </div>
+    </aside>
 
-흔히 언어는 인간의 ‘의사소통의 도구’라고 불린다. 인간의 의사소통은
-단순히 사전적 정의를 담은 의미만을 전달하는 것에서 그치지 않는다. 우리는
-언어를 통해 서로의 감정을 전달하고, 더 나아가 각자가 가지고 있는 가치를
-드러내기도 한다. 그렇기에 언어는, 단순한 도구일 뿐 아니라 인간이
-인간다움을 드러내는, 어찌 보면 인간 그 자체로 보이기도 한다.
-        
-[6] 물론 이 외에 아랫사람을 하대하는 느낌을 주는 등의 다른 이유가 있을
-수도 있다.
+    <nav class="pager"><a class="pg pg-prev" href="post6.html"><span class="pg-l">이전 글</span><span class="pg-t">다르면서도 같은 언어 III</span></a><a class="pg pg-next" href="post8.html"><span class="pg-l">다음 글</span><span class="pg-t">영어는 우리에게 무엇일까</span></a></nav>
 
-[7] 이를 Steven Pinker는 ‘완곡어법의 쳇바퀴(Euphemism treadmill)’이라
-표현하였다. 사회적 편견을 담은 단어를 부드러운 새 단어로 교체해도 시간이
-지나면 그 새 단어마저 똑같이 부정적 의미로 오염되어 다시 새로운 단어로
-바꾸는 무한 반복 현상을 뜻한다.
-        </div>
-        
+    <section class="related">
+      <h2 class="rel-title">함께 읽기</h2>
+      <ul class="rels"><li><a href="post3.html"><span class="rel-k">언어 변화 · 언어와 사회</span><span class="rel-t">집단지성에 의한 언어의 진화</span></a></li><li><a href="post10.html"><span class="rel-k">형태론 · 언어 변화</span><span class="rel-t">빈도와 유추</span></a></li><li><a href="post11.html"><span class="rel-k">음운론 · 한국어</span><span class="rel-t">외래어 표기를 통해 알 수 있는 한국어의 특징</span></a></li></ul>
+    </section>
 
-        <div class="comments-section">
+<div class="comments-section">
             <h2>댓글</h2>
             
             <div id="comments-list" class="comments-list"></div>
@@ -264,15 +107,25 @@ difference)’를 가리키는 말로 언어 외에도 감각이나 색깔과 �
                 </form>
             </div>
         </div>
-
-        <div class="nav">
-            <a href="blog.html">← 목록으로</a>
-            <span>
-<a href="post6.html">← 이전 글</a> <a href="post8.html">다음 글 →</a>            </span>
-        </div>
+  </article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p class="foot-name">강희조 · Hijo Kang</p>
+      <p class="foot-line">전남대학교 영어영문학과 부교수</p>
+      <p class="foot-line">인문대 2호관 404호 · 062-530-3165</p>
+      <p class="foot-line"><a href="mailto:hijokang@jnu.ac.kr">hijokang@jnu.ac.kr</a></p>
     </div>
-
-    <script>
+    <div>
+      <p class="foot-line"><a href="https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG" rel="noopener">학과 교수 소개</a></p>
+      <p class="foot-line"><a href="feed.xml">RSS</a></p>
+      <p class="foot-line"><a href="en/index.html" hreflang="en">English</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-copy">© 2026 강희조. 이 사이트는 GitHub Pages로 운영됩니다.</div>
+</footer>
+<script>
         // 복사 방지 처리
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
@@ -297,10 +150,8 @@ difference)’를 가리키는 말로 언어 외에도 감각이나 색깔과 �
             return false;
         }, false);
     </script>
-
-
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
         // 댓글 데이터를 저장할 변수
         let allComments = [];
         
@@ -436,6 +287,5 @@ difference)’를 가리키는 말로 언어 외에도 감각이나 색깔과 �
             return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
         }
     </script>
-
 </body>
 </html>

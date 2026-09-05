@@ -1,241 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>집단지성에 의한 언어의 진화 - 언어학 블로그</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
-        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 50px; }
-        .header { margin-bottom: 40px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
-        h1 { color: #333; font-size: 2.2em; margin-bottom: 10px; }
-        .meta { color: #666; font-size: 1em; }
-        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
-        .nav { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .nav a { background: #667eea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
-        .nav a:hover { background: #764ba2; }
-        .post-number { color: #667eea; font-size: 0.9em; font-weight: bold; }
-    
-        /* 댓글 섹션 스타일 */
-        .comments-section {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #eee;
-        }
-        
-        .comments-section h2 {
-            color: #333;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        .comments-list {
-            margin-bottom: 40px;
-            min-height: 20px;
-        }
-        
-        .comment-item {
-            background: #f9f9f9;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-        }
-        
-        .comment-author {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .comment-date {
-            font-size: 0.9em;
-            color: #999;
-            margin-bottom: 10px;
-        }
-        
-        .comment-text {
-            color: #555;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        .comment-form {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        .comment-form h3 {
-            color: #333;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-            color: #333;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1em;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-        }
-        
-        .submit-btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background: #764ba2;
-        }
-        
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        #comment-status {
-            margin-left: 15px;
-            font-weight: 500;
-        }
-        
-        .status-success {
-            color: #28a745;
-        }
-        
-        .status-error {
-            color: #dc3545;
-        }
-        
-        .no-comments {
-            color: #999;
-            font-style: italic;
-            padding: 20px;
-        }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>집단지성에 의한 언어의 진화 | 강희조</title>
+<meta name="description" content="‘요즘 젊은 사람들이 한국어를 망친다’는 한글날 단골 기사를 뒤집어, 언어 변화가 어떻게 집단의 선택으로 일어나는지 설명한다.">
+<link rel="canonical" href="https://hijokang.duckdns.org/post3.html">
+<meta property="og:site_name" content="강희조 | Hijo Kang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="집단지성에 의한 언어의 진화 | 강희조">
+<meta property="og:description" content="‘요즘 젊은 사람들이 한국어를 망친다’는 한글날 단골 기사를 뒤집어, 언어 변화가 어떻게 집단의 선택으로 일어나는지 설명한다.">
+<meta property="og:url" content="https://hijokang.duckdns.org/post3.html">
+<meta property="og:image" content="https://hijokang.duckdns.org/images/profile.jpg">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="강희조" href="https://hijokang.duckdns.org/feed.xml">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"집단지성에 의한 언어의 진화","description":"‘요즘 젊은 사람들이 한국어를 망친다’는 한글날 단골 기사를 뒤집어, 언어 변화가 어떻게 집단의 선택으로 일어나는지 설명한다.","url":"https://hijokang.duckdns.org/post3.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://hijokang.duckdns.org/post3.html"},"datePublished":"2026-04-01","dateModified":"2026-04-01","inLanguage":"ko","image":"https://hijokang.duckdns.org/images/profile.jpg","about":[{"@type":"Thing","name":"Language Change"},{"@type":"Thing","name":"Language & Society"},{"@type":"Thing","name":"Korean"}],"keywords":"언어 변화, 언어와 사회, 한국어","author":{"@context":"https://schema.org","@type":"Person","name":"Hijo Kang","alternateName":"강희조","jobTitle":"Associate Professor","url":"https://hijokang.duckdns.org/about.html","image":"https://hijokang.duckdns.org/images/profile.jpg","email":"mailto:hijokang@jnu.ac.kr","telephone":"+82-62-530-3165","affiliation":{"@type":"CollegeOrUniversity","name":"Chonnam National University","department":{"@type":"Organization","name":"Department of English Language and Literature"}},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Stony Brook University"},{"@type":"CollegeOrUniversity","name":"Seoul National University"}],"knowsAbout":["Phonetics","Phonology","Morphology","Korean language","English linguistics"],"knowsLanguage":["ko","en"],"sameAs":["https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG"]},"publisher":{"@type":"Person","name":"Hijo Kang","url":"https://hijokang.duckdns.org/about.html"},"isPartOf":{"@type":"Blog","name":"강희조의 글","url":"https://hijokang.duckdns.org/blog.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://hijokang.duckdns.org/"},{"@type":"ListItem","position":2,"name":"글","item":"https://hijokang.duckdns.org/blog.html"},{"@type":"ListItem","position":3,"name":"집단지성에 의한 언어의 진화","item":"https://hijokang.duckdns.org/post3.html"}]}</script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>집단지성에 의한 언어의 진화</h1>
-            <div class="meta">
-                <span class="post-number">글 3</span> | 2026년 4월
-            </div>
-        </div>
-        
-        <div class="content">
-매년 한글날이 되면 단골처럼 등장하는 기사들이 있다. 대체로 ‘요즘 젊은
-사람들이 한국어(또는 한글)를 망치고 있다’는 내용이다. 구세대들이
-사용하지 않는 (근본 없는) 단어나 표현들을 사용하고, 한국어 (표준) 문법에
-맞지 않는 문장들을 사용하는 것에 대한 거부감이 그대로 표출된다. 이러한
-기사들은 최근 들어 다소 줄어들고 있기는 하지만 지속되는 것을 보면 여전히
-‘언어 꼰대’들이 이 사회에 존재한다는 것을 부인할 수 없다. 하긴 모든
-사람은 ‘나를 제외한 모든 사람들은 사투리를 쓴다’라고 생각한다고 했던가.
-McWhorter 역시 그의 TED 강연에서 이러한 언어 꼰대[3]들은 기원전부터 있어
-왔다고 말한다(McWhorter: Texting is killing language, JK!!!).
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <span class="brand-en">HIJO KANG</span>
+      <span class="brand-ko">강희조</span>
+      <span class="brand-sub">부교수 · 전남대학교 영어영문학과</span>
+    </a>
+    <nav class="gnb"><a href="about.html">소개</a><a href="research.html">연구</a><a href="teaching.html">강의</a><a href="blog.html" class='on'>글</a><a class="lang" href="en/index.html" hreflang="en">EN</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  <article class="essay">
+    <p class="crumb"><a href="index.html">홈</a> <span>›</span>
+      <a href="blog.html">글</a> <span>›</span> 글 3</p>
+    <header class="essay-head">
+      <p class="essay-kicker">언어 변화 · 언어와 사회 · 한국어</p>
+      <h1 class="essay-title">집단지성에 의한 언어의 진화</h1>
+      <p class="essay-en">Language Evolves by Collective Intelligence</p>
+      <p class="essay-meta"><time datetime="2026-04-01">2026년 4월</time>
+        <span class="dot">·</span> 글 3
+        <span class="dot">·</span> 강희조</p>
+    </header>
 
-시간이 흐름에 따라 언어가 변한다는 것은 인류의 역사에서 언어가 등장한
-이후 변하지 않는 사실이다. 문자의 등장, 그리고 체계적인 국가의 등장으로
-인해 언어의 변화 속도가 다소 느려진 경우도 있지만 변화한다는 사실에는
-변함이 없다. 따라서 젊은 세대의 언어가 구세대의 언어와 다른 것은 너무나
-당연하다. 특히 젊은 세대는 스스로를 구세대와 다르다고 생각하므로 새로운
-언어를 사용함으로써 자신들을 구별하려는 경향이 강하다. 필자가 젊었을
-때에는 강조하는 말로 ‘캡’이나 ‘짱’ 등의 단어가 선호되었다면 요즘은
-‘왕’이나 ‘킹’을 거쳐 ‘개’나 ‘존’과 같은 표현들이 선호되고 있다. 이와
-같이 변화는 단어에서 가장 두드러지게 나타나며 시간이 흐름에 따라
-말소리나 문법의 영역에서도 의식할 수 있는 수준으로 드러난다.
+    <div class="essay-body">
+<p>매년 한글날이 되면 단골처럼 등장하는 기사들이 있다. 대체로 ‘요즘 젊은 사람들이 한국어(또는 한글)를 망치고 있다’는 내용이다. 구세대들이 사용하지 않는 (근본 없는) 단어나 표현들을 사용하고, 한국어 (표준) 문법에 맞지 않는 문장들을 사용하는 것에 대한 거부감이 그대로 표출된다. 이러한 기사들은 최근 들어 다소 줄어들고 있기는 하지만 지속되는 것을 보면 여전히 ‘언어 꼰대’들이 이 사회에 존재한다는 것을 부인할 수 없다. 하긴 모든 사람은 ‘나를 제외한 모든 사람들은 사투리를 쓴다’라고 생각한다고 했던가. McWhorter 역시 그의 TED 강연에서 이러한 언어 꼰대[3]들은 기원전부터 있어 왔다고 말한다(McWhorter: Texting is killing language, JK!!!).</p>
+<p>시간이 흐름에 따라 언어가 변한다는 것은 인류의 역사에서 언어가 등장한 이후 변하지 않는 사실이다. 문자의 등장, 그리고 체계적인 국가의 등장으로 인해 언어의 변화 속도가 다소 느려진 경우도 있지만 변화한다는 사실에는 변함이 없다. 따라서 젊은 세대의 언어가 구세대의 언어와 다른 것은 너무나 당연하다. 특히 젊은 세대는 스스로를 구세대와 다르다고 생각하므로 새로운 언어를 사용함으로써 자신들을 구별하려는 경향이 강하다. 필자가 젊었을 때에는 강조하는 말로 ‘캡’이나 ‘짱’ 등의 단어가 선호되었다면 요즘은 ‘왕’이나 ‘킹’을 거쳐 ‘개’나 ‘존’과 같은 표현들이 선호되고 있다. 이와 같이 변화는 단어에서 가장 두드러지게 나타나며 시간이 흐름에 따라 말소리나 문법의 영역에서도 의식할 수 있는 수준으로 드러난다.</p>
+<p>언중은 바보가 아니기에 이러한 변화를 아무런 비판 없이 수용하는 것이 아니다. 때로는 필요에 의해서, 편의에 의해서, 또는 감성에 의해서 언중은 새로운 표현들을 받아들인다. 그러한 표현들을 사용하다가도 그 필요성이 없어지면 자연스럽게 멀어진다. 일례로 1990년 1월 16일 한겨례 신문의 기사를 보면 ‘통크나이’, ‘춤추나이’와 같은 국적불명의 표현들과 ‘얼터너티브’나 ‘뷰로크라시’와 같은 영어단어를 그대로 사용하는 것을 강하게 비판하고 있다. 그러나 지금 생각해 보면 ‘통크나이’, ‘춤추나이’와 같은 표현들은 더 이상 사용되지 않으며 영어단어의 경우 그 대안의 유무에 따라 선택적으로 사용한다. 즉 언어의 변화나 단어의 생존은 한두 사람의 판단으로 인해 결정될 문제가 아니며 그 언어를 사용하는 사람들이 무의식적으로 자연스럽게 결정할 문제이다. 필자는 이 과정에서 ‘집단지성’이 작용한다고 믿는다. 그리고 이러한 ‘집단지성’은 그 언어의 한계를 넘어서기도 한다.</p>
+<p>현재까지도 가끔 논란이 되는 것 중 하나가 ‘한자’의 사용여부이다. 이미 한글전용화가 시행된지 오래되었지만 한자를 교육하고 사용해야 한다는 주장을 종종 듣는다. 한자를 사용해야 한다는 주장의 근거는 여러 가지가 있겠지만, 그 중의 하나가 우리말의 조어력, 즉 새로운 단어를 만드는 능력이 한자만 못하기 때문이라는 것이다. 이는 외래어를 번역할 때 쉽게 알 수 있는 사실로 방금 언급한 ‘조어력’이라는 단어만 봐도 한자를 사용하면 단어를 더 간결하게 만들 수 있음을 알 수 있다. 다른 근거들보다 이러한 근거는 적어도 필자에게는 나름 설득력이 있었다. (물론 그럼에도 필자는 한자 교육이 필요하다고 생각하지는 않는다. 모든 한국인이 한자를 배워야 한다는 것은 마치 영어를 제대로 하려면 라틴어를 알야아 한다는 소리와 비슷하게 들린다.) 그러나 지금의 젊은 세대는 한국어가 가지고 있는 조어력의 문제를 쉽게 해결해 냈다.</p>
+<p>30여년 전에 음식을 먹는 것을 생방송으로 송출하는 것이 유행했더라면, 그 당시 사람들은 이를 뭐라고 불렀을까? 한자를 사용하여 ‘식방(食放)’이라 했을까? 아니면 그냥 풀어서 ‘먹는 방송’이라고 했을까? 이 어려운 문제는 ‘먹방’으로 대표되는 표현들로 해결되었다. 한국어에서 ‘용언’으로 분류되는 동사와 형용사는 전통적으로 ‘의존형태소’로 분류된다. 한국어에서는 동사와 형용사의 어간을 독립적으로 사용할 수 없고, 항상 어미와 함께 사용하여야 하기 때문이다. 그렇기에 동사나 형용사가 필요한 경우 새로운 단어는 길어질 수밖에 없고, 앞서 언급된 바와 같이 조어력이 좋지 않다는 판단을 받게 되었다. 그러나 ‘먹방’이라는 단어에서 보듯이 동사의 어간인 ‘먹’을 어미의 도움 없이 사용함으로써 이러한 제약을 벗어나게 되었다. 이러한 경향은 ‘나들목’과 같이 언어순화를 위해 도입된 단어에서도 관찰된다. ‘눕방’, ‘눕기태’ 등에서의 ‘눕’에서도, 그리고 ‘쫄다’의 ‘쫄’이나 ‘긁다’의 ‘긁’이 단독으로 사용되는 것도 예로 들 수 있다. 물론 이것이 한국어의 문법을 완전히 바꿔 놓았다고 말하기는 어렵다. 즉 여전히 용언의 어간은 의존형태소로 분류하는 것이 옳다. 그러나 변화는 이렇듯 일부 단어에서 시작되고, 이것이 확산이 될 지 여부는 결국 한국어를 사용하는 사람들이 결정할 일이다. 다만 이 예는 한자가 없어도 필요에 따라서 한국어를 창조적으로 활용할 수 있음을 생생하게 보여준다. (그리고 ‘먹방’은 옥스퍼드 사전에도 등재되었다!)</p>
+<p>필자도 나이가 들어가면서 ‘꼰대력’이 점점 상승해 가는 것을 느낀다. 그러나 세상 모든 만물은 변하고, 변한다고 하는 그 말(언어)도 변한다. 적어도 언어에 대해서만큼은, 젊은 사람들의 선택을 믿고 지지해 주고 싶다. 물론 나의 의견에 상관없이 한국어는 젊은 사람들의 선택에 의해, 그리고 그보다 더 젊은 사람들의 선택에 의해 계속 변화할 것이다.</p>
+<p>[3] 다소 점잖은 표현으로 ‘언어 규범주의’라 할 수 있다.</p>
+    </div>
 
-언중은 바보가 아니기에 이러한 변화를 아무런 비판 없이 수용하는 것이
-아니다. 때로는 필요에 의해서, 편의에 의해서, 또는 감성에 의해서 언중은
-새로운 표현들을 받아들인다. 그러한 표현들을 사용하다가도 그 필요성이
-없어지면 자연스럽게 멀어진다. 일례로 1990년 1월 16일 한겨례 신문의
-기사를 보면 ‘통크나이’, ‘춤추나이’와 같은 국적불명의 표현들과
-‘얼터너티브’나 ‘뷰로크라시’와 같은 영어단어를 그대로 사용하는 것을
-강하게 비판하고 있다. 그러나 지금 생각해 보면 ‘통크나이’, ‘춤추나이’와
-같은 표현들은 더 이상 사용되지 않으며 영어단어의 경우 그 대안의 유무에
-따라 선택적으로 사용한다. 즉 언어의 변화나 단어의 생존은 한두 사람의
-판단으로 인해 결정될 문제가 아니며 그 언어를 사용하는 사람들이
-무의식적으로 자연스럽게 결정할 문제이다. 필자는 이 과정에서 ‘집단지성’이
-작용한다고 믿는다. 그리고 이러한 ‘집단지성’은 그 언어의 한계를
-넘어서기도 한다.
+    <ul class="chips chips-link essay-tags"><li><a href="blog.html#t-change">언어 변화</a></li><li><a href="blog.html#t-society">언어와 사회</a></li><li><a href="blog.html#t-korean">한국어</a></li></ul>
 
-현재까지도 가끔 논란이 되는 것 중 하나가 ‘한자’의 사용여부이다. 이미
-한글전용화가 시행된지 오래되었지만 한자를 교육하고 사용해야 한다는
-주장을 종종 듣는다. 한자를 사용해야 한다는 주장의 근거는 여러 가지가
-있겠지만, 그 중의 하나가 우리말의 조어력, 즉 새로운 단어를 만드는 능력이
-한자만 못하기 때문이라는 것이다. 이는 외래어를 번역할 때 쉽게 알 수 있는
-사실로 방금 언급한 ‘조어력’이라는 단어만 봐도 한자를 사용하면 단어를 더
-간결하게 만들 수 있음을 알 수 있다. 다른 근거들보다 이러한 근거는 적어도
-필자에게는 나름 설득력이 있었다. (물론 그럼에도 필자는 한자 교육이
-필요하다고 생각하지는 않는다. 모든 한국인이 한자를 배워야 한다는 것은
-마치 영어를 제대로 하려면 라틴어를 알야아 한다는 소리와 비슷하게
-들린다.) 그러나 지금의 젊은 세대는 한국어가 가지고 있는 조어력의 문제를
-쉽게 해결해 냈다.
+    <aside class="author">
+      <img class="author-img" src="images/profile.jpg" alt="강희조"
+        width="72" height="72" loading="lazy">
+      <div class="author-body">
+        <p class="author-name">글 · 강희조 <span class="p-en">Hijo Kang</span></p>
+        <p class="author-role">전남대학교 영어영문학과 부교수<br>
+          Ph.D. in Linguistics, Stony Brook University</p>
+        <p class="author-fields">음성학 · 음운론 · 형태론</p>
+        <p class="author-more"><a href="about.html">소개 보기 →</a>
+          <a href="research.html">연구 보기 →</a></p>
+      </div>
+    </aside>
 
-30여년 전에 음식을 먹는 것을 생방송으로 송출하는 것이 유행했더라면, 그
-당시 사람들은 이를 뭐라고 불렀을까? 한자를 사용하여 ‘식방(食放)’이라
-했을까? 아니면 그냥 풀어서 ‘먹는 방송’이라고 했을까? 이 어려운 문제는
-‘먹방’으로 대표되는 표현들로 해결되었다. 한국어에서 ‘용언’으로 분류되는
-동사와 형용사는 전통적으로 ‘의존형태소’로 분류된다. 한국어에서는 동사와
-형용사의 어간을 독립적으로 사용할 수 없고, 항상 어미와 함께 사용하여야
-하기 때문이다. 그렇기에 동사나 형용사가 필요한 경우 새로운 단어는 길어질
-수밖에 없고, 앞서 언급된 바와 같이 조어력이 좋지 않다는 판단을 받게
-되었다. 그러나 ‘먹방’이라는 단어에서 보듯이 동사의 어간인 ‘먹’을 어미의
-도움 없이 사용함으로써 이러한 제약을 벗어나게 되었다. 이러한 경향은
-‘나들목’과 같이 언어순화를 위해 도입된 단어에서도 관찰된다. ‘눕방’,
-‘눕기태’ 등에서의 ‘눕’에서도, 그리고 ‘쫄다’의 ‘쫄’이나 ‘긁다’의 ‘긁’이
-단독으로 사용되는 것도 예로 들 수 있다. 물론 이것이 한국어의 문법을
-완전히 바꿔 놓았다고 말하기는 어렵다. 즉 여전히 용언의 어간은
-의존형태소로 분류하는 것이 옳다. 그러나 변화는 이렇듯 일부 단어에서
-시작되고, 이것이 확산이 될 지 여부는 결국 한국어를 사용하는 사람들이
-결정할 일이다. 다만 이 예는 한자가 없어도 필요에 따라서 한국어를
-창조적으로 활용할 수 있음을 생생하게 보여준다. (그리고 ‘먹방’은 옥스퍼드
-사전에도 등재되었다!)
+    <nav class="pager"><a class="pg pg-prev" href="post2.html"><span class="pg-l">이전 글</span><span class="pg-t">발음에 대한 집착으로부터의 해방</span></a><a class="pg pg-next" href="post4.html"><span class="pg-l">다음 글</span><span class="pg-t">다르면서도 같은 언어 I</span></a></nav>
 
-필자도 나이가 들어가면서 ‘꼰대력’이 점점 상승해 가는 것을 느낀다. 그러나
-세상 모든 만물은 변하고, 변한다고 하는 그 말(언어)도 변한다. 적어도
-언어에 대해서만큼은, 젊은 사람들의 선택을 믿고 지지해 주고 싶다. 물론
-나의 의견에 상관없이 한국어는 젊은 사람들의 선택에 의해, 그리고 그보다
-더 젊은 사람들의 선택에 의해 계속 변화할 것이다.
+    <section class="related">
+      <h2 class="rel-title">함께 읽기</h2>
+      <ul class="rels"><li><a href="post7.html"><span class="rel-k">언어와 사회 · 언어 변화</span><span class="rel-t">의사소통 수단 그 이상</span></a></li><li><a href="post1.html"><span class="rel-k">한국어 · 언어 변화</span><span class="rel-t">한국어의 미래</span></a></li><li><a href="post10.html"><span class="rel-k">형태론 · 언어 변화</span><span class="rel-t">빈도와 유추</span></a></li></ul>
+    </section>
 
-[3] 다소 점잖은 표현으로 ‘언어 규범주의’라 할 수 있다.
-        </div>
-        
-
-        <div class="comments-section">
+<div class="comments-section">
             <h2>댓글</h2>
             
             <div id="comments-list" class="comments-list"></div>
@@ -267,15 +107,25 @@ McWhorter 역시 그의 TED 강연에서 이러한 언어 꼰대[3]들은 기원
                 </form>
             </div>
         </div>
-
-        <div class="nav">
-            <a href="blog.html">← 목록으로</a>
-            <span>
-<a href="post2.html">← 이전 글</a> <a href="post4.html">다음 글 →</a>            </span>
-        </div>
+  </article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p class="foot-name">강희조 · Hijo Kang</p>
+      <p class="foot-line">전남대학교 영어영문학과 부교수</p>
+      <p class="foot-line">인문대 2호관 404호 · 062-530-3165</p>
+      <p class="foot-line"><a href="mailto:hijokang@jnu.ac.kr">hijokang@jnu.ac.kr</a></p>
     </div>
-
-    <script>
+    <div>
+      <p class="foot-line"><a href="https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG" rel="noopener">학과 교수 소개</a></p>
+      <p class="foot-line"><a href="feed.xml">RSS</a></p>
+      <p class="foot-line"><a href="en/index.html" hreflang="en">English</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-copy">© 2026 강희조. 이 사이트는 GitHub Pages로 운영됩니다.</div>
+</footer>
+<script>
         // 복사 방지 처리
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
@@ -300,10 +150,8 @@ McWhorter 역시 그의 TED 강연에서 이러한 언어 꼰대[3]들은 기원
             return false;
         }, false);
     </script>
-
-
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
         // 댓글 데이터를 저장할 변수
         let allComments = [];
         
@@ -439,6 +287,5 @@ McWhorter 역시 그의 TED 강연에서 이러한 언어 꼰대[3]들은 기원
             return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
         }
     </script>
-
 </body>
 </html>

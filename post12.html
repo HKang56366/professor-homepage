@@ -1,263 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>현재 진행중인 한국어의 변화 - 언어학 블로그</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
-        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 50px; }
-        .header { margin-bottom: 40px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
-        h1 { color: #333; font-size: 2.2em; margin-bottom: 10px; }
-        .meta { color: #666; font-size: 1em; }
-        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
-        .nav { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .nav a { background: #667eea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
-        .nav a:hover { background: #764ba2; }
-        .post-number { color: #667eea; font-size: 0.9em; font-weight: bold; }
-        
-        /* 댓글 섹션 스타일 */
-        .comments-section {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #eee;
-        }
-        
-        .comments-section h2 {
-            color: #333;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        .comments-list {
-            margin-bottom: 40px;
-            min-height: 20px;
-        }
-        
-        .comment-item {
-            background: #f9f9f9;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-        }
-        
-        .comment-author {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .comment-date {
-            font-size: 0.9em;
-            color: #999;
-            margin-bottom: 10px;
-        }
-        
-        .comment-text {
-            color: #555;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        .comment-form {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        .comment-form h3 {
-            color: #333;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-            color: #333;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1em;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-        }
-        
-        .submit-btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background: #764ba2;
-        }
-        
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        #comment-status {
-            margin-left: 15px;
-            font-weight: 500;
-        }
-        
-        .status-success {
-            color: #28a745;
-        }
-        
-        .status-error {
-            color: #dc3545;
-        }
-        
-        .no-comments {
-            color: #999;
-            font-style: italic;
-            padding: 20px;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>현재 진행중인 한국어의 변화 | 강희조</title>
+<meta name="description" content="언어 변화는 오래 지나야 보인다는 통념과 달리, 지금 우리 세대 안에서 진행 중인 한국어의 변화를 짚어낸다.">
+<link rel="canonical" href="https://hijokang.duckdns.org/post12.html">
+<meta property="og:site_name" content="강희조 | Hijo Kang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="현재 진행중인 한국어의 변화 | 강희조">
+<meta property="og:description" content="언어 변화는 오래 지나야 보인다는 통념과 달리, 지금 우리 세대 안에서 진행 중인 한국어의 변화를 짚어낸다.">
+<meta property="og:url" content="https://hijokang.duckdns.org/post12.html">
+<meta property="og:image" content="https://hijokang.duckdns.org/images/profile.jpg">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="강희조" href="https://hijokang.duckdns.org/feed.xml">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"현재 진행중인 한국어의 변화","description":"언어 변화는 오래 지나야 보인다는 통념과 달리, 지금 우리 세대 안에서 진행 중인 한국어의 변화를 짚어낸다.","url":"https://hijokang.duckdns.org/post12.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://hijokang.duckdns.org/post12.html"},"datePublished":"2026-08-15","dateModified":"2026-08-15","inLanguage":"ko","image":"https://hijokang.duckdns.org/images/profile.jpg","about":[{"@type":"Thing","name":"Language Change"},{"@type":"Thing","name":"Korean"},{"@type":"Thing","name":"Phonology"}],"keywords":"언어 변화, 한국어, 음운론","author":{"@context":"https://schema.org","@type":"Person","name":"Hijo Kang","alternateName":"강희조","jobTitle":"Associate Professor","url":"https://hijokang.duckdns.org/about.html","image":"https://hijokang.duckdns.org/images/profile.jpg","email":"mailto:hijokang@jnu.ac.kr","telephone":"+82-62-530-3165","affiliation":{"@type":"CollegeOrUniversity","name":"Chonnam National University","department":{"@type":"Organization","name":"Department of English Language and Literature"}},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Stony Brook University"},{"@type":"CollegeOrUniversity","name":"Seoul National University"}],"knowsAbout":["Phonetics","Phonology","Morphology","Korean language","English linguistics"],"knowsLanguage":["ko","en"],"sameAs":["https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG"]},"publisher":{"@type":"Person","name":"Hijo Kang","url":"https://hijokang.duckdns.org/about.html"},"isPartOf":{"@type":"Blog","name":"강희조의 글","url":"https://hijokang.duckdns.org/blog.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://hijokang.duckdns.org/"},{"@type":"ListItem","position":2,"name":"글","item":"https://hijokang.duckdns.org/blog.html"},{"@type":"ListItem","position":3,"name":"현재 진행중인 한국어의 변화","item":"https://hijokang.duckdns.org/post12.html"}]}</script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>현재 진행중인 한국어의 변화</h1>
-            <div class="meta">
-                <span class="post-number">글 12</span> | 2026년 8월
-            </div>
-        </div>
-        
-        <div class="content">
-필자는 여러 글에서 '언어는 계속 변한다'는 사실을 언급했다. 그러나 어떤
-독자들은 그 말이 잘 실감나지 않을 것이다. 언어의 변화는 오랜 시간이 지난
-뒤에 확인되는 경우가 많기 때문이다. 우리가 훈민정음을 배울 때에는
-중세국어가 현대국어와 많이 다르다는 것을 바로 체감하지만 한 세대 전
-그러니까 약 30년 전의 말소리를 듣고 많은 변화가 있었다고 말하기는
-어렵다. 말소리가 아닌 글을 읽으면 더욱더 어렵고.
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <span class="brand-en">HIJO KANG</span>
+      <span class="brand-ko">강희조</span>
+      <span class="brand-sub">부교수 · 전남대학교 영어영문학과</span>
+    </a>
+    <nav class="gnb"><a href="about.html">소개</a><a href="research.html">연구</a><a href="teaching.html">강의</a><a href="blog.html" class='on'>글</a><a class="lang" href="en/index.html" hreflang="en">EN</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  <article class="essay">
+    <p class="crumb"><a href="index.html">홈</a> <span>›</span>
+      <a href="blog.html">글</a> <span>›</span> 글 12</p>
+    <header class="essay-head">
+      <p class="essay-kicker">언어 변화 · 한국어 · 음운론</p>
+      <h1 class="essay-title">현재 진행중인 한국어의 변화</h1>
+      <p class="essay-en">Changes Underway in Korean Right Now</p>
+      <p class="essay-meta"><time datetime="2026-08-15">2026년 8월</time>
+        <span class="dot">·</span> 글 12
+        <span class="dot">·</span> 강희조</p>
+    </header>
 
-물론 몇몇 어휘의 변화는 비교적 빠르고 체감되기 쉽다. 그리나 말소리의
-변화나 통사적(문법적) 변화는 어휘의 변화만큼 빠르지는 않다. 그리고 한
-사람의 말소리나 문법이 성인이 되면서 굳어지는 것이 아니고 평생 변화하기
-때문에 현재의 20대와 60대를 비교한다고 해도 생각보다 그 차이가 크지 않을
-가능성이 높다. 즉 현재의 60대도 3,40년 전의 소리와 문법을 그대로
-유지하기 보다는 언중 전반의 변화에 영향을 받고 있다. 다만 이 모든 사실을
-감안하더라도, 언어의 변화는 언제나 현재진행형으로 존재하고 우리가
-생각하는 것보다 그 속도가 빠른 경우도 있다. 오늘은 한국어에서 진행되는
-속도감이 꽤 느껴지는 변화 두 가지를 소개하고자 한다.
+    <div class="essay-body">
+<p>필자는 여러 글에서 '언어는 계속 변한다'는 사실을 언급했다. 그러나 어떤 독자들은 그 말이 잘 실감나지 않을 것이다. 언어의 변화는 오랜 시간이 지난 뒤에 확인되는 경우가 많기 때문이다. 우리가 훈민정음을 배울 때에는 중세국어가 현대국어와 많이 다르다는 것을 바로 체감하지만 한 세대 전 그러니까 약 30년 전의 말소리를 듣고 많은 변화가 있었다고 말하기는 어렵다. 말소리가 아닌 글을 읽으면 더욱더 어렵고.</p>
+<p>물론 몇몇 어휘의 변화는 비교적 빠르고 체감되기 쉽다. 그리나 말소리의 변화나 통사적(문법적) 변화는 어휘의 변화만큼 빠르지는 않다. 그리고 한 사람의 말소리나 문법이 성인이 되면서 굳어지는 것이 아니고 평생 변화하기 때문에 현재의 20대와 60대를 비교한다고 해도 생각보다 그 차이가 크지 않을 가능성이 높다. 즉 현재의 60대도 3,40년 전의 소리와 문법을 그대로 유지하기 보다는 언중 전반의 변화에 영향을 받고 있다. 다만 이 모든 사실을 감안하더라도, 언어의 변화는 언제나 현재진행형으로 존재하고 우리가 생각하는 것보다 그 속도가 빠른 경우도 있다. 오늘은 한국어에서 진행되는 속도감이 꽤 느껴지는 변화 두 가지를 소개하고자 한다.</p>
+<p>첫째는 누구나 의식적으로 알고 있는 /ㅔ/와 /ㅐ/의 합류이다. (물론 아직 합류가 완결되지 않았다고 보는 시각도 있다.[9] 현재 대부분의 한국인들이 이를 인지하고 있을 수밖에 없다. 초등학교(또는 국민학교) 저학년 때 받아쓰기에서 틀린 경험들이 있을 것이기에. 내 귀에는 분명 하나의 소리로 들리는데 어떤 단어에서는 'ㅔ'가 쓰이고 어떤 단어에서는 'ㅐ'가 쓰이는 것이 도저히 이해되지 않았다. (이 세상은 어린 학생들을 억까하려고 만들어진 것이거나, 어른이 되는 과정을 필요 이상으로 어렵게 만든 것이라 생각했다.) 대학에 들어가 음성학 수업에서 이 두 문자가 그리 멀지 않은 시절에 (혹은 동시대에도 일부 한국어 화자들에게) 다른 소리라는 사실을 알게 되었을 때 충격이 적지 않았다. 그리고 그 사실을 안 이후 한집에 살고 계셨던 아버지조차 그 두 모음을 구별해서 발음하신다는 것을 알고는 그 충격이 배가 되었다.</p>
+<p>그렇다. 매우 오래전에 일어났을 것 같은 두 모음의 합류는 사실 그리 오래 되지 않았다. 현재 유튜브에는 이극로 선생님이 일제강점기에 프랑스에서 녹음한, 한글 최초의 음성자료라고 알려진 녹음본이 올려져 있다. 이 녹음자료에서도 /ㅔ/와 /ㅐ/는 또렷하게 구별되어 발음된다. 이 두 모음의 합류가 일어난 시점을 특정하기는 어렵지만 이숭녕(1954, 국어학개설) 선생님의 글에서도 "그런데 요사이 점점 이 애字를 [e]音으로 발음하기 시작한 듯이 귀에 거슬리는 발음을 흔히 들을 때가 있다"라고 언급이 되어 있는 것을 보면 50년대 이전에 이미 시작되었다고 추정할 수 있다. 짧게 보면 한 세대, 길게 봐도 두 세대 정도 지나는 시간에 이 변화가 일어났음을 알 수 있고, 이는 적어도 필자에게는 속도감이 느껴지는 변화라 하겠다.</p>
+<p>두 번째 변화는 다소 이해하기 어려울 수도 있어서 최대한 차근차근 설명해 보겠다. 한국어 자음에는 '3중대립'이 존재하는데, /ㄱ-ㄲ-ㅋ/, /ㄷ-ㄸ-ㅌ/, /ㅂ-ㅃ-ㅍ/와 같은 대립들이 그 예이다. 이를 예사소리(평음)-된소리(경음)-거센소리(기음 혹은 격음)로 부르는데 이 중에서 예사소리/ㄱ, ㄷ, ㅂ/와 거센소리/ㅋ, ㅌ, ㅍ/의 대립과 관련된 변화이다. 그리고 이 변화의 핵심은 VOT(Voice Onset Time)라 부르는 성대진동시작시간이다. 위에 나열한 소리들은 모두 정지음(stop)이라 부르는 소리로 폐쇄(closing)-유지(hold)-개방(release)의 순서로 만들어진다. /ㅂ/을 예로 들면 양입술을 닫고(폐쇄) 닫은 상태를 유지한 후(유지) 다시 양입술을 열어서(개방) 만든다. 그리고 이러한 정지음에 이어 모음이 발화되는 경우 개방 이후 구강을 통해 공기가 흐르며 모음이 만들어진다. 모음은 대부분 유성음이므로 성대의 진동을 동반하게 되는데 정지음의 개방 이후 성대의 진동이 시작되기까지의 시간이 바로 성대진동시작시간이다.</p>
+<p>이 시간이 긴 경우(최불암 선생님의 '파~'를 생각해 보시기 바란다), 개방 이후 /ㅎ/과 같은 소리가 나면서 우리는 이를 거센소리/ㅋ, ㅌ, ㅍ/로 인식하게 된다. 이와 반대되는 소리가 된소리로 성대진동시작시간이 가장 짧다. (이를 확인하기 위해서는 티슈 한 장을 입 앞에 두고 /파/와 /빠/를 해 보면 비교가 될 것이다.) 예사소리는 된소리와 거센소리의 중간 쯤 되는 성대진동시간을 가지고 있었는데, 최근에는 단어 초에서 거센소리와 유사한 긴 성대진동시간을 가지게 되었다. 즉 20대 화자의 '바지'와 '파지'를 녹음해 분석해 보면 /ㅂ/과 /ㅍ/의 성대진동시간이 유의미한 차이를 보이지 않는다.</p>
+<p>그러면 당연히 다음과 같은 의문이 따라올 것이다: 그래도 나는 '바지'와 '파지'가 잘 구별되어 들리는데? 맞다. 비록 성대진동시간은 유사하지만 다른 음향단서가 존재하기 때문이다. 그것은 바로 후행 모음의 음높이이다. /ㅂ/에 비해 /ㅍ/을 발음할 때 뒤따르는 모음의 음높이가 올라가고 그러한 음높이의 차이로 한국어 화자들은 여전히 예사소리와 거센소리를 구별할 수 있다. 50대 이상의 화자들은 여전히 성대진동시간의 차이로 구별하는 모습을 보이나 그 이하 세대에서는 성대진동시간의 차이는 미미하고 모음의 음높이에 더 비중을 두고 있다.[10]</p>
+<p>예사소리와 거센소리 구별의 경우, 그 변별적 지위(혹은 음소적 지위)는 유지하고 있으나 두 계열의 소리를 변별하는 방식이 달라졌다는 점에서 위에서 언급한 /ㅔ/-/ㅐ/의 합류와는 다소 다른 양상을 보인다. 그렇지만 역시 한 세대, 약 30년이라는 시간 안에서 이러한 변화를 보인다는 것은 생각보다 언어의 변화가 빠르다는 것을 실감케 한다. 그리고 두 소리를 구별하는 단서를 두 소리 내에서 찾지 않고 이 소리들을 뒤따르는 소리에서 찾는다는 것도 흥미롭다. 물론 이러한 경우는 영어에도 있어서, 자음의 유무성을 그 자음을 바로 앞서는 모음의 길이에서 포착하기도 한다. 더 놀라운 사실은 한국어 화자들이 이러한 세대별 차이를 고려하여 소리를 인식한다는 것이다. 즉, 나이든 사람의 말을 들을 때에는 성대진동시간에, 젊은 사람의 말을 들을 때에는 뒤따르는 모음의 높낮이에 상대적으로 많은 비중을 두고 예사소리와 거센소리를 구별한다.[11] 무의식적인 영역에서 우리의 뇌는 매우 열심히 일하고 있으며 그 미세한 차이조차도 포착하고 있다. 우리의 뇌가 많은 에너지를 사용할 수밖에 없는 이유이다.</p>
+<p>[9] 정인기 2022, 현대 서울 방언 "ㅔ"/e/와 "ㅐ"/ɛ/의 음소자격과 합류에 대하여.</p>
+<p>[10] 이와 관련된 논문은 다수 있으며 예를 들어 김진우, 2021, 'Production and perception of Korean word-initial stops from a sound change perspective'를 참고하기 바란다.</p>
+<p>[11] Kang, Yoonjung 2014, Voice Onset Time merger and development of tonal contrast in Seoul Korean stops: A corpus study. Journal of Phonetics 45, 76-90.</p>
+    </div>
 
-첫째는 누구나 의식적으로 알고 있는 /ㅔ/와 /ㅐ/의 합류이다. (물론 아직
-합류가 완결되지 않았다고 보는 시각도 있다.[9] 현재 대부분의 한국인들이
-이를 인지하고 있을 수밖에 없다. 초등학교(또는 국민학교) 저학년 때
-받아쓰기에서 틀린 경험들이 있을 것이기에. 내 귀에는 분명 하나의 소리로
-들리는데 어떤 단어에서는 'ㅔ'가 쓰이고 어떤 단어에서는 'ㅐ'가 쓰이는
-것이 도저히 이해되지 않았다. (이 세상은 어린 학생들을 억까하려고
-만들어진 것이거나, 어른이 되는 과정을 필요 이상으로 어렵게 만든 것이라
-생각했다.) 대학에 들어가 음성학 수업에서 이 두 문자가 그리 멀지 않은
-시절에 (혹은 동시대에도 일부 한국어 화자들에게) 다른 소리라는 사실을
-알게 되었을 때 충격이 적지 않았다. 그리고 그 사실을 안 이후 한집에 살고
-계셨던 아버지조차 그 두 모음을 구별해서 발음하신다는 것을 알고는 그
-충격이 배가 되었다.
+    <ul class="chips chips-link essay-tags"><li><a href="blog.html#t-change">언어 변화</a></li><li><a href="blog.html#t-korean">한국어</a></li><li><a href="blog.html#t-phonology">음운론</a></li></ul>
 
-그렇다. 매우 오래전에 일어났을 것 같은 두 모음의 합류는 사실 그리 오래
-되지 않았다. 현재 유튜브에는 이극로 선생님이 일제강점기에 프랑스에서
-녹음한, 한글 최초의 음성자료라고 알려진 녹음본이 올려져 있다. 이
-녹음자료에서도 /ㅔ/와 /ㅐ/는 또렷하게 구별되어 발음된다. 이 두 모음의
-합류가 일어난 시점을 특정하기는 어렵지만 이숭녕(1954, 국어학개설)
-선생님의 글에서도 "그런데 요사이 점점 이 애字를 [e]音으로 발음하기
-시작한 듯이 귀에 거슬리는 발음을 흔히 들을 때가 있다"라고 언급이 되어
-있는 것을 보면 50년대 이전에 이미 시작되었다고 추정할 수 있다. 짧게 보면
-한 세대, 길게 봐도 두 세대 정도 지나는 시간에 이 변화가 일어났음을 알 수
-있고, 이는 적어도 필자에게는 속도감이 느껴지는 변화라 하겠다.
+    <aside class="author">
+      <img class="author-img" src="images/profile.jpg" alt="강희조"
+        width="72" height="72" loading="lazy">
+      <div class="author-body">
+        <p class="author-name">글 · 강희조 <span class="p-en">Hijo Kang</span></p>
+        <p class="author-role">전남대학교 영어영문학과 부교수<br>
+          Ph.D. in Linguistics, Stony Brook University</p>
+        <p class="author-fields">음성학 · 음운론 · 형태론</p>
+        <p class="author-more"><a href="about.html">소개 보기 →</a>
+          <a href="research.html">연구 보기 →</a></p>
+      </div>
+    </aside>
 
-두 번째 변화는 다소 이해하기 어려울 수도 있어서 최대한 차근차근 설명해
-보겠다. 한국어 자음에는 '3중대립'이 존재하는데, /ㄱ-ㄲ-ㅋ/, /ㄷ-ㄸ-ㅌ/,
-/ㅂ-ㅃ-ㅍ/와 같은 대립들이 그 예이다. 이를
-예사소리(평음)-된소리(경음)-거센소리(기음 혹은 격음)로 부르는데 이
-중에서 예사소리/ㄱ, ㄷ, ㅂ/와 거센소리/ㅋ, ㅌ, ㅍ/의 대립과 관련된
-변화이다. 그리고 이 변화의 핵심은 VOT(Voice Onset Time)라 부르는
-성대진동시작시간이다. 위에 나열한 소리들은 모두 정지음(stop)이라 부르는
-소리로 폐쇄(closing)-유지(hold)-개방(release)의 순서로 만들어진다.
-/ㅂ/을 예로 들면 양입술을 닫고(폐쇄) 닫은 상태를 유지한 후(유지) 다시
-양입술을 열어서(개방) 만든다. 그리고 이러한 정지음에 이어 모음이
-발화되는 경우 개방 이후 구강을 통해 공기가 흐르며 모음이 만들어진다.
-모음은 대부분 유성음이므로 성대의 진동을 동반하게 되는데 정지음의 개방
-이후 성대의 진동이 시작되기까지의 시간이 바로 성대진동시작시간이다.
+    <nav class="pager"><a class="pg pg-prev" href="post11.html"><span class="pg-l">이전 글</span><span class="pg-t">외래어 표기를 통해 알 수 있는 한국어의 특징</span></a><a class="pg pg-next" href="post13.html"><span class="pg-l">다음 글</span><span class="pg-t">영어의 철자는 왜 이렇게 엉망인가</span></a></nav>
 
-이 시간이 긴 경우(최불암 선생님의 '파~'를 생각해 보시기 바란다), 개방
-이후 /ㅎ/과 같은 소리가 나면서 우리는 이를 거센소리/ㅋ, ㅌ, ㅍ/로
-인식하게 된다. 이와 반대되는 소리가 된소리로 성대진동시작시간이 가장
-짧다. (이를 확인하기 위해서는 티슈 한 장을 입 앞에 두고 /파/와 /빠/를 해
-보면 비교가 될 것이다.) 예사소리는 된소리와 거센소리의 중간 쯤 되는
-성대진동시간을 가지고 있었는데, 최근에는 단어 초에서 거센소리와 유사한
-긴 성대진동시간을 가지게 되었다. 즉 20대 화자의 '바지'와 '파지'를 녹음해
-분석해 보면 /ㅂ/과 /ㅍ/의 성대진동시간이 유의미한 차이를 보이지 않는다.
+    <section class="related">
+      <h2 class="rel-title">함께 읽기</h2>
+      <ul class="rels"><li><a href="post11.html"><span class="rel-k">음운론 · 한국어</span><span class="rel-t">외래어 표기를 통해 알 수 있는 한국어의 특징</span></a></li><li><a href="post13.html"><span class="rel-k">음운론 · 영어</span><span class="rel-t">영어의 철자는 왜 이렇게 엉망인가</span></a></li><li><a href="post10.html"><span class="rel-k">형태론 · 언어 변화</span><span class="rel-t">빈도와 유추</span></a></li></ul>
+    </section>
 
-그러면 당연히 다음과 같은 의문이 따라올 것이다: 그래도 나는 '바지'와
-'파지'가 잘 구별되어 들리는데? 맞다. 비록 성대진동시간은 유사하지만 다른
-음향단서가 존재하기 때문이다. 그것은 바로 후행 모음의 음높이이다. /ㅂ/에
-비해 /ㅍ/을 발음할 때 뒤따르는 모음의 음높이가 올라가고 그러한 음높이의
-차이로 한국어 화자들은 여전히 예사소리와 거센소리를 구별할 수 있다. 50대
-이상의 화자들은 여전히 성대진동시간의 차이로 구별하는 모습을 보이나 그
-이하 세대에서는 성대진동시간의 차이는 미미하고 모음의 음높이에 더 비중을
-두고 있다.[10]
-
-예사소리와 거센소리 구별의 경우, 그 변별적 지위(혹은 음소적 지위)는
-유지하고 있으나 두 계열의 소리를 변별하는 방식이 달라졌다는 점에서
-위에서 언급한 /ㅔ/-/ㅐ/의 합류와는 다소 다른 양상을 보인다. 그렇지만
-역시 한 세대, 약 30년이라는 시간 안에서 이러한 변화를 보인다는 것은
-생각보다 언어의 변화가 빠르다는 것을 실감케 한다. 그리고 두 소리를
-구별하는 단서를 두 소리 내에서 찾지 않고 이 소리들을 뒤따르는 소리에서
-찾는다는 것도 흥미롭다. 물론 이러한 경우는 영어에도 있어서, 자음의
-유무성을 그 자음을 바로 앞서는 모음의 길이에서 포착하기도 한다. 더
-놀라운 사실은 한국어 화자들이 이러한 세대별 차이를 고려하여 소리를
-인식한다는 것이다. 즉, 나이든 사람의 말을 들을 때에는 성대진동시간에,
-젊은 사람의 말을 들을 때에는 뒤따르는 모음의 높낮이에 상대적으로 많은
-비중을 두고 예사소리와 거센소리를 구별한다.[11] 무의식적인 영역에서
-우리의 뇌는 매우 열심히 일하고 있으며 그 미세한 차이조차도 포착하고
-있다. 우리의 뇌가 많은 에너지를 사용할 수밖에 없는 이유이다.
-
-[9] 정인기 2022, 현대 서울 방언 "ㅔ"/e/와 "ㅐ"/ɛ/의 음소자격과 합류에
-대하여.
-
-[10] 이와 관련된 논문은 다수 있으며 예를 들어 김진우, 2021, 'Production
-and perception of Korean word-initial stops from a sound change
-perspective'를 참고하기 바란다.
-
-[11] Kang, Yoonjung 2014, Voice Onset Time merger and development of
-tonal contrast in Seoul Korean stops: A corpus study. Journal of
-Phonetics 45, 76-90.
-        </div>
-        
-        <div class="comments-section">
+<div class="comments-section">
             <h2>댓글</h2>
             
             <div id="comments-list" class="comments-list"></div>
@@ -289,18 +111,26 @@ Phonetics 45, 76-90.
                 </form>
             </div>
         </div>
-        
-        <div class="nav">
-            <a href="blog.html">← 목록으로</a>
-            <span>
-                <a href="post11.html">← 이전 글</a>
-                <a href="post13.html">다음 글 →</a>
-            </span>
-        </div>
+  </article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p class="foot-name">강희조 · Hijo Kang</p>
+      <p class="foot-line">전남대학교 영어영문학과 부교수</p>
+      <p class="foot-line">인문대 2호관 404호 · 062-530-3165</p>
+      <p class="foot-line"><a href="mailto:hijokang@jnu.ac.kr">hijokang@jnu.ac.kr</a></p>
     </div>
-
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
+    <div>
+      <p class="foot-line"><a href="https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG" rel="noopener">학과 교수 소개</a></p>
+      <p class="foot-line"><a href="feed.xml">RSS</a></p>
+      <p class="foot-line"><a href="en/index.html" hreflang="en">English</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-copy">© 2026 강희조. 이 사이트는 GitHub Pages로 운영됩니다.</div>
+</footer>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
         // 댓글 데이터를 저장할 변수
         let allComments = [];
         
@@ -436,8 +266,7 @@ Phonetics 45, 76-90.
             return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
         }
     </script>
-
-    <script>
+<script>
         // 복사 방지 처리
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();

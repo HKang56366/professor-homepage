@@ -1,248 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>발음에 대한 집착으로부터의 해방 - 언어학 블로그</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
-        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 50px; }
-        .header { margin-bottom: 40px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
-        h1 { color: #333; font-size: 2.2em; margin-bottom: 10px; }
-        .meta { color: #666; font-size: 1em; }
-        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
-        .nav { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .nav a { background: #667eea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
-        .nav a:hover { background: #764ba2; }
-        .post-number { color: #667eea; font-size: 0.9em; font-weight: bold; }
-    
-        /* 댓글 섹션 스타일 */
-        .comments-section {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #eee;
-        }
-        
-        .comments-section h2 {
-            color: #333;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        .comments-list {
-            margin-bottom: 40px;
-            min-height: 20px;
-        }
-        
-        .comment-item {
-            background: #f9f9f9;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-        }
-        
-        .comment-author {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .comment-date {
-            font-size: 0.9em;
-            color: #999;
-            margin-bottom: 10px;
-        }
-        
-        .comment-text {
-            color: #555;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        .comment-form {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        .comment-form h3 {
-            color: #333;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-            color: #333;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1em;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-        }
-        
-        .submit-btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background: #764ba2;
-        }
-        
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        #comment-status {
-            margin-left: 15px;
-            font-weight: 500;
-        }
-        
-        .status-success {
-            color: #28a745;
-        }
-        
-        .status-error {
-            color: #dc3545;
-        }
-        
-        .no-comments {
-            color: #999;
-            font-style: italic;
-            padding: 20px;
-        }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>발음에 대한 집착으로부터의 해방 | 강희조</title>
+<meta name="description" content="아이의 언어 습득을 다룬 다큐멘터리를 실마리로, 성인 외국어 학습자가 발음에 매달릴 때 무엇을 놓치는지를 이야기한다.">
+<link rel="canonical" href="https://hijokang.duckdns.org/post2.html">
+<meta property="og:site_name" content="강희조 | Hijo Kang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="발음에 대한 집착으로부터의 해방 | 강희조">
+<meta property="og:description" content="아이의 언어 습득을 다룬 다큐멘터리를 실마리로, 성인 외국어 학습자가 발음에 매달릴 때 무엇을 놓치는지를 이야기한다.">
+<meta property="og:url" content="https://hijokang.duckdns.org/post2.html">
+<meta property="og:image" content="https://hijokang.duckdns.org/images/profile.jpg">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="강희조" href="https://hijokang.duckdns.org/feed.xml">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"발음에 대한 집착으로부터의 해방","description":"아이의 언어 습득을 다룬 다큐멘터리를 실마리로, 성인 외국어 학습자가 발음에 매달릴 때 무엇을 놓치는지를 이야기한다.","url":"https://hijokang.duckdns.org/post2.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://hijokang.duckdns.org/post2.html"},"datePublished":"2026-03-15","dateModified":"2026-03-15","inLanguage":"ko","image":"https://hijokang.duckdns.org/images/profile.jpg","about":[{"@type":"Thing","name":"Phonetics"},{"@type":"Thing","name":"Language Acquisition"}],"keywords":"음성학, 외국어 습득","author":{"@context":"https://schema.org","@type":"Person","name":"Hijo Kang","alternateName":"강희조","jobTitle":"Associate Professor","url":"https://hijokang.duckdns.org/about.html","image":"https://hijokang.duckdns.org/images/profile.jpg","email":"mailto:hijokang@jnu.ac.kr","telephone":"+82-62-530-3165","affiliation":{"@type":"CollegeOrUniversity","name":"Chonnam National University","department":{"@type":"Organization","name":"Department of English Language and Literature"}},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Stony Brook University"},{"@type":"CollegeOrUniversity","name":"Seoul National University"}],"knowsAbout":["Phonetics","Phonology","Morphology","Korean language","English linguistics"],"knowsLanguage":["ko","en"],"sameAs":["https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG"]},"publisher":{"@type":"Person","name":"Hijo Kang","url":"https://hijokang.duckdns.org/about.html"},"isPartOf":{"@type":"Blog","name":"강희조의 글","url":"https://hijokang.duckdns.org/blog.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://hijokang.duckdns.org/"},{"@type":"ListItem","position":2,"name":"글","item":"https://hijokang.duckdns.org/blog.html"},{"@type":"ListItem","position":3,"name":"발음에 대한 집착으로부터의 해방","item":"https://hijokang.duckdns.org/post2.html"}]}</script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>발음에 대한 집착으로부터의 해방</h1>
-            <div class="meta">
-                <span class="post-number">글 2</span> | 2026년 3월
-            </div>
-        </div>
-        
-        <div class="content">
-2011년 10월에 EBS에서 ‘언어발달의 수수께끼’라는 3부작의 다큐멘터리가
-방영되었다. 그 첫 번째 편은 ‘아이는 어떻게 말을 배울까’라는 주제로
-성인의 외국어 학습에도 많은 시사점을 던져 주는 내용을 담고 있다. 그래서
-가끔 수업시간에 학생들에게 보여주기도 한다. 그 전체의 내용을 소개하려는
-것이 이 글의 목적은 아니고, 그 다큐멘터리에서 진행된 재미있는 실험이
-있어서 언급하고자 한다. 그 실험에서 제작진은 한국인과 영어 원어민을 각각
-4명씩 불러 한 사람의 영어 연설을 듣게 하고 그 영어 실력을 평가하게 한다.
-그 영어 연설은 누가 들어도 한국 사람에 의한 것임을 알 수 있을 정도로
-한국어의 영향이 강하게 드러나는 영어 발음으로 주어졌다. 따라서
-한국인들은 그 액센트로 인해 연설자의 영어 실력을 깎아내렸다. 이와는
-반대로 영어 원어민들은 단어와 문장의 수준을 언급하면서 매우 훌륭한
-영어실력이라며 칭찬하였다. 그 연설은 반기문씨가 유엔 사무총장 직을
-수락하면서 한 연설로 기억한다. 그 실험은 한국인들이 영어를 학습하면서
-어디에 많은 비중을 두고 있는지 명확하게 보여주었다. 바로 ‘발음’이다.
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <span class="brand-en">HIJO KANG</span>
+      <span class="brand-ko">강희조</span>
+      <span class="brand-sub">부교수 · 전남대학교 영어영문학과</span>
+    </a>
+    <nav class="gnb"><a href="about.html">소개</a><a href="research.html">연구</a><a href="teaching.html">강의</a><a href="blog.html" class='on'>글</a><a class="lang" href="en/index.html" hreflang="en">EN</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  <article class="essay">
+    <p class="crumb"><a href="index.html">홈</a> <span>›</span>
+      <a href="blog.html">글</a> <span>›</span> 글 2</p>
+    <header class="essay-head">
+      <p class="essay-kicker">음성학 · 외국어 습득</p>
+      <h1 class="essay-title">발음에 대한 집착으로부터의 해방</h1>
+      <p class="essay-en">Letting Go of the Obsession with Pronunciation</p>
+      <p class="essay-meta"><time datetime="2026-03-15">2026년 3월</time>
+        <span class="dot">·</span> 글 2
+        <span class="dot">·</span> 강희조</p>
+    </header>
 
-왜 우리는 이토록 발음에 집착하게 되었을까? 이를 이해하기 위해서는 영어가
-한국에 들어오기까지의 과정을 살펴볼 필요가 있다. 일본은 조선에 앞서
-서양에 문호를 개방하고 1858년부터 영어를 교육하기 시작하였다.[2] 그리고
-일제 강점기에 일본의 영어교육이 시행되었다. 물론 일제 강점기 이전 1886년
-조선에서 영어교육이 시작되긴 하였으나 그 교육은 다수의 사람들에게
-제공되지 못하였기에 일제 강점기의 영어교육이 그 이후 영어교육의 바탕이
-되었다. 그리고 일본은 기본적으로 문법과 독해를 강조한 교육을 실시하였고
-그 여파가 한국의 영어교육에 미치게 되었다. 그 결과 한국인들과 일본인들은
-오랜 기간 읽기에 비해 듣기와 말하기를 상대적으로 못하는 상태가 되었다.
-이로 인해 말하기에 대한 자신감, 특히 발음에 대한 자신감이 많이 상실된
-것이 아닌가 추측해 본다. 여기에 더해 일본은 오랜 기간 영국영어를
-바탕으로 영어교육을 실시해 왔으며 이는 발음에 집착하게 된 하나의 요인이
-되었다.
+    <div class="essay-body">
+<p>2011년 10월에 EBS에서 ‘언어발달의 수수께끼’라는 3부작의 다큐멘터리가 방영되었다. 그 첫 번째 편은 ‘아이는 어떻게 말을 배울까’라는 주제로 성인의 외국어 학습에도 많은 시사점을 던져 주는 내용을 담고 있다. 그래서 가끔 수업시간에 학생들에게 보여주기도 한다. 그 전체의 내용을 소개하려는 것이 이 글의 목적은 아니고, 그 다큐멘터리에서 진행된 재미있는 실험이 있어서 언급하고자 한다. 그 실험에서 제작진은 한국인과 영어 원어민을 각각 4명씩 불러 한 사람의 영어 연설을 듣게 하고 그 영어 실력을 평가하게 한다. 그 영어 연설은 누가 들어도 한국 사람에 의한 것임을 알 수 있을 정도로 한국어의 영향이 강하게 드러나는 영어 발음으로 주어졌다. 따라서 한국인들은 그 액센트로 인해 연설자의 영어 실력을 깎아내렸다. 이와는 반대로 영어 원어민들은 단어와 문장의 수준을 언급하면서 매우 훌륭한 영어실력이라며 칭찬하였다. 그 연설은 반기문씨가 유엔 사무총장 직을 수락하면서 한 연설로 기억한다. 그 실험은 한국인들이 영어를 학습하면서 어디에 많은 비중을 두고 있는지 명확하게 보여주었다. 바로 ‘발음’이다.</p>
+<p>왜 우리는 이토록 발음에 집착하게 되었을까? 이를 이해하기 위해서는 영어가 한국에 들어오기까지의 과정을 살펴볼 필요가 있다. 일본은 조선에 앞서 서양에 문호를 개방하고 1858년부터 영어를 교육하기 시작하였다.[2] 그리고 일제 강점기에 일본의 영어교육이 시행되었다. 물론 일제 강점기 이전 1886년 조선에서 영어교육이 시작되긴 하였으나 그 교육은 다수의 사람들에게 제공되지 못하였기에 일제 강점기의 영어교육이 그 이후 영어교육의 바탕이 되었다. 그리고 일본은 기본적으로 문법과 독해를 강조한 교육을 실시하였고 그 여파가 한국의 영어교육에 미치게 되었다. 그 결과 한국인들과 일본인들은 오랜 기간 읽기에 비해 듣기와 말하기를 상대적으로 못하는 상태가 되었다. 이로 인해 말하기에 대한 자신감, 특히 발음에 대한 자신감이 많이 상실된 것이 아닌가 추측해 본다. 여기에 더해 일본은 오랜 기간 영국영어를 바탕으로 영어교육을 실시해 왔으며 이는 발음에 집착하게 된 하나의 요인이 되었다.</p>
+<p>1964년에 개봉된 ‘My Fair Lady’ 영화는 Bernard Shaw가 1913년 출판한 Pygmalion이라는 희곡을 기반으로 만들어졌다. Audrey Hepburn이 여자주인공 Eliza Doolittle 역으로 출연하는데 런던의 노동자 계층의 액센트로 알려진 Cockney를 사용한다. 반면 남자주인공은 Rex Harrison가 음성학자인 Henry Higgins로 출연하며 전체적인 영화의 이야기는 남자주인공 Higgins가 여자주인공 Doolittle의 액센트를 고쳐주고 그 과정에서 사랑에 빠지는 내용이다. Higgins는 사람이 어떤 액센트를 사용하는가에 따라 사회적 지위도 결정된다고 믿는데, 현재로서는 받아들이기 어렵지만 이 이야기의 배경인 20세기 초에는 이렇게 생각하는 사람이 많았던 것으로 보인다. 영국이 제국으로서 많은 나라들을 지배하던 시절에는 지배국 사람과 피지배국 사람을 구별하는 매우 효과적인 방법이 바로 액센트였던 것이다.</p>
+<p>액센트로 사람을 차별하는 것은 인류 역사에 매우 오래전부터 있어 왔다. 심지어 성경에도 그러한 사건이 기록되어 있다. 사사기 12장을 보면 길르앗 사람들이 살기위해 고향으로 돌아가려는 에브라임 사람을 걸러내기 위해 ‘십볼렛’을 말하게 하여 ‘씹볼렛’이라 발음하면 죽였다고 한다. 그리고 이러한 일은 약 백여년 전에 일본에서도 관동대지진 시 조선인을 가려내기 위해 ‘주고엔(十五円)’, ‘고주센(五十錢)’을 발음하게 하였고, 일본인처럼 발음하지 못한 경우 살해하였다. 자음의 유성성과 모음의 길이를 실현하는 점에서 조선인의 발음은 차이가 났던 것이다. 이렇듯 액센트에 의한 차별을 넘어 살인까지도 인간의 역사에 빈번했고, 한국인들도 그 피해자였다.</p>
+<p>이렇게 보면 우리가 영어 발음에 집착하는 것은 (어느 정도 논리의 비약이 발생하기는 하나) 발음으로 인해 피해를 입었던 민족이 가질 태도는 아니라고 생각한다. 더군다나 지금의 영어는 세계어로서 어느 한 나라 혹은 민족의 소유물로 보기 어렵고, 어느 한 액센트가 표준이라고 말하기 어렵다. 그나마 다행인 것은 발음에 대한 집착이 시간이 흐름에 따라 누그러지고 있다는 사실이다. 이는 한국인들이 어릴 때부터 영어, 특히 원어민 언어(구어)에 자연스럽게 노출이 되면서 발음의 문제가 많이 해결되었다는 측면에서도, 다양한 영어를 접하게 되면서 영어의 발음이 꼭 한 가지여야 하지 않아도 된다는 것을 학습한 측면에서도 그 원인을 찾을 수 있다. 그리고 전반적으로 국력이 상승하면서 서양의 선진국들에 비해 우리를 낮게 보았던 열등감도 많이 사라졌다는 점도 작용했다고 생각한다. 그리고 무엇보다, 영어는 이미 특정 국가의 전유물이 아니다. 영어를 모국어로 사용하는 사람들보다 제2언어로 사용하는 사람이 더 많아진 지 이미 오래 되었다. 이러한 환경에서 가장 중요한 것은 상호 이해 가능성(intelligibility)이지, 특정 액센트의 사용이 아님은 분명하다.</p>
+<p>우리가 영어를 배우는 가장 중요한 목적은 당연히 의사소통이다. 구어라면 말로, 문어라면 글을 통해서 타인과 사실과 생각을 공유하려고 우리는 영어를 배운다. 따라서 발음의 문제를 해결하려는 것보다는 적절한 단어와 문장을 형성하는 법을 배우는 것이 그 목적에 더 빨리 다가갈 수 있는 최선의 방법이다. 오래된 컴퓨터로 게임을 하려면 낮은 사양의 문제로 게임이 잘 돌아가지 않기도 한다. 그럴 때 우리는 스피커와 모니터를 고사양으로 변경하는 것이 가장 중요한 해결책이 아니라는 것을 잘 안다. 마찬가지로, 영어로 의사소통을 하기 위해서 먼저 발음에 집중하는 일은 전혀 효율적이지 않다. 결국 우리가 지향해야 할 것은 ‘원어민의 입술’을 닮는 것이 아니라, ‘자신만의 논리와 따뜻한 시선’을 담은 언어를 구사하는 것이다. 고사양의 스피커가 없어도 좋은 음악은 감동을 주듯, 조금 투박한 발음이라도 그 안에 담긴 생각이 명료하다면 그것이 바로 최고의 영어라 할 수 있다.</p>
+<p>[2] 김태영 2019. 일본의 영어교육: 역사적 변천 과정과 현황. 한국교육문제연구 37-1.</p>
+    </div>
 
-1964년에 개봉된 ‘My Fair Lady’ 영화는 Bernard Shaw가 1913년 출판한
-Pygmalion이라는 희곡을 기반으로 만들어졌다. Audrey Hepburn이 여자주인공
-Eliza Doolittle 역으로 출연하는데 런던의 노동자 계층의 액센트로 알려진
-Cockney를 사용한다. 반면 남자주인공은 Rex Harrison가 음성학자인 Henry
-Higgins로 출연하며 전체적인 영화의 이야기는 남자주인공 Higgins가
-여자주인공 Doolittle의 액센트를 고쳐주고 그 과정에서 사랑에 빠지는
-내용이다. Higgins는 사람이 어떤 액센트를 사용하는가에 따라 사회적 지위도
-결정된다고 믿는데, 현재로서는 받아들이기 어렵지만 이 이야기의 배경인
-20세기 초에는 이렇게 생각하는 사람이 많았던 것으로 보인다. 영국이
-제국으로서 많은 나라들을 지배하던 시절에는 지배국 사람과 피지배국 사람을
-구별하는 매우 효과적인 방법이 바로 액센트였던 것이다.
+    <ul class="chips chips-link essay-tags"><li><a href="blog.html#t-phonetics">음성학</a></li><li><a href="blog.html#t-acquisition">외국어 습득</a></li></ul>
 
-액센트로 사람을 차별하는 것은 인류 역사에 매우 오래전부터 있어 왔다.
-심지어 성경에도 그러한 사건이 기록되어 있다. 사사기 12장을 보면 길르앗
-사람들이 살기위해 고향으로 돌아가려는 에브라임 사람을 걸러내기 위해
-‘십볼렛’을 말하게 하여 ‘씹볼렛’이라 발음하면 죽였다고 한다. 그리고
-이러한 일은 약 백여년 전에 일본에서도 관동대지진 시 조선인을 가려내기
-위해 ‘주고엔(十五円)’, ‘고주센(五十錢)’을 발음하게 하였고, 일본인처럼
-발음하지 못한 경우 살해하였다. 자음의 유성성과 모음의 길이를 실현하는
-점에서 조선인의 발음은 차이가 났던 것이다. 이렇듯 액센트에 의한 차별을
-넘어 살인까지도 인간의 역사에 빈번했고, 한국인들도 그 피해자였다.
+    <aside class="author">
+      <img class="author-img" src="images/profile.jpg" alt="강희조"
+        width="72" height="72" loading="lazy">
+      <div class="author-body">
+        <p class="author-name">글 · 강희조 <span class="p-en">Hijo Kang</span></p>
+        <p class="author-role">전남대학교 영어영문학과 부교수<br>
+          Ph.D. in Linguistics, Stony Brook University</p>
+        <p class="author-fields">음성학 · 음운론 · 형태론</p>
+        <p class="author-more"><a href="about.html">소개 보기 →</a>
+          <a href="research.html">연구 보기 →</a></p>
+      </div>
+    </aside>
 
-이렇게 보면 우리가 영어 발음에 집착하는 것은 (어느 정도 논리의 비약이
-발생하기는 하나) 발음으로 인해 피해를 입었던 민족이 가질 태도는 아니라고
-생각한다. 더군다나 지금의 영어는 세계어로서 어느 한 나라 혹은 민족의
-소유물로 보기 어렵고, 어느 한 액센트가 표준이라고 말하기 어렵다. 그나마
-다행인 것은 발음에 대한 집착이 시간이 흐름에 따라 누그러지고 있다는
-사실이다. 이는 한국인들이 어릴 때부터 영어, 특히 원어민 언어(구어)에
-자연스럽게 노출이 되면서 발음의 문제가 많이 해결되었다는 측면에서도,
-다양한 영어를 접하게 되면서 영어의 발음이 꼭 한 가지여야 하지 않아도
-된다는 것을 학습한 측면에서도 그 원인을 찾을 수 있다. 그리고 전반적으로
-국력이 상승하면서 서양의 선진국들에 비해 우리를 낮게 보았던 열등감도
-많이 사라졌다는 점도 작용했다고 생각한다. 그리고 무엇보다, 영어는 이미
-특정 국가의 전유물이 아니다. 영어를 모국어로 사용하는 사람들보다
-제2언어로 사용하는 사람이 더 많아진 지 이미 오래 되었다. 이러한 환경에서
-가장 중요한 것은 상호 이해 가능성(intelligibility)이지, 특정 액센트의
-사용이 아님은 분명하다.
+    <nav class="pager"><a class="pg pg-prev" href="post1.html"><span class="pg-l">이전 글</span><span class="pg-t">한국어의 미래</span></a><a class="pg pg-next" href="post3.html"><span class="pg-l">다음 글</span><span class="pg-t">집단지성에 의한 언어의 진화</span></a></nav>
 
-우리가 영어를 배우는 가장 중요한 목적은 당연히 의사소통이다. 구어라면
-말로, 문어라면 글을 통해서 타인과 사실과 생각을 공유하려고 우리는 영어를
-배운다. 따라서 발음의 문제를 해결하려는 것보다는 적절한 단어와 문장을
-형성하는 법을 배우는 것이 그 목적에 더 빨리 다가갈 수 있는 최선의
-방법이다. 오래된 컴퓨터로 게임을 하려면 낮은 사양의 문제로 게임이 잘
-돌아가지 않기도 한다. 그럴 때 우리는 스피커와 모니터를 고사양으로
-변경하는 것이 가장 중요한 해결책이 아니라는 것을 잘 안다. 마찬가지로,
-영어로 의사소통을 하기 위해서 먼저 발음에 집중하는 일은 전혀 효율적이지
-않다. 결국 우리가 지향해야 할 것은 ‘원어민의 입술’을 닮는 것이 아니라,
-‘자신만의 논리와 따뜻한 시선’을 담은 언어를 구사하는 것이다. 고사양의
-스피커가 없어도 좋은 음악은 감동을 주듯, 조금 투박한 발음이라도 그 안에
-담긴 생각이 명료하다면 그것이 바로 최고의 영어라 할 수 있다.
+    <section class="related">
+      <h2 class="rel-title">함께 읽기</h2>
+      <ul class="rels"><li><a href="post5.html"><span class="rel-k">언어의 보편성 · 외국어 습득</span><span class="rel-t">다르면서도 같은 언어 II</span></a></li><li><a href="post8.html"><span class="rel-k">언어와 사회 · 영어</span><span class="rel-t">영어는 우리에게 무엇일까</span></a></li></ul>
+    </section>
 
-[2] 김태영 2019. 일본의 영어교육: 역사적 변천 과정과 현황. 
-    한국교육문제연구 37-1.
-        </div>
-        
-
-        <div class="comments-section">
+<div class="comments-section">
             <h2>댓글</h2>
             
             <div id="comments-list" class="comments-list"></div>
@@ -274,15 +107,25 @@ Higgins로 출연하며 전체적인 영화의 이야기는 남자주인공 Higg
                 </form>
             </div>
         </div>
-
-        <div class="nav">
-            <a href="blog.html">← 목록으로</a>
-            <span>
-<a href="post1.html">← 이전 글</a> <a href="post3.html">다음 글 →</a>            </span>
-        </div>
+  </article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p class="foot-name">강희조 · Hijo Kang</p>
+      <p class="foot-line">전남대학교 영어영문학과 부교수</p>
+      <p class="foot-line">인문대 2호관 404호 · 062-530-3165</p>
+      <p class="foot-line"><a href="mailto:hijokang@jnu.ac.kr">hijokang@jnu.ac.kr</a></p>
     </div>
-
-    <script>
+    <div>
+      <p class="foot-line"><a href="https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG" rel="noopener">학과 교수 소개</a></p>
+      <p class="foot-line"><a href="feed.xml">RSS</a></p>
+      <p class="foot-line"><a href="en/index.html" hreflang="en">English</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-copy">© 2026 강희조. 이 사이트는 GitHub Pages로 운영됩니다.</div>
+</footer>
+<script>
         // 복사 방지 처리
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
@@ -307,10 +150,8 @@ Higgins로 출연하며 전체적인 영화의 이야기는 남자주인공 Higg
             return false;
         }, false);
     </script>
-
-
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
         // 댓글 데이터를 저장할 변수
         let allComments = [];
         
@@ -446,6 +287,5 @@ Higgins로 출연하며 전체적인 영화의 이야기는 남자주인공 Higg
             return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
         }
     </script>
-
 </body>
 </html>

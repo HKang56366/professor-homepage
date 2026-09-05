@@ -1,234 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>외래어 표기를 통해 알 수 있는 한국어의 특징 - 언어학 블로그</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
-        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 50px; }
-        .header { margin-bottom: 40px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
-        h1 { color: #333; font-size: 2.2em; margin-bottom: 10px; }
-        .meta { color: #666; font-size: 1em; }
-        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
-        .nav { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .nav a { background: #667eea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
-        .nav a:hover { background: #764ba2; }
-        .post-number { color: #667eea; font-size: 0.9em; font-weight: bold; }
-        
-        /* 댓글 섹션 스타일 */
-        .comments-section {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #eee;
-        }
-        
-        .comments-section h2 {
-            color: #333;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        .comments-list {
-            margin-bottom: 40px;
-            min-height: 20px;
-        }
-        
-        .comment-item {
-            background: #f9f9f9;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-        }
-        
-        .comment-author {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .comment-date {
-            font-size: 0.9em;
-            color: #999;
-            margin-bottom: 10px;
-        }
-        
-        .comment-text {
-            color: #555;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        .comment-form {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        .comment-form h3 {
-            color: #333;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-            color: #333;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1em;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-        }
-        
-        .submit-btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background: #764ba2;
-        }
-        
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        #comment-status {
-            margin-left: 15px;
-            font-weight: 500;
-        }
-        
-        .status-success {
-            color: #28a745;
-        }
-        
-        .status-error {
-            color: #dc3545;
-        }
-        
-        .no-comments {
-            color: #999;
-            font-style: italic;
-            padding: 20px;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>외래어 표기를 통해 알 수 있는 한국어의 특징 | 강희조</title>
+<meta name="description" content="‘쵸코렡’이 ‘초콜릿’이 되기까지. 외래어 표기의 변화가 한국어 음운 체계의 무엇을 드러내는지 살핀다.">
+<link rel="canonical" href="https://hijokang.duckdns.org/post11.html">
+<meta property="og:site_name" content="강희조 | Hijo Kang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="외래어 표기를 통해 알 수 있는 한국어의 특징 | 강희조">
+<meta property="og:description" content="‘쵸코렡’이 ‘초콜릿’이 되기까지. 외래어 표기의 변화가 한국어 음운 체계의 무엇을 드러내는지 살핀다.">
+<meta property="og:url" content="https://hijokang.duckdns.org/post11.html">
+<meta property="og:image" content="https://hijokang.duckdns.org/images/profile.jpg">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="강희조" href="https://hijokang.duckdns.org/feed.xml">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"외래어 표기를 통해 알 수 있는 한국어의 특징","description":"‘쵸코렡’이 ‘초콜릿’이 되기까지. 외래어 표기의 변화가 한국어 음운 체계의 무엇을 드러내는지 살핀다.","url":"https://hijokang.duckdns.org/post11.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://hijokang.duckdns.org/post11.html"},"datePublished":"2026-08-01","dateModified":"2026-08-01","inLanguage":"ko","image":"https://hijokang.duckdns.org/images/profile.jpg","about":[{"@type":"Thing","name":"Phonology"},{"@type":"Thing","name":"Korean"},{"@type":"Thing","name":"Language Change"}],"keywords":"음운론, 한국어, 언어 변화","author":{"@context":"https://schema.org","@type":"Person","name":"Hijo Kang","alternateName":"강희조","jobTitle":"Associate Professor","url":"https://hijokang.duckdns.org/about.html","image":"https://hijokang.duckdns.org/images/profile.jpg","email":"mailto:hijokang@jnu.ac.kr","telephone":"+82-62-530-3165","affiliation":{"@type":"CollegeOrUniversity","name":"Chonnam National University","department":{"@type":"Organization","name":"Department of English Language and Literature"}},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Stony Brook University"},{"@type":"CollegeOrUniversity","name":"Seoul National University"}],"knowsAbout":["Phonetics","Phonology","Morphology","Korean language","English linguistics"],"knowsLanguage":["ko","en"],"sameAs":["https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG"]},"publisher":{"@type":"Person","name":"Hijo Kang","url":"https://hijokang.duckdns.org/about.html"},"isPartOf":{"@type":"Blog","name":"강희조의 글","url":"https://hijokang.duckdns.org/blog.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://hijokang.duckdns.org/"},{"@type":"ListItem","position":2,"name":"글","item":"https://hijokang.duckdns.org/blog.html"},{"@type":"ListItem","position":3,"name":"외래어 표기를 통해 알 수 있는 한국어의 특징","item":"https://hijokang.duckdns.org/post11.html"}]}</script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>외래어 표기를 통해 알 수 있는 한국어의 특징</h1>
-            <div class="meta">
-                <span class="post-number">글 11</span> | 2026년 8월
-            </div>
-        </div>
-        
-        <div class="content">
-우연히 'chocolate'의 한국어 표기가 현재는 '초콜릿'이지만 과거에는
-'쵸코렡'이라는 사실을 알게 되었다. 레트로 디자인을 적용하면서 옛날
-표기를 그대로 사용했는데 1987년 디자인에도 '초코렡'이라는 표기법이
-사용되었음을 확인할 수 있었다. 몇 가지 차이 중에서 필자의 이목을 끈 것은
-마지막 자음 'ㅌ'이다.
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <span class="brand-en">HIJO KANG</span>
+      <span class="brand-ko">강희조</span>
+      <span class="brand-sub">부교수 · 전남대학교 영어영문학과</span>
+    </a>
+    <nav class="gnb"><a href="about.html">소개</a><a href="research.html">연구</a><a href="teaching.html">강의</a><a href="blog.html" class='on'>글</a><a class="lang" href="en/index.html" hreflang="en">EN</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  <article class="essay">
+    <p class="crumb"><a href="index.html">홈</a> <span>›</span>
+      <a href="blog.html">글</a> <span>›</span> 글 11</p>
+    <header class="essay-head">
+      <p class="essay-kicker">음운론 · 한국어 · 언어 변화</p>
+      <h1 class="essay-title">외래어 표기를 통해 알 수 있는 한국어의 특징</h1>
+      <p class="essay-en">What Loanword Spelling Reveals About Korean</p>
+      <p class="essay-meta"><time datetime="2026-08-01">2026년 8월</time>
+        <span class="dot">·</span> 글 11
+        <span class="dot">·</span> 강희조</p>
+    </header>
 
-영어의 마지막 자음이 't'이므로 'ㅌ'으로 표기하는 것이 더 적절하다고
-생각이 되기도 하는데 어째서 현재는 'ㅅ'을 사용하고 있는 것일까? 이에
-대한 답은 한국어에서 찾을 수 있다. 한국어에는 소위 '7종성법'이라 불리는
-중화현상이 있다. 현대 한국어에서 변별적으로 사용되는 자음(음소)는
-21개인데, 그 중 20개가 초성에서 서로 구별된다(예: 다리, 사리, 자리 등).
-그러나 종성에는 7개의 소리만 허락되는데(/ㅂ/, /ㄷ/, /ㄱ/, /ㅁ/, /ㄴ/,
-/ㅇ/, /ㄹ/), 이러한 제약으로 인해 초성에서의 대립 혹은 구분이 사라지는
-현상이 일어나게 된다. 그 대표적인 예가 '낫', '낮', '낱', '낯'으로, 이
-단어들이 단독으로 발음되면 모두 [낟]으로 발음되어 차이가 없게 된다. 이
-현상은 혀끝을 쓰는 소리들에서 가장 극적으로 일어나 초성에서 9개로
-구별되는 소리들이(/ㄷ/, /ㅌ/, /ㄸ/, /ㅈ/, /ㅊ/, /ㅉ/, /ㅅ/, /ㅆ/, /ㅎ/)
-종성에서는 모두 [ㄷ]으로 발음되면서 그 변별성이 사라지게 된다.
+    <div class="essay-body">
+<p>우연히 'chocolate'의 한국어 표기가 현재는 '초콜릿'이지만 과거에는 '쵸코렡'이라는 사실을 알게 되었다. 레트로 디자인을 적용하면서 옛날 표기를 그대로 사용했는데 1987년 디자인에도 '초코렡'이라는 표기법이 사용되었음을 확인할 수 있었다. 몇 가지 차이 중에서 필자의 이목을 끈 것은 마지막 자음 'ㅌ'이다.</p>
+<p>영어의 마지막 자음이 't'이므로 'ㅌ'으로 표기하는 것이 더 적절하다고 생각이 되기도 하는데 어째서 현재는 'ㅅ'을 사용하고 있는 것일까? 이에 대한 답은 한국어에서 찾을 수 있다. 한국어에는 소위 '7종성법'이라 불리는 중화현상이 있다. 현대 한국어에서 변별적으로 사용되는 자음(음소)는 21개인데, 그 중 20개가 초성에서 서로 구별된다(예: 다리, 사리, 자리 등). 그러나 종성에는 7개의 소리만 허락되는데(/ㅂ/, /ㄷ/, /ㄱ/, /ㅁ/, /ㄴ/, /ㅇ/, /ㄹ/), 이러한 제약으로 인해 초성에서의 대립 혹은 구분이 사라지는 현상이 일어나게 된다. 그 대표적인 예가 '낫', '낮', '낱', '낯'으로, 이 단어들이 단독으로 발음되면 모두 [낟]으로 발음되어 차이가 없게 된다. 이 현상은 혀끝을 쓰는 소리들에서 가장 극적으로 일어나 초성에서 9개로 구별되는 소리들이(/ㄷ/, /ㅌ/, /ㄸ/, /ㅈ/, /ㅊ/, /ㅉ/, /ㅅ/, /ㅆ/, /ㅎ/) 종성에서는 모두 [ㄷ]으로 발음되면서 그 변별성이 사라지게 된다.</p>
+<p>그런데 이 9개의 자음들 중에서 명사의 마지막 자음으로 등장하는 것은 /ㅅ/, /ㅈ/, /ㅊ/, /ㅌ/ 네 개 뿐이다. (그 외에는 존재하더라도 한두 개에 불과하다.) 그리고 이 넷 중에 /ㅅ/이 가장 많다. 우리말 역순사전(유재원, 1985)에서 확인한 결과 /ㅅ/으로 끝나는 명사는 473개, /ㅈ/의 경우 38개, /ㅊ/의 경우 171개, 그리고 /ㅌ/의 경우 184개이다. 여기까지만 보면 /ㅅ/의 경우가 많기는 해도 그리 압도적이지는 않다고 볼 수 있다. 그러나 이러한 명사들이 실제로 얼마나 자주 사용되는지를 보면 이야기가 달라진다. 한국어 사용 빈도(강범모·김흥규 2009)에서 최상위빈도 1,000 단어에 속한 명사들 중 /ㅅ/으로 끝나는 명사의 빈도는 총 428,729회임에 비해 /ㅈ/의 경우는 0회, /ㅊ/의 경우는 7,059회, 그리고 /ㅌ/의 경우는 10,004회로 비교가 되지 않는다. 따라서 우리 일상에서 듣는 명사의 마지막 소리가 [ㄷ]인 경우 대부분은 /ㅅ/이 말음에 위치하면서 발음된 것이라 할 수 있다.</p>
+<p>이러한 이유로, 현대 한국어를 사용하는 사람들은 말음의 [ㄷ]을 자연스럽게 두음의 /ㅅ/으로 연결시키게 된다. 그러한 사례가 압도적으로 많으므로. 그리고 이는 과적용되어 원래 /ㅅ/이 아닌 단어들에도 적용하고 있다. '솥이'를 [소치]로 발음하기도 하나 [소시]로도, '꽃을'을 [꼬츨]로 발음하기도 하나 [꼬슬]로도 발음한다. 그리고 이는 영어 차용어의 표기법에도 영향을 미치게 되었다. 위에서 언급한 '초콜릿'을 조사와 함께 발음할 때, 대부분의 사람들은 [초콜리시], [초콜리슬]로 발음하지, [초콜리티/치]나 [초콜리틀/츨]로 발음하지는 않을 것이다.</p>
+<p>한국어에서 가장 흔한 유형</p>
+<p>이/그/저것[걷] → 이/그/저것-을 [거슬]</p>
+<p>이/그/저곳[곧] → 이/그/저곳-에 [고세]</p>
+<p>한국어내 전이(유추)</p>
+<p>꽃[꼳] → 꽃을[꼬슬]</p>
+<p>솥[솓] → 솥에[소세]</p>
+<p>외래어 전이(유추)</p>
+<p>초콜릿[릳] → 초콜릿을[리슬]</p>
+<p>마켓[켇] → 마켓에[케세]</p>
+<p>정리하면, 이는 /ㅅ/이 말음에서 [ㄷ]으로 발음되는 현상이 오히려 반대로 작용한 것이라 할 수 있다. 즉 말음에서 [ㄷ]으로 발음되면 두음에서는 [ㅅ]으로 발음된다는 일종의 역규칙이 생성된 것이다. 이는 한국어 화자들이 언어를 사용하면서 많은 자료를 수집하고 그 자료를 '통계적'으로 접근한다는 사실을 보여준다. 물론 한국어 뿐 아니라 다른 언어들 역시 통계적으로 학습되며, 이는 우리가 세상을 이해하는 방식이기도 하다. 단편적인 정보들을 모아 확률적인 기대를 형성하고, 그 기대를 바탕으로 새로운 현상을 해석한다. 언어 학습에서 나타나는 유추와 통계적 접근은 결국 인간이 불확실한 세상 속에서 질서를 찾아내려는 가장 본질적인 생존 방식의 투영인 셈이다.</p>
+    </div>
 
-그런데 이 9개의 자음들 중에서 명사의 마지막 자음으로 등장하는 것은 /ㅅ/,
-/ㅈ/, /ㅊ/, /ㅌ/ 네 개 뿐이다. (그 외에는 존재하더라도 한두 개에
-불과하다.) 그리고 이 넷 중에 /ㅅ/이 가장 많다. 우리말 역순사전(유재원,
-1985)에서 확인한 결과 /ㅅ/으로 끝나는 명사는 473개, /ㅈ/의 경우 38개,
-/ㅊ/의 경우 171개, 그리고 /ㅌ/의 경우 184개이다. 여기까지만 보면 /ㅅ/의
-경우가 많기는 해도 그리 압도적이지는 않다고 볼 수 있다. 그러나 이러한
-명사들이 실제로 얼마나 자주 사용되는지를 보면 이야기가 달라진다. 한국어
-사용 빈도(강범모·김흥규 2009)에서 최상위빈도 1,000 단어에 속한 명사들 중
-/ㅅ/으로 끝나는 명사의 빈도는 총 428,729회임에 비해 /ㅈ/의 경우는 0회,
-/ㅊ/의 경우는 7,059회, 그리고 /ㅌ/의 경우는 10,004회로 비교가 되지
-않는다. 따라서 우리 일상에서 듣는 명사의 마지막 소리가 [ㄷ]인 경우
-대부분은 /ㅅ/이 말음에 위치하면서 발음된 것이라 할 수 있다.
+    <ul class="chips chips-link essay-tags"><li><a href="blog.html#t-phonology">음운론</a></li><li><a href="blog.html#t-korean">한국어</a></li><li><a href="blog.html#t-change">언어 변화</a></li></ul>
 
-이러한 이유로, 현대 한국어를 사용하는 사람들은 말음의 [ㄷ]을 자연스럽게
-두음의 /ㅅ/으로 연결시키게 된다. 그러한 사례가 압도적으로 많으므로.
-그리고 이는 과적용되어 원래 /ㅅ/이 아닌 단어들에도 적용하고 있다.
-'솥이'를 [소치]로 발음하기도 하나 [소시]로도, '꽃을'을 [꼬츨]로
-발음하기도 하나 [꼬슬]로도 발음한다. 그리고 이는 영어 차용어의
-표기법에도 영향을 미치게 되었다. 위에서 언급한 '초콜릿'을 조사와 함께
-발음할 때, 대부분의 사람들은 [초콜리시], [초콜리슬]로 발음하지,
-[초콜리티/치]나 [초콜리틀/츨]로 발음하지는 않을 것이다.
+    <aside class="author">
+      <img class="author-img" src="images/profile.jpg" alt="강희조"
+        width="72" height="72" loading="lazy">
+      <div class="author-body">
+        <p class="author-name">글 · 강희조 <span class="p-en">Hijo Kang</span></p>
+        <p class="author-role">전남대학교 영어영문학과 부교수<br>
+          Ph.D. in Linguistics, Stony Brook University</p>
+        <p class="author-fields">음성학 · 음운론 · 형태론</p>
+        <p class="author-more"><a href="about.html">소개 보기 →</a>
+          <a href="research.html">연구 보기 →</a></p>
+      </div>
+    </aside>
 
-한국어에서 가장 흔한 유형
+    <nav class="pager"><a class="pg pg-prev" href="post10.html"><span class="pg-l">이전 글</span><span class="pg-t">빈도와 유추</span></a><a class="pg pg-next" href="post12.html"><span class="pg-l">다음 글</span><span class="pg-t">현재 진행중인 한국어의 변화</span></a></nav>
 
-이/그/저것[걷] → 이/그/저것-을 [거슬]
+    <section class="related">
+      <h2 class="rel-title">함께 읽기</h2>
+      <ul class="rels"><li><a href="post12.html"><span class="rel-k">언어 변화 · 한국어</span><span class="rel-t">현재 진행중인 한국어의 변화</span></a></li><li><a href="post10.html"><span class="rel-k">형태론 · 언어 변화</span><span class="rel-t">빈도와 유추</span></a></li><li><a href="post13.html"><span class="rel-k">음운론 · 영어</span><span class="rel-t">영어의 철자는 왜 이렇게 엉망인가</span></a></li></ul>
+    </section>
 
-이/그/저곳[곧] → 이/그/저곳-에 [고세]
-
-한국어내 전이(유추)
-
-꽃[꼳] → 꽃을[꼬슬]
-
-솥[솓] → 솥에[소세]
-
-외래어 전이(유추)
-
-초콜릿[릳] → 초콜릿을[리슬]
-
-마켓[켇] → 마켓에[케세]
-
-정리하면, 이는 /ㅅ/이 말음에서 [ㄷ]으로 발음되는 현상이 오히려 반대로
-작용한 것이라 할 수 있다. 즉 말음에서 [ㄷ]으로 발음되면 두음에서는
-[ㅅ]으로 발음된다는 일종의 역규칙이 생성된 것이다. 이는 한국어 화자들이
-언어를 사용하면서 많은 자료를 수집하고 그 자료를 '통계적'으로 접근한다는
-사실을 보여준다. 물론 한국어 뿐 아니라 다른 언어들 역시 통계적으로
-학습되며, 이는 우리가 세상을 이해하는 방식이기도 하다. 단편적인 정보들을
-모아 확률적인 기대를 형성하고, 그 기대를 바탕으로 새로운 현상을
-해석한다. 언어 학습에서 나타나는 유추와 통계적 접근은 결국 인간이
-불확실한 세상 속에서 질서를 찾아내려는 가장 본질적인 생존 방식의 투영인
-셈이다.
-        </div>
-        
-        <div class="comments-section">
+<div class="comments-section">
             <h2>댓글</h2>
             
             <div id="comments-list" class="comments-list"></div>
@@ -260,18 +114,26 @@
                 </form>
             </div>
         </div>
-        
-        <div class="nav">
-            <a href="blog.html">← 목록으로</a>
-            <span>
-                <a href="post11.html">← 이전 글</a>
-                <a href="post12.html">다음 글 →</a>
-            </span>
-        </div>
+  </article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p class="foot-name">강희조 · Hijo Kang</p>
+      <p class="foot-line">전남대학교 영어영문학과 부교수</p>
+      <p class="foot-line">인문대 2호관 404호 · 062-530-3165</p>
+      <p class="foot-line"><a href="mailto:hijokang@jnu.ac.kr">hijokang@jnu.ac.kr</a></p>
     </div>
-
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
+    <div>
+      <p class="foot-line"><a href="https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG" rel="noopener">학과 교수 소개</a></p>
+      <p class="foot-line"><a href="feed.xml">RSS</a></p>
+      <p class="foot-line"><a href="en/index.html" hreflang="en">English</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-copy">© 2026 강희조. 이 사이트는 GitHub Pages로 운영됩니다.</div>
+</footer>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
         // 댓글 데이터를 저장할 변수
         let allComments = [];
         
@@ -407,8 +269,7 @@
             return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
         }
     </script>
-
-    <script>
+<script>
         // 복사 방지 처리
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();

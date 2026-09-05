@@ -1,262 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>다르면서도 같은 언어 III - 언어학 블로그</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
-        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 50px; }
-        .header { margin-bottom: 40px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
-        h1 { color: #333; font-size: 2.2em; margin-bottom: 10px; }
-        .meta { color: #666; font-size: 1em; }
-        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0;  user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
-        .nav { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .nav a { background: #667eea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
-        .nav a:hover { background: #764ba2; }
-        .post-number { color: #667eea; font-size: 0.9em; font-weight: bold; }
-    
-        /* 댓글 섹션 스타일 */
-        .comments-section {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #eee;
-        }
-        
-        .comments-section h2 {
-            color: #333;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        .comments-list {
-            margin-bottom: 40px;
-            min-height: 20px;
-        }
-        
-        .comment-item {
-            background: #f9f9f9;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-        }
-        
-        .comment-author {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .comment-date {
-            font-size: 0.9em;
-            color: #999;
-            margin-bottom: 10px;
-        }
-        
-        .comment-text {
-            color: #555;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        .comment-form {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        .comment-form h3 {
-            color: #333;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-            color: #333;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1em;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-        }
-        
-        .submit-btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background: #764ba2;
-        }
-        
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        #comment-status {
-            margin-left: 15px;
-            font-weight: 500;
-        }
-        
-        .status-success {
-            color: #28a745;
-        }
-        
-        .status-error {
-            color: #dc3545;
-        }
-        
-        .no-comments {
-            color: #999;
-            font-style: italic;
-            padding: 20px;
-        }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>다르면서도 같은 언어 III | 강희조</title>
+<meta name="description" content="한국어의 구개음화와 영어의 flap 실현을 나란히 놓으면, 표면의 차이를 걷어낸 아래에서 같은 음운 현상이 움직이고 있음이 드러난다.">
+<link rel="canonical" href="https://hijokang.duckdns.org/post6.html">
+<meta property="og:site_name" content="강희조 | Hijo Kang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="다르면서도 같은 언어 III | 강희조">
+<meta property="og:description" content="한국어의 구개음화와 영어의 flap 실현을 나란히 놓으면, 표면의 차이를 걷어낸 아래에서 같은 음운 현상이 움직이고 있음이 드러난다.">
+<meta property="og:url" content="https://hijokang.duckdns.org/post6.html">
+<meta property="og:image" content="https://hijokang.duckdns.org/images/profile.jpg">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="강희조" href="https://hijokang.duckdns.org/feed.xml">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"다르면서도 같은 언어 III","description":"한국어의 구개음화와 영어의 flap 실현을 나란히 놓으면, 표면의 차이를 걷어낸 아래에서 같은 음운 현상이 움직이고 있음이 드러난다.","url":"https://hijokang.duckdns.org/post6.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://hijokang.duckdns.org/post6.html"},"datePublished":"2026-05-15","dateModified":"2026-05-15","inLanguage":"ko","image":"https://hijokang.duckdns.org/images/profile.jpg","about":[{"@type":"Thing","name":"Phonology"},{"@type":"Thing","name":"Language Universals"},{"@type":"Thing","name":"Korean"}],"keywords":"음운론, 언어의 보편성, 한국어","author":{"@context":"https://schema.org","@type":"Person","name":"Hijo Kang","alternateName":"강희조","jobTitle":"Associate Professor","url":"https://hijokang.duckdns.org/about.html","image":"https://hijokang.duckdns.org/images/profile.jpg","email":"mailto:hijokang@jnu.ac.kr","telephone":"+82-62-530-3165","affiliation":{"@type":"CollegeOrUniversity","name":"Chonnam National University","department":{"@type":"Organization","name":"Department of English Language and Literature"}},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Stony Brook University"},{"@type":"CollegeOrUniversity","name":"Seoul National University"}],"knowsAbout":["Phonetics","Phonology","Morphology","Korean language","English linguistics"],"knowsLanguage":["ko","en"],"sameAs":["https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG"]},"publisher":{"@type":"Person","name":"Hijo Kang","url":"https://hijokang.duckdns.org/about.html"},"isPartOf":{"@type":"Blog","name":"강희조의 글","url":"https://hijokang.duckdns.org/blog.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://hijokang.duckdns.org/"},{"@type":"ListItem","position":2,"name":"글","item":"https://hijokang.duckdns.org/blog.html"},{"@type":"ListItem","position":3,"name":"다르면서도 같은 언어 III","item":"https://hijokang.duckdns.org/post6.html"}]}</script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>다르면서도 같은 언어 III</h1>
-            <div class="meta">
-                <span class="post-number">글 6</span> | 2026년 5월
-            </div>
-        </div>
-        
-        <div class="content">
-지난 글에서 언어의 자의성으로 인해 개별 언어들의 차이가 커 보인다는 점을
-언급했다. 같은 의미라도 언어에 따라 그 의미와 연결된 소리가 다르기
-때문에 우리의 귀로 들리는 것은 한국어와 전혀 다른 소리가 된다. 물론
-언어에 따라 사용되는 개별 소리(자음과 모음)의 목록이 다르다는 사실 또한
-개별 언어의 차이를 더하게 된다. 그러나 이 말소리와 관련된 변화들을
-공부하다 보면 표면으로 드러나는 그 차이를 걷어내었을 때, 아래에서
-일어나고 있는 일들은 매우 유사하다는 것을 발견하게 된다. 이 글에서는
-한국어와 영어에서 발견되는 두 가지 음운변화를 통해 이를 확인하고자 한다.
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="index.html">
+      <span class="brand-en">HIJO KANG</span>
+      <span class="brand-ko">강희조</span>
+      <span class="brand-sub">부교수 · 전남대학교 영어영문학과</span>
+    </a>
+    <nav class="gnb"><a href="about.html">소개</a><a href="research.html">연구</a><a href="teaching.html">강의</a><a href="blog.html" class='on'>글</a><a class="lang" href="en/index.html" hreflang="en">EN</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  <article class="essay">
+    <p class="crumb"><a href="index.html">홈</a> <span>›</span>
+      <a href="blog.html">글</a> <span>›</span> 글 6</p>
+    <header class="essay-head">
+      <p class="essay-kicker">음운론 · 언어의 보편성 · 한국어</p>
+      <h1 class="essay-title">다르면서도 같은 언어 III</h1>
+      <p class="essay-en">Different Yet the Same III</p>
+      <p class="essay-meta"><time datetime="2026-05-15">2026년 5월</time>
+        <span class="dot">·</span> 글 6
+        <span class="dot">·</span> 강희조</p>
+    </header>
 
-[]
+    <div class="essay-body">
+<p>지난 글에서 언어의 자의성으로 인해 개별 언어들의 차이가 커 보인다는 점을 언급했다. 같은 의미라도 언어에 따라 그 의미와 연결된 소리가 다르기 때문에 우리의 귀로 들리는 것은 한국어와 전혀 다른 소리가 된다. 물론 언어에 따라 사용되는 개별 소리(자음과 모음)의 목록이 다르다는 사실 또한 개별 언어의 차이를 더하게 된다. 그러나 이 말소리와 관련된 변화들을 공부하다 보면 표면으로 드러나는 그 차이를 걷어내었을 때, 아래에서 일어나고 있는 일들은 매우 유사하다는 것을 발견하게 된다. 이 글에서는 한국어와 영어에서 발견되는 두 가지 음운변화를 통해 이를 확인하고자 한다.</p>
+<p>[]</p>
+<p>출처: 유튜브 슈카월드 코믹스</p>
+<p>첫 번째는 우리에게 익숙한 구개음화이다. 한국어의 구개음화를 대표하는 단어는 ‘해돋이’, ‘같이’ 등인데 /ㄷ/이나 /ㅌ/이 /ㅣ/모음 앞에서 각각 /ㅈ/이나 /ㅊ/이 되는 변화를 말한다. 그런데 방금 제시한 구개음화의 정의에는 한 가지 사실이 빠져 있다. 왜냐면 ‘땅을 딛고’나 ‘피곤한 티가 난다’와 같은 표현에서 분명 /ㄷ/이나 /ㅌ/이 /ㅣ/모음 앞에 있음에도 [짇고]나 [치가]로 발음하지 않기 때문이다. 구개음화가 일어나려면 /ㄷ/, /ㅌ/과 /ㅣ/ 사이에 ‘형태소 경계’가 존재해야 한다. 다시 말하면 /ㄷ/, /ㅌ/과 /ㅣ/는 서로 다른 형태소에 속해 있어야 한다. ‘해돋이’, ‘같이’는 ‘해+돋+이’, ‘같+이’와 같이 형태소 분석이 이루어진다. ‘돋’과 ‘같’은 어간이고 ‘이’는 어미로서 엄연히 독립된 형태소들이다. 그러나 ‘딛’이나 ‘티’의 경우에는 하나의 형태소 안에 /ㄷ/, /ㅌ/과 /ㅣ/가 존재하기에 그 사이에 형태소 경계가 없다. 여기까지의 이야기를 들으면 ‘그럴 수도 있지 그게 뭐 대수인가’라는 생각이 들 테지만 영어의 예를 보면 생각이 달라질 수도 있다.</p>
+<p>영어에서도 구개음화는 쉽게 발견된다. 역시 대표적인 예로 ‘would you~’, ‘got you’등을 들 수 있는데 /d/와 /t/가 뒤따르는 /j/(혹은 /y/로 표기되는 소리)를 만나 각각 [ʤ]와 [ʧ]로 실현된다. 그런데 영어에서도 이러한 음운적 조건만 충족된다고 해서 구개음화가 일어나는 것은 아니다. 즉 /d/, /t/가 /j/를 만나도 구개음화가 일어나지 않는 경우들이 있다. ‘due’, ‘tune’과 같은 단어들은 [ʤu], [ʧun]보다는 [dju], [tjun]으로 발음된다. 한국어와 마찬가지로 형태소(혹은 단어) 경계가 중요한 역할을 한다. 형태소 경계가 작용하는 경우의 예는 ‘depart+ure’, ‘grade+uate’가 있다. 즉 구개음화는 한국어와 영어에서 모두 뒤따르는 소리, 즉 음운적 조건 외에도 그 뒤따르는 소리가 다른 형태소(혹은 단어)에 속해야 한다는 형태론적 조건을 요구한다.</p>
+<p>하나의 형태소 내부(예: ‘티’, ‘딛다’)에서 소리가 변하지 않는 이유는 의미의 보존과 관련이 있다. 만약 단어 안의 모든 /ㄷ, ㅌ/이 변해버린다면 단어 본래의 모양이 너무 심하게 훼손되어 의미를 파악하기 힘들어질 것이다. 반면 형태소 경계에서의 변화는 문법적 결합이라는 신호를 주면서도 조음의 효율을 높이는 타협안인 셈이다.</p>
+<p>두 번째 예로 탄설화(flapping/tapping)에 대해 이야기해 보자. 이는 미국 영어의 대표적인 특징으로 ‘water’, ‘better’, ‘city’ 등과 같은 단어에서 /t/가 [ɾ]로 실현되는 현상이다. [ɾ]는 ‘flap’ 혹은 ‘tap’이라 불리는데, ‘탭댄스’라는 단어에서 연상할 수 있듯이 혀가 입천장을 가볍게 두드리는 방식으로 만드는 소리이다. 탄설화는 /t/ (또는 /d/)가 모음 사이에 나타나고, 뒤따르는 모음이 강세를 동반하지 않는 경우 일어난다. (이 외에도 탄설화가 일어나는 환경들이 있으나 이것이 가장 대표적인 탄설음화 조건이다.) 위의 세 단어 모두 이러한 조건을 충족하고 있다.</p>
+<p>그런데 이러한 일이 한국어에서도 일어난다고? 이를 이해하기 위해서는 우선 한국어에도 탄설음이 존재한다는 것부터 확인해야 한다. 탄설음은 한국어의 /ㄹ/이 두음(모음 앞)에 나타날 때 실현되는 소리이다. 즉 ‘라디오’, ‘자리’와 같은 단어를 발음할 때 /ㄹ/은 [ɾ]으로 발음된다. 햄버거 가게에서 ‘Better Burger’를 ‘베러버거’라고 쓴 것을 보고 소리에 맞춰 제대로 썼구나라고 생각한 적이 있다. (참고로, 말음(모음 뒤)에서 /ㄹ/은 설측음 [l]로 실현된다. 이는 한국어의 변이음을 설명할 때 대표적인 예로 거론된다.) 그렇다면 한국어의 탄설음화는 /ㄷ/이 모음 사이에서 /ㄹ/로 실현되는 현상이라 말할 수 있다. 한국어에는 강세가 없기에 강세 조건은 빠진다. 비록 ‘불규칙’이라는 표지가 붙어 있으나 이러한 일은 소위 ㄷ-불규칙 용언에서 발견된다. ‘묻다(to ask)’, ‘걷다’, ‘듣다’ 등의 동사를 활용할 때, 모음으로 시작하는 어간이 오게 되면 어간 말 /ㄷ/은 모음과 모음 사이에 위치하게 되고 그럴 때 /ㄷ/이 아닌 /ㄹ/로 변화하며, 이 /ㄹ/은 두음(모음 앞)에 위치하게 되므로 탄설음으로 실현된다.</p>
+<p>묻다 묻고 물어 물으니</p>
+<p>걷다 걷고 걸어 걸으니</p>
+<p>듣다 듣고 들어 들으니</p>
+<p>즉 정지음이 모음과 모음 사이에서 탄설음으로 변화한다는 점에서 영어의 탄설음화와 매우 유사하다고 할 수 있다. 다만 현대국어에서는 일부 불규칙 용언들에서만 일어나는 일인데 이러한 불규칙 현상의 경우 과거에는 규칙적으로 일어났던 일들이 화석처럼 굳어져 일부 단어에서만 나타나게 되는 경우가 많다. 즉, 한국어에서도 이전에 탄설음화가 비교적 활발히 일어났을 가능성도 배제할 수 없다. 몇 가지 예를 들면, ‘차례(次第)’나 ‘도량(道場)’의 경우 현재 한자음대로 읽으면 ‘차제’나 ‘도장’이 되어야 하지만 중세국어에서 /ㄷ/이 모음과 (활음 및) 모음 사이에서 탄설음화를 겪어 /ㄹ/로 발음되었음을 짐작할 수 있다. 현재의 한자 발음은 /ㄷ/과 활음이 만나 구개음화가 일어나면서 만들어진 결과이다.</p>
+<p>이렇게 언어는 달라도 그 안에서 유사한 일들이 일어나는 이유는 무엇일까? 매우 넓은 개념으로 말하자면, 인간이 같은 두뇌와 같은 조음기관을 가지고 태어나기 때문이라고 할 수 있다. 인간의 두뇌가 정보를 처리하는 방식, 그리고 조음기관이 두뇌의 (말소리와 관련된) 명령을 실행하는 방식이 결국 비슷할 수밖에 없고, 이러한 과정에서 일어나는 일들이 일부는 규칙화되어 나타나게 된다. 그 결과 서로 달라 보이는 언어들에서 매우 유사한 음운 과정들이 발생하게 되는 것이다. 예를 들어 자음의 위치동화(예, 인마[임마], 인간[잉간])와 같은 일들은 대다수의 언어에서 발생한다고 할 수 있다. 언어는 달라도, 결국 우리의 뇌와 몸은 비슷한 일을 하고 있다. 낯선 외국어 속에서 익숙한 음운 변화를 발견할 때, 우리는 언어라는 거대한 장벽 너머에 있는 ‘보편적 인간성’을 다시금 확인하게 된다.</p>
+    </div>
 
-출처: 유튜브 슈카월드 코믹스
+    <ul class="chips chips-link essay-tags"><li><a href="blog.html#t-phonology">음운론</a></li><li><a href="blog.html#t-universals">언어의 보편성</a></li><li><a href="blog.html#t-korean">한국어</a></li></ul>
 
-첫 번째는 우리에게 익숙한 구개음화이다. 한국어의 구개음화를 대표하는
-단어는 ‘해돋이’, ‘같이’ 등인데 /ㄷ/이나 /ㅌ/이 /ㅣ/모음 앞에서 각각
-/ㅈ/이나 /ㅊ/이 되는 변화를 말한다. 그런데 방금 제시한 구개음화의
-정의에는 한 가지 사실이 빠져 있다. 왜냐면 ‘땅을 딛고’나 ‘피곤한 티가
-난다’와 같은 표현에서 분명 /ㄷ/이나 /ㅌ/이 /ㅣ/모음 앞에 있음에도
-[짇고]나 [치가]로 발음하지 않기 때문이다. 구개음화가 일어나려면 /ㄷ/,
-/ㅌ/과 /ㅣ/ 사이에 ‘형태소 경계’가 존재해야 한다. 다시 말하면 /ㄷ/,
-/ㅌ/과 /ㅣ/는 서로 다른 형태소에 속해 있어야 한다. ‘해돋이’, ‘같이’는
-‘해+돋+이’, ‘같+이’와 같이 형태소 분석이 이루어진다. ‘돋’과 ‘같’은
-어간이고 ‘이’는 어미로서 엄연히 독립된 형태소들이다. 그러나 ‘딛’이나
-‘티’의 경우에는 하나의 형태소 안에 /ㄷ/, /ㅌ/과 /ㅣ/가 존재하기에 그
-사이에 형태소 경계가 없다. 여기까지의 이야기를 들으면 ‘그럴 수도 있지
-그게 뭐 대수인가’라는 생각이 들 테지만 영어의 예를 보면 생각이 달라질
-수도 있다.
+    <aside class="author">
+      <img class="author-img" src="images/profile.jpg" alt="강희조"
+        width="72" height="72" loading="lazy">
+      <div class="author-body">
+        <p class="author-name">글 · 강희조 <span class="p-en">Hijo Kang</span></p>
+        <p class="author-role">전남대학교 영어영문학과 부교수<br>
+          Ph.D. in Linguistics, Stony Brook University</p>
+        <p class="author-fields">음성학 · 음운론 · 형태론</p>
+        <p class="author-more"><a href="about.html">소개 보기 →</a>
+          <a href="research.html">연구 보기 →</a></p>
+      </div>
+    </aside>
 
-영어에서도 구개음화는 쉽게 발견된다. 역시 대표적인 예로 ‘would you~’,
-‘got you’등을 들 수 있는데 /d/와 /t/가 뒤따르는 /j/(혹은 /y/로 표기되는
-소리)를 만나 각각 [ʤ]와 [ʧ]로 실현된다. 그런데 영어에서도 이러한 음운적
-조건만 충족된다고 해서 구개음화가 일어나는 것은 아니다. 즉 /d/, /t/가
-/j/를 만나도 구개음화가 일어나지 않는 경우들이 있다. ‘due’, ‘tune’과
-같은 단어들은 [ʤu], [ʧun]보다는 [dju], [tjun]으로 발음된다. 한국어와
-마찬가지로 형태소(혹은 단어) 경계가 중요한 역할을 한다. 형태소 경계가
-작용하는 경우의 예는 ‘depart+ure’, ‘grade+uate’가 있다. 즉 구개음화는
-한국어와 영어에서 모두 뒤따르는 소리, 즉 음운적 조건 외에도 그 뒤따르는
-소리가 다른 형태소(혹은 단어)에 속해야 한다는 형태론적 조건을 요구한다.
+    <nav class="pager"><a class="pg pg-prev" href="post5.html"><span class="pg-l">이전 글</span><span class="pg-t">다르면서도 같은 언어 II</span></a><a class="pg pg-next" href="post7.html"><span class="pg-l">다음 글</span><span class="pg-t">의사소통 수단 그 이상</span></a></nav>
 
-하나의 형태소 내부(예: ‘티’, ‘딛다’)에서 소리가 변하지 않는 이유는
-의미의 보존과 관련이 있다. 만약 단어 안의 모든 /ㄷ, ㅌ/이 변해버린다면
-단어 본래의 모양이 너무 심하게 훼손되어 의미를 파악하기 힘들어질 것이다.
-반면 형태소 경계에서의 변화는 문법적 결합이라는 신호를 주면서도 조음의
-효율을 높이는 타협안인 셈이다.
+    <section class="related">
+      <h2 class="rel-title">함께 읽기</h2>
+      <ul class="rels"><li><a href="post4.html"><span class="rel-k">언어의 보편성 · 한국어</span><span class="rel-t">다르면서도 같은 언어 I</span></a></li><li><a href="post11.html"><span class="rel-k">음운론 · 한국어</span><span class="rel-t">외래어 표기를 통해 알 수 있는 한국어의 특징</span></a></li><li><a href="post12.html"><span class="rel-k">언어 변화 · 한국어</span><span class="rel-t">현재 진행중인 한국어의 변화</span></a></li></ul>
+    </section>
 
-두 번째 예로 탄설화(flapping/tapping)에 대해 이야기해 보자. 이는 미국
-영어의 대표적인 특징으로 ‘water’, ‘better’, ‘city’ 등과 같은 단어에서
-/t/가 [ɾ]로 실현되는 현상이다. [ɾ]는 ‘flap’ 혹은 ‘tap’이라 불리는데,
-‘탭댄스’라는 단어에서 연상할 수 있듯이 혀가 입천장을 가볍게 두드리는
-방식으로 만드는 소리이다. 탄설화는 /t/ (또는 /d/)가 모음 사이에
-나타나고, 뒤따르는 모음이 강세를 동반하지 않는 경우 일어난다. (이 외에도
-탄설화가 일어나는 환경들이 있으나 이것이 가장 대표적인 탄설음화
-조건이다.) 위의 세 단어 모두 이러한 조건을 충족하고 있다.
-
-그런데 이러한 일이 한국어에서도 일어난다고? 이를 이해하기 위해서는 우선
-한국어에도 탄설음이 존재한다는 것부터 확인해야 한다. 탄설음은 한국어의
-/ㄹ/이 두음(모음 앞)에 나타날 때 실현되는 소리이다. 즉 ‘라디오’,
-‘자리’와 같은 단어를 발음할 때 /ㄹ/은 [ɾ]으로 발음된다. 햄버거 가게에서
-‘Better Burger’를 ‘베러버거’라고 쓴 것을 보고 소리에 맞춰 제대로
-썼구나라고 생각한 적이 있다. (참고로, 말음(모음 뒤)에서 /ㄹ/은 설측음
-[l]로 실현된다. 이는 한국어의 변이음을 설명할 때 대표적인 예로
-거론된다.) 그렇다면 한국어의 탄설음화는 /ㄷ/이 모음 사이에서 /ㄹ/로
-실현되는 현상이라 말할 수 있다. 한국어에는 강세가 없기에 강세 조건은
-빠진다. 비록 ‘불규칙’이라는 표지가 붙어 있으나 이러한 일은 소위
-ㄷ-불규칙 용언에서 발견된다. ‘묻다(to ask)’, ‘걷다’, ‘듣다’ 등의 동사를
-활용할 때, 모음으로 시작하는 어간이 오게 되면 어간 말 /ㄷ/은 모음과 모음
-사이에 위치하게 되고 그럴 때 /ㄷ/이 아닌 /ㄹ/로 변화하며, 이 /ㄹ/은
-두음(모음 앞)에 위치하게 되므로 탄설음으로 실현된다.
-
-묻다 묻고 물어 물으니
-
-걷다 걷고 걸어 걸으니
-
-듣다 듣고 들어 들으니
-
-즉 정지음이 모음과 모음 사이에서 탄설음으로 변화한다는 점에서 영어의
-탄설음화와 매우 유사하다고 할 수 있다. 다만 현대국어에서는 일부 불규칙
-용언들에서만 일어나는 일인데 이러한 불규칙 현상의 경우 과거에는
-규칙적으로 일어났던 일들이 화석처럼 굳어져 일부 단어에서만 나타나게 되는
-경우가 많다. 즉, 한국어에서도 이전에 탄설음화가 비교적 활발히 일어났을
-가능성도 배제할 수 없다. 몇 가지 예를 들면, ‘차례(次第)’나
-‘도량(道場)’의 경우 현재 한자음대로 읽으면 ‘차제’나 ‘도장’이 되어야
-하지만 중세국어에서 /ㄷ/이 모음과 (활음 및) 모음 사이에서 탄설음화를
-겪어 /ㄹ/로 발음되었음을 짐작할 수 있다. 현재의 한자 발음은 /ㄷ/과
-활음이 만나 구개음화가 일어나면서 만들어진 결과이다.
-
-이렇게 언어는 달라도 그 안에서 유사한 일들이 일어나는 이유는 무엇일까?
-매우 넓은 개념으로 말하자면, 인간이 같은 두뇌와 같은 조음기관을 가지고
-태어나기 때문이라고 할 수 있다. 인간의 두뇌가 정보를 처리하는 방식,
-그리고 조음기관이 두뇌의 (말소리와 관련된) 명령을 실행하는 방식이 결국
-비슷할 수밖에 없고, 이러한 과정에서 일어나는 일들이 일부는 규칙화되어
-나타나게 된다. 그 결과 서로 달라 보이는 언어들에서 매우 유사한 음운
-과정들이 발생하게 되는 것이다. 예를 들어 자음의 위치동화(예, 인마[임마],
-인간[잉간])와 같은 일들은 대다수의 언어에서 발생한다고 할 수 있다.
-언어는 달라도, 결국 우리의 뇌와 몸은 비슷한 일을 하고 있다. 낯선 외국어
-속에서 익숙한 음운 변화를 발견할 때, 우리는 언어라는 거대한 장벽 너머에
-있는 ‘보편적 인간성’을 다시금 확인하게 된다.</div>
-        
-
-        <div class="comments-section">
+<div class="comments-section">
             <h2>댓글</h2>
             
             <div id="comments-list" class="comments-list"></div>
@@ -288,15 +113,25 @@
                 </form>
             </div>
         </div>
-
-        <div class="nav">
-            <a href="blog.html">← 목록으로</a>
-            <span>
-<a href="post5.html">← 이전 글</a> <a href="post7.html">다음 글 →</a>            </span>
-        </div>
+  </article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p class="foot-name">강희조 · Hijo Kang</p>
+      <p class="foot-line">전남대학교 영어영문학과 부교수</p>
+      <p class="foot-line">인문대 2호관 404호 · 062-530-3165</p>
+      <p class="foot-line"><a href="mailto:hijokang@jnu.ac.kr">hijokang@jnu.ac.kr</a></p>
     </div>
-
-    <script>
+    <div>
+      <p class="foot-line"><a href="https://ell.jnu.ac.kr/ell/14378/subview.do?enc=Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG" rel="noopener">학과 교수 소개</a></p>
+      <p class="foot-line"><a href="feed.xml">RSS</a></p>
+      <p class="foot-line"><a href="en/index.html" hreflang="en">English</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-copy">© 2026 강희조. 이 사이트는 GitHub Pages로 운영됩니다.</div>
+</footer>
+<script>
         // 복사 방지 처리
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
@@ -321,10 +156,8 @@
             return false;
         }, false);
     </script>
-
-
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
         // 댓글 데이터를 저장할 변수
         let allComments = [];
         
@@ -460,6 +293,5 @@
             return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
         }
     </script>
-
 </body>
 </html>
