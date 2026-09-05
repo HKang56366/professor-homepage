@@ -47,6 +47,22 @@ F = {
                   "English side by side.",
 }
 
+# 각 쪽의 키 메시지. 지어낸 말이 아니라 이 사이트에 이미 있는 문장에서 가져왔다.
+#   프로필 — 소개 글의 '표면의 차이를 걷어내면 그 아래에서 비슷한 일이…'
+#   연구분야 — 연구 갈래 설명의 '귀로는 잘 구별되지 않는 미세한 조절을 측정한다'
+#   강의 — 담당 과목(음성학·음운론·영어학개론)이 실제로 다루는 일
+#   에세이 — 글 목록 설명의 '강의실에서 다 하지 못한 이야기'
+PAGE_KEY = {
+    "about": ("프로필", "언어들의 차이를 걷어내면, 그 아래에서는 비슷한 일이 일어납니다",
+              "Profile", "Strip away the differences, and languages do much the same thing"),
+    "research": ("연구분야", "귀로는 스쳐 지나가는 차이를, 숫자로 붙잡습니다",
+                 "Research", "Catching in numbers the differences the ear lets slip past"),
+    "teaching": ("강의", "말소리를 듣고, 적고, 설명하는 법을 가르칩니다",
+                 "Teaching", "How to hear a speech sound, write it down, and explain it"),
+    "writing": ("에세이", "강의실에서 다 하지 못한 이야기를 적습니다",
+                "Essays", "The things there was never time for in class"),
+}
+
 FIELDS = [
     ("음성학", "Phonetics",
      "말소리가 실제로 어떻게 만들어지고 들리는지를 측정한다. 한국어 폐쇄음의 길이 조절, "
@@ -454,14 +470,24 @@ def art_writing():
 </svg>'''
 
 
-def doc_head(crumb, title, lede, art):
-    """문서형 쪽의 머리 — 왼쪽에 제목, 오른쪽에 그림."""
-    return f'''<div class="doc-head">
-    <div class="doc-head-text">
+def doc_head(crumb, key, lede, art=None, lang="ko"):
+    """문서형 쪽의 머리.
+
+    첫 화면과 같은 차례로 읽힌다 — 작은 쪽 이름, 키 메시지, 그리고 설명.
+    쪽 이름은 작게 남겨 길찾기를 돕고, 큰 글자는 그 쪽이 하는 말이 가져간다.
+    art 를 주면 오른쪽에 그림이 붙고, 없으면 한 단으로 선다.
+    """
+    kicker, title = (key[0], key[1]) if lang == "ko" else (key[2], key[3])
+    text = f'''<div class="doc-head-text">
       {crumb}
+      <p class="doc-kicker">{kicker}</p>
       <h1 class="doc-title">{title}</h1>
       <p class="doc-lede">{lede}</p>
-    </div>
+    </div>'''
+    if art is None:
+        return f'<div class="doc-head doc-head-solo">{text}</div>'
+    return f'''<div class="doc-head">
+    {text}
     <div class="doc-head-art">{art}</div>
   </div>'''
 
@@ -970,9 +996,8 @@ def build_about():
           '"mainEntity":%s,"dateModified":"%s"}' % (person_ld(), BUILD_DATE))
     body = f"""{nav("about.html")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">홈</a> <span>›</span> 프로필</p>
-  <h1 class="doc-title">프로필</h1>
-  <p class="doc-lede">{F["tagline_ko"]}</p>
+  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 프로필</p>',
+            PAGE_KEY["about"], F["tagline_ko"])}
 
   <div class="profile">
     <div class="profile-img"><img src="images/profile.jpg" alt="{F["name_ko"]} 교수"
@@ -1047,8 +1072,8 @@ def build_research():
     arts = pubs_by_kind("article")
     body = f"""{nav("research.html")}
 <main class="wrap doc">
-  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 연구</p>',
-            "연구",
+  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 연구분야</p>',
+            PAGE_KEY["research"],
             "음성학, 음운론, 형태론. 영어와 한국어를 함께 놓고 말소리의 실현과 "
             "변화를 관찰합니다.", art_research())}
 
@@ -1088,7 +1113,7 @@ def build_teaching():
     body = f"""{nav("teaching.html")}
 <main class="wrap doc">
   {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 강의</p>',
-            "강의",
+            PAGE_KEY["teaching"],
             "영어와 관련된 언어학개론, 음성학, 음운론을 가르치고 있습니다.",
             art_teaching())}
   {secs}
@@ -1144,9 +1169,9 @@ def build_index_of_posts():
     body = f"""{nav("blog.html")}
 <main class="wrap doc">
   {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 에세이</p>',
-            "에세이",
-            "언어의 변화와 그 규칙에 관한 글. 강의실에서 다 하지 못한 이야기를 "
-            "한 달에 두 편 정도 적어 둡니다.", art_writing())}
+            PAGE_KEY["writing"],
+            "언어의 변화와 그 규칙에 관한 글. 한 달에 두 편 정도 적어 둡니다.",
+            art_writing())}
   <ul class="chips chips-link">{chips}</ul>
 
   {h2("전체", "list", extra=f'<span class="count">{len(POSTS)}편</span>')}
@@ -1317,9 +1342,8 @@ def build_en_about():
                   f'<span class="cv-when">{s}</span></li>' for d, s in EDU_EN)
     body = f"""{nav("about.html", "en")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">Home</a> <span>›</span> Profile</p>
-  <h1 class="doc-title">Profile</h1>
-  <p class="doc-lede">{F["tagline_en"]}</p>
+  {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Profile</p>',
+            PAGE_KEY["about"], F["tagline_en"], None, "en")}
   <div class="profile">
     <div class="profile-img"><img src="../images/profile.jpg" alt="{F["name_en"]}"
       width="240" height="300" loading="lazy"></div>
@@ -1377,10 +1401,10 @@ def build_en_research():
     body = f"""{nav("research.html", "en")}
 <main class="wrap doc">
   {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Research</p>',
-            "Research",
+            PAGE_KEY["research"],
             "Phonetics, phonology, and morphology — observing how speech sounds "
             "are realised and how they change, with English and Korean side by side.",
-            art_research())}
+            art_research(), "en")}
   {h2("Research Areas", "wave")}
   <div class="fields-long">{fields}</div>
   <p class="doc-note">Below, papers, essays and courses are grouped by topic.</p>
@@ -1410,9 +1434,9 @@ def build_en_teaching():
     body = f"""{nav("teaching.html", "en")}
 <main class="wrap doc">
   {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Teaching</p>',
-            "Teaching",
+            PAGE_KEY["teaching"],
             "Introduction to English linguistics, phonetics, and phonology.",
-            art_teaching())}
+            art_teaching(), "en")}
   {secs}
   <div class="note"><p>Syllabi and assignments are posted through the university LMS.
     For questions, write to <a href="mailto:{F["email_univ"]}">{F["email_univ"]}</a>.
@@ -1439,9 +1463,9 @@ def build_en_writing():
     body = f"""{nav("writing.html", "en")}
 <main class="wrap doc">
   {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Essays</p>',
-            "Essays",
+            PAGE_KEY["writing"],
             "Essays on language change, speech sounds, and second-language "
-            "learning — roughly two a month.", art_writing())}
+            "learning — roughly two a month.", art_writing(), "en")}
   <div class="note"><p><strong>The essays are written in Korean.</strong> Titles and
     summaries below are in English; following a link opens the Korean text.</p></div>
   {h2("All essays", "list", extra=f'<span class="count">{len(POSTS)}</span>')}
