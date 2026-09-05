@@ -53,6 +53,7 @@ F = {
 #   강의 — 담당 과목(음성학·음운론·영어학개론)이 실제로 다루는 일
 #   에세이 — 글 목록 설명의 '강의실에서 다 하지 못한 이야기'
 PAGE_KEY = {
+    # about 은 쓰지 않는다 — 같은 문장이 프로필 본문에 이미 있어 두 번 나왔다
     "about": ("프로필", "언어들의 차이를 걷어내면, 그 아래에서는 비슷한 일이 일어납니다",
               "Profile", "Strip away the differences, and languages do much the same thing"),
     "research": ("연구분야", "귀로는 스쳐 지나가는 차이를, 숫자로 붙잡습니다",
@@ -1019,8 +1020,9 @@ def build_about():
           '"mainEntity":%s,"dateModified":"%s"}' % (person_ld(), BUILD_DATE))
     body = f"""{nav("about.html")}
 <main class="wrap doc">
-  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 프로필</p>',
-            PAGE_KEY["about"], F["tagline_ko"])}
+  <p class="crumb"><a href="index.html">홈</a> <span>›</span> 프로필</p>
+  <h1 class="doc-title">프로필</h1>
+  <p class="doc-lede">{F["tagline_ko"]}</p>
 
   <div class="profile">
     <div class="profile-img"><img src="images/profile.jpg" alt="{F["name_ko"]} 교수"
@@ -1365,8 +1367,9 @@ def build_en_about():
                   f'<span class="cv-when">{s}</span></li>' for d, s in EDU_EN)
     body = f"""{nav("about.html", "en")}
 <main class="wrap doc">
-  {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Profile</p>',
-            PAGE_KEY["about"], F["tagline_en"], None, "en")}
+  <p class="crumb"><a href="index.html">Home</a> <span>›</span> Profile</p>
+  <h1 class="doc-title">Profile</h1>
+  <p class="doc-lede">{F["tagline_en"]}</p>
   <div class="profile">
     <div class="profile-img"><img src="../images/profile.jpg" alt="{F["name_en"]}"
       width="240" height="300" loading="lazy"></div>
