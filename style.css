@@ -12,7 +12,7 @@
   --line-second: #d3edfb;   /* 줄이 두 개 겹칠 때 아래쪽 줄 */
   --accent:     #155684;
   --bg:         #ffffff;
-  --bg-header:  #f7f8fa;   /* 상단 */
+  --bg-header:  #dae6f7;   /* 상단 */
   --bg-footer:  #eeeeee;   /* 발치 */
 
   --serif: Georgia, "Times New Roman", "Noto Serif KR", "Nanum Myeongjo", serif;
@@ -78,7 +78,7 @@ ul, ol { list-style: none; }
   font-family: var(--serif);
   font-size: 11px;
   letter-spacing: .22em;
-  color: var(--muted);
+  color: var(--ink-3);      /* 연한 파랑 위에서도 읽히도록 */
   margin-bottom: 3px;
 }
 
@@ -93,7 +93,7 @@ ul, ol { list-style: none; }
 .brand-sub {
   display: block;
   font-size: 12px;
-  color: var(--muted);
+  color: var(--ink-3);      /* 연한 파랑 위에서도 읽히도록 */
   margin-top: 4px;
 }
 
@@ -115,8 +115,8 @@ ul, ol { list-style: none; }
   font-family: var(--serif);
   font-size: 12px;
   letter-spacing: .12em;
-  color: var(--muted);
-  border: 1px solid var(--rule);
+  color: var(--ink-3);
+  border: 1px solid var(--rule-2);   /* 연한 파랑 위에서 묻히지 않게 */
   padding: 3px 9px;
 }
 
@@ -550,6 +550,7 @@ ul, ol { list-style: none; }
 /* 강의 — 칠판에 나무를 그리듯 가지가 그어지고, 마디가 켜지고,
    구조가 다 서면 아래에서 말소리가 훑고 지나간다. 한 바퀴 6.4초. */
 .art-teach-tree .art-edge line {
+  stroke-dasharray: 100;          /* pathLength=100 이라 길이가 곧 100 */
   animation: tree-draw 6.4s ease-in-out infinite both;
 }
 
@@ -564,9 +565,9 @@ ul, ol { list-style: none; }
 }
 
 @keyframes tree-draw {
-  0%           { stroke-dashoffset: var(--len); }
+  0%           { stroke-dashoffset: 100; }
   16%, 88%     { stroke-dashoffset: 0; }
-  98%, 100%    { stroke-dashoffset: var(--len); }
+  98%, 100%    { stroke-dashoffset: 100; }
 }
 
 @keyframes node-pop {
