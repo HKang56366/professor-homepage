@@ -324,13 +324,16 @@ def art_research():
     dots, rings, labels = [], [], []
     for name, cx, cy, rx, ry, rot, n, seed, hot in clusters:
         cls = " hot" if hot else ""
-        for jx, jy in _jitter(seed, n):
+        for k, (jx, jy) in enumerate(_jitter(seed, n)):
             t = math.atan2(jy, jx)
             r = (jx * jx + jy * jy) ** 0.5
             r = min(r, 1.0) ** 0.75
             px = cx + math.cos(t) * rx * r * 0.92
             py = cy + math.sin(t) * ry * r * 0.92
-            dots.append(f'<circle class="pt{cls}" cx="{px:.1f}" cy="{py:.1f}" r="2.2"/>')
+            # 측정값이 하나씩 찍히듯 천천히 드러났다 잦아든다
+            delay = (seed * 0.13 + k * 0.31) % 3.4
+            dots.append(f'<circle class="pt{cls}" cx="{px:.1f}" cy="{py:.1f}" '
+                        f'r="2.2" style="animation-delay:-{delay:.2f}s"/>')
         rings.append(f'<ellipse class="ell{cls}" cx="{cx}" cy="{cy}" rx="{rx}" '
                      f'ry="{ry}" transform="rotate({rot} {cx} {cy})"/>')
         labels.append(f'<text x="{cx}" y="{cy - ry - 9}">{name}</text>')
@@ -363,13 +366,23 @@ def art_teaching():
              (366, 158, 300, 264), (366, 158, 432, 264)]
     lines = "".join(f'<line x1="{a}" y1="{b + 15}" x2="{c}" y2="{d - 15}"/>'
                     for a, b, c, d in edges)
-    circles = "".join(f'<circle cx="{x}" cy="{y}" r="15"/>' for _, x, y in nodes)
+    # 마디는 위에서 아래로 차례차례 밝아진다 — 구조가 갈라져 내려가는 순서
+    step = {"σ": 0.0, "O": 0.45, "R": 0.45, "N": 0.9, "C": 0.9}
+    circles = "".join(f'<circle cx="{x}" cy="{y}" r="15" '
+                      f'style="animation-delay:-{2.7 - step[t]:.2f}s"/>'
+                      for t, x, y in nodes)
     labels = "".join(f'<text x="{x}" y="{y + 5.5}">{t}</text>' for t, x, y in nodes)
     # 구조가 결국 말소리로 실현된다 — 마디 아래에 짧은 파형을 둔다
-    feet = "".join(f'<line x1="{x - 26 + i * 13}" y1="318" x2="{x - 26 + i * 13}" '
-                   f'y2="{318 - (6 + (i % 3) * 9)}"/>'
-                   for x in (150, 300, 432) for i in range(5))
-    return f'''<svg class="page-art" viewBox="0 0 520 360" role="img"
+    feet = []
+    for gi, x in enumerate((150, 300, 432)):
+        for i in range(5):
+            h = 6 + (i % 3) * 9
+            fx = x - 26 + i * 13
+            feet.append(f'<rect x="{fx - 0.8}" y="{318 - h}" width="1.6" '
+                        f'height="{h}" rx="0.8" '
+                        f'style="animation-delay:-{(gi * 0.5 + i * 0.13):.2f}s"/>')
+    feet = "".join(feet)
+    return f'''<svg class="page-art art-teach-tree" viewBox="0 0 520 360" role="img"
   aria-label="음절 구조를 나타낸 나무 그림과 그 아래의 말소리 파형"
   xmlns="http://www.w3.org/2000/svg">
   <g class="art-edge">{lines}</g>
@@ -417,8 +430,10 @@ def art_writing():
         env = math.sin(min(i / 33, 1.0) * math.pi) ** 0.55
         h = abs(a) * env * 19 + 1.2
         bx = tx + 12 + i * 6.2
-        bars.append(f'<line x1="{bx:.1f}" y1="{fy - h:.1f}" x2="{bx:.1f}" '
-                    f'y2="{fy + h:.1f}"/>')
+        # 글 속 도판이 살아 움직인다 — 한 방향으로 지나가는 물결
+        bars.append(f'<rect x="{bx - 0.7:.1f}" y="{fy - h:.1f}" width="1.4" '
+                    f'height="{2 * h:.1f}" rx="0.7" '
+                    f'style="animation-delay:-{i * 0.07:.2f}s"/>')
     fig += f'<g class="wv">{"".join(bars)}</g>'
 
     tail = ""
