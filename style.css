@@ -679,7 +679,6 @@ ul, ol { list-style: none; }
   max-width: 15em;
 }
 
-.doc-head-solo .doc-title { max-width: 20em; }
 
 .doc-lede {
   font-family: var(--serif);
