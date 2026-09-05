@@ -547,27 +547,83 @@ ul, ol { list-style: none; }
   to { stroke-dashoffset: -18; }
 }
 
-/* 강의 — 마디가 위에서 아래로 차례로 밝아지고, 아래 파형이 함께 뛴다 */
-.art-teach-tree .art-node-o circle {
-  animation: node-pulse 2.7s ease-in-out infinite;
+/* 강의 — 칠판에 나무를 그리듯 가지가 그어지고, 마디가 켜지고,
+   구조가 다 서면 아래에서 말소리가 훑고 지나간다. 한 바퀴 6.4초. */
+.art-teach-tree .art-edge line {
+  animation: tree-draw 6.4s ease-in-out infinite both;
 }
 
-.art-teach-tree .art-foot rect,
-.art-sheets .wv rect {
+.art-teach-tree .art-node-o circle {
   transform-box: fill-box;
   transform-origin: center;
-  animation: bar-flow 2.2s cubic-bezier(.45, 0, .55, 1) infinite;
+  animation: node-pop 6.4s ease-in-out infinite both;
+}
+
+.art-teach-tree .art-label text {
+  animation: node-fade 6.4s ease-in-out infinite both;
+}
+
+.art-teach-tree .art-foot rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: foot-sweep 6.4s cubic-bezier(.4, 0, .5, 1) infinite both;
   will-change: transform;
 }
 
-@keyframes node-pulse {
-  0%, 62%, 100% { stroke: var(--rule-2); }
-  18%, 34%      { stroke: var(--accent); }
+@keyframes tree-draw {
+  0%           { stroke-dashoffset: var(--len); }
+  16%, 88%     { stroke-dashoffset: 0; }
+  98%, 100%    { stroke-dashoffset: var(--len); }
 }
 
-@keyframes bar-flow {
-  0%, 100% { transform: scaleY(.72); }
-  50%      { transform: scaleY(1.12); }
+@keyframes node-pop {
+  0%, 4%     { opacity: 0; transform: scale(.4); stroke: var(--accent); }
+  12%        { opacity: 1; transform: scale(1.25); stroke: var(--accent); }
+  20%, 88%   { opacity: 1; transform: scale(1); stroke: var(--ink); }
+  97%, 100%  { opacity: 0; transform: scale(.4); }
+}
+
+@keyframes node-fade {
+  0%, 8%    { opacity: 0; }
+  20%, 88%  { opacity: 1; }
+  97%, 100% { opacity: 0; }
+}
+
+@keyframes foot-sweep {
+  0%, 6%    { transform: scaleY(.06); opacity: .25; }
+  14%       { transform: scaleY(1.15); opacity: 1; }
+  24%, 86%  { transform: scaleY(.8); opacity: 1; }
+  96%, 100% { transform: scaleY(.06); opacity: .25; }
+}
+
+/* 에세이 — 글이 왼쪽부터 실제로 써진다. 다 쓰고 잠시 머물렀다 지워진다.
+   한 바퀴 8초. */
+.art-sheets .ttl,
+.art-sheets .rule,
+.art-sheets .txt {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: write-in 8s cubic-bezier(.3, 0, .3, 1) infinite both;
+}
+
+.art-sheets .wv rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fig-play 8s cubic-bezier(.45, 0, .55, 1) infinite both;
+  will-change: transform;
+}
+
+@keyframes write-in {
+  0%        { transform: scaleX(0); }
+  14%, 82%  { transform: scaleX(1); }
+  94%, 100% { transform: scaleX(0); }
+}
+
+@keyframes fig-play {
+  0%, 30%   { transform: scaleY(.05); opacity: .2; }
+  38%       { transform: scaleY(1.15); opacity: 1; }
+  46%, 82%  { transform: scaleY(.78); opacity: 1; }
+  92%, 100% { transform: scaleY(.05); opacity: .2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -575,8 +631,13 @@ ul, ol { list-style: none; }
   .art-plot .ell.hot,
   .art-plot .shift,
   .art-plot .head,
+  .art-teach-tree .art-edge line,
   .art-teach-tree .art-node-o circle,
+  .art-teach-tree .art-label text,
   .art-teach-tree .art-foot rect,
+  .art-sheets .ttl,
+  .art-sheets .rule,
+  .art-sheets .txt,
   .art-sheets .wv rect { animation: none; }
 }
 
