@@ -16,7 +16,9 @@ SERIF = "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf"
 SANS = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
 
 # 원본(1145x1374) 기준 잘라낼 자리
-PORTRAIT_BOX = (210, 150, 1110, 1275)   # 4:5, 흔드는 손까지
+# 세로 사진은 4:5. 잘라내는 범위를 넓힐수록 인물이 작게 담긴다 —
+# 1059x1324 는 이전(900x1125)보다 17.6% 넓어, 인물이 85% 크기로 들어간다.
+PORTRAIT_BOX = (86, 50, 1145, 1374)     # 4:5, 흔드는 손과 여백까지
 FACE_BOX = (145, 140, 805, 800)         # 정사각, 얼굴 중심 (머리 위 여백 확보)
 
 # 톤 보정 — 사이트가 흰 바탕이라 원본 그대로 쓰면 사진만 무겁게 가라앉는다.
