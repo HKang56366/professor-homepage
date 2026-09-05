@@ -679,10 +679,10 @@ def head(title, desc, canon, *, lang="ko", alt=None, extra="", og_type="website"
 
 def nav(active, lang="ko"):
     p = "" if lang == "ko" else "../"
-    items = ([("about.html", "소개"), ("research.html", "연구"),
-              ("teaching.html", "강의"), ("blog.html", "글")] if lang == "ko" else
-             [("about.html", "About"), ("research.html", "Research"),
-              ("teaching.html", "Teaching"), ("writing.html", "Writing")])
+    items = ([("about.html", "프로필"), ("research.html", "연구"),
+              ("teaching.html", "교육"), ("blog.html", "칼럼")] if lang == "ko" else
+             [("about.html", "Profile"), ("research.html", "Research"),
+              ("teaching.html", "Teaching"), ("writing.html", "Essays")])
     base = "" if lang == "ko" else "en/"
     home = f"{p}index.html" if lang == "ko" else "index.html"
     links = "".join(
@@ -810,9 +810,21 @@ def build_home():
         <p class="hero-role">{F["dept_ko"]} {F["rank_ko"]}<br>
           음성학 · 음운론 · 형태론</p>
         <p class="hero-cta"><a class="btn" href="research.html">연구 보기</a>
-          <a class="btn btn-ghost" href="blog.html">글 읽기</a></p>
+          <a class="btn btn-ghost" href="blog.html">칼럼 읽기</a></p>
       </div>
       <div class="hero-figure">{hero_svg()}</div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      {h2("이 달의 칼럼", "mark", "sec-title")}
+      <a class="feature" href="post{feat[0]}.html">
+        <p class="feature-kicker">{" · ".join(TOPICS[t][0] for t in feat[5])}</p>
+        <h3 class="feature-title">{feat[1]}</h3>
+        <p class="feature-sum">{feat[6]}</p>
+        <p class="feature-meta">{feat[0]}번째 글 · {feat[3].split("-")[0]}년 {int(feat[3].split("-")[1])}월</p>
+      </a>
     </div>
   </section>
 
@@ -825,21 +837,9 @@ def build_home():
 
   <section class="band">
     <div class="wrap">
-      {h2("이 달의 글", "mark", "sec-title")}
-      <a class="feature" href="post{feat[0]}.html">
-        <p class="feature-kicker">{" · ".join(TOPICS[t][0] for t in feat[5])}</p>
-        <h3 class="feature-title">{feat[1]}</h3>
-        <p class="feature-sum">{feat[6]}</p>
-        <p class="feature-meta">글 {feat[0]} · {feat[3].split("-")[0]}년 {int(feat[3].split("-")[1])}월</p>
-      </a>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
-      {h2("최근 글", "list", "sec-title")}
+      {h2("최근 칼럼", "list", "sec-title")}
       <ul class="rows">{latest_html}</ul>
-      <p class="more"><a href="blog.html">글 전체 보기 →</a></p>
+      <p class="more"><a href="blog.html">칼럼 전체 보기 →</a></p>
     </div>
   </section>
 
@@ -853,20 +853,20 @@ def build_home():
 
   <section class="band">
     <div class="wrap">
-      {h2("강의", "book", "sec-title")}
+      {h2("교육", "book", "sec-title")}
       <p class="band-lede">학부에서 영어음성학, 영어음운론, 영어학개론, 영어학개관을,
         대학원에서 영어음운론과 영어음운론심화를 맡고 있습니다.</p>
-      <p class="more"><a href="teaching.html">강의 전체 보기 →</a></p>
+      <p class="more"><a href="teaching.html">교육 전체 보기 →</a></p>
     </div>
   </section>
 
   <section class="band">
     <div class="wrap about-strip">
-      {h2("소개", "person", "sec-title")}
+      {h2("프로필", "person", "sec-title")}
       <p class="band-lede">영어와 관련된 언어학개론, 음성학, 음운론을 가르치고 있으며,
         영어 및 한국어를 포함한 다양한 언어를 음운론적 관점에서 분석하는 연구를 수행하고
         있습니다.</p>
-      <p class="more"><a href="about.html">소개 자세히 보기 →</a></p>
+      <p class="more"><a href="about.html">프로필 자세히 보기 →</a></p>
     </div>
   </section>
 </main>
@@ -886,8 +886,8 @@ def build_about():
           '"mainEntity":%s,"dateModified":"%s"}' % (person_ld(), BUILD_DATE))
     body = f"""{nav("about.html")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">홈</a> <span>›</span> 소개</p>
-  <h1 class="doc-title">소개</h1>
+  <p class="crumb"><a href="index.html">홈</a> <span>›</span> 프로필</p>
+  <h1 class="doc-title">프로필</h1>
   <p class="doc-lede">{F["tagline_ko"]}</p>
 
   <div class="profile">
@@ -922,15 +922,15 @@ def build_about():
 
   <div class="note">
     <p>연구 분야와 논문 목록은 <a href="research.html">연구</a>에, 담당 과목은
-      <a href="teaching.html">강의</a>에 정리해 두었습니다.</p>
+      <a href="teaching.html">교육</a>에 정리해 두었습니다.</p>
   </div>
 </main>
 {foot()}"""
-    return page(f'소개 | {F["name_ko"]}',
+    return page(f'프로필 | {F["name_ko"]}',
                 f'{F["name_ko"]}({F["name_en"]}) — {F["dept_ko"]} {F["rank_ko"]}. '
                 'Stony Brook University 언어학 박사. 음성학·음운론·형태론.',
                 "/about.html", body, alt=("/about.html", "/en/about.html"),
-                extra=jsonld(ld) + jsonld(crumbs_ld([("홈", "/"), ("소개", "/about.html")])),
+                extra=jsonld(ld) + jsonld(crumbs_ld([("홈", "/"), ("프로필", "/about.html")])),
                 og_type="profile")
 
 
@@ -1003,8 +1003,8 @@ def build_teaching():
         secs += (h2(level, "book") + f'<ul class="courses">{rows}</ul>')
     body = f"""{nav("teaching.html")}
 <main class="wrap doc">
-  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 강의</p>',
-            "강의",
+  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 교육</p>',
+            "교육",
             "영어와 관련된 언어학개론, 음성학, 음운론을 가르치고 있습니다.",
             art_teaching())}
   {secs}
@@ -1013,17 +1013,17 @@ def build_teaching():
     <p>강의계획서와 과제 안내는 학교 LMS를 통해 공지합니다. 수업 관련 문의는
       <a href="mailto:{F["email_univ"]}">{F["email_univ"]}</a>로 편하게 연락 주세요.
       연구실은 {F["office"]}입니다.</p>
-    <p>수업에서 다루는 개념 가운데 몇 가지는 <a href="blog.html">글</a>에서 더 편한 말로
+    <p>수업에서 다루는 개념 가운데 몇 가지는 <a href="blog.html">칼럼</a>에서 더 편한 말로
       풀어 두었습니다. 음운 변화는 <a href="post6.html">다르면서도 같은 언어 III</a>,
       형태의 불규칙은 <a href="post9.html">반복의 중요성</a>에서 시작하면 좋습니다.</p>
   </div>
 </main>
 {foot()}"""
-    return page(f'강의 | {F["name_ko"]}',
+    return page(f'교육 | {F["name_ko"]}',
                 '학부 영어음성학·영어음운론·영어학개론·영어학개관, 대학원 영어음운론·'
                 '영어음운론심화를 담당합니다.',
                 "/teaching.html", body, alt=("/teaching.html", "/en/teaching.html"),
-                extra=jsonld(crumbs_ld([("홈", "/"), ("강의", "/teaching.html")])))
+                extra=jsonld(crumbs_ld([("홈", "/"), ("교육", "/teaching.html")])))
 
 
 def build_index_of_posts():
@@ -1053,14 +1053,14 @@ def build_index_of_posts():
                    f'<span class="group-n">{len(ps)}편</span></h3>'
                    f'<ul class="linklist">{items}</ul></section>')
     ld = ('{"@context":"https://schema.org","@type":"CollectionPage",'
-          '"name":"글","url":"%s/blog.html","inLanguage":"ko","author":%s,'
+          '"name":"칼럼","url":"%s/blog.html","inLanguage":"ko","author":%s,'
           '"hasPart":[%s]}' % (SITE, person_ld(), ",".join(
               '{"@type":"BlogPosting","headline":"%s","url":"%s/post%d.html",'
               '"datePublished":"%s-%s"}' % (p[1], SITE, p[0], p[3], p[4]) for p in POSTS)))
     body = f"""{nav("blog.html")}
 <main class="wrap doc">
-  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 글</p>',
-            "글",
+  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 칼럼</p>',
+            "칼럼",
             "언어의 변화와 그 규칙에 관한 글. 강의실에서 다 하지 못한 이야기를 "
             "한 달에 두 편 정도 적어 둡니다.", art_writing())}
   <ul class="chips chips-link">{chips}</ul>
@@ -1072,11 +1072,11 @@ def build_index_of_posts():
   <div class="groups">{groups}</div>
 </main>
 {foot()}"""
-    return page(f'글 | {F["name_ko"]}',
+    return page(f'칼럼 | {F["name_ko"]}',
                 '언어의 변화, 말소리, 외국어 습득에 관한 글 13편. 전남대 영어영문학과 '
                 f'{F["name_ko"]} 교수가 씁니다.',
                 "/blog.html", body, alt=("/blog.html", "/en/writing.html"),
-                extra=jsonld(ld) + jsonld(crumbs_ld([("홈", "/"), ("글", "/blog.html")])))
+                extra=jsonld(ld) + jsonld(crumbs_ld([("홈", "/"), ("칼럼", "/blog.html")])))
 
 
 def build_post(meta, src_dir):
@@ -1124,13 +1124,13 @@ def build_post(meta, src_dir):
           % (t_ko, desc, SITE, n, SITE, n, date_iso, date_iso, SITE,
              ",".join('{"@type":"Thing","name":"%s"}' % TOPICS[t][1] for t in tp),
              ", ".join(TOPICS[t][0] for t in tp), person_ld(), SITE, SITE))
-    crumb = crumbs_ld([("홈", "/"), ("글", "/blog.html"), (t_ko, f"/post{n}.html")])
+    crumb = crumbs_ld([("홈", "/"), ("칼럼", "/blog.html"), (t_ko, f"/post{n}.html")])
 
     body = f"""{nav("blog.html")}
 <main class="wrap">
   <article class="essay">
     <p class="crumb"><a href="index.html">홈</a> <span>›</span>
-      <a href="blog.html">글</a> <span>›</span> 글 {n}</p>
+      <a href="blog.html">칼럼</a> <span>›</span> {n}번째 글</p>
     <header class="essay-head">
       <p class="essay-kicker">{" · ".join(TOPICS[t][0] for t in tp)}</p>
       <h1 class="essay-title">{t_ko}</h1>
@@ -1154,7 +1154,7 @@ def build_post(meta, src_dir):
         <p class="author-role">{F["dept_ko"]} {F["rank_ko"]}<br>
           Ph.D. in Linguistics, Stony Brook University</p>
         <p class="author-fields">음성학 · 음운론 · 형태론</p>
-        <p class="author-more"><a href="about.html">소개 보기 →</a>
+        <p class="author-more"><a href="about.html">프로필 보기 →</a>
           <a href="research.html">연구 보기 →</a></p>
       </div>
     </aside>
@@ -1197,7 +1197,7 @@ def build_en_home():
         <p class="hero-role">{F["rank_en"]}, Department of English Language and Literature<br>
           Chonnam National University<br>Phonetics · Phonology · Morphology</p>
         <p class="hero-cta"><a class="btn" href="research.html">Research</a>
-          <a class="btn btn-ghost" href="writing.html">Writing</a></p>
+          <a class="btn btn-ghost" href="writing.html">Essays</a></p>
       </div>
       <div class="hero-figure">{hero_svg()}</div>
     </div>
@@ -1212,7 +1212,7 @@ def build_en_home():
     <p class="more"><a href="research.html">See research →</a></p>
   </div></section>
   <section class="band"><div class="wrap">
-    {h2("Writing", "list", "sec-title")}
+    {h2("Essays", "list", "sec-title")}
     <p class="band-lede">Essays on language change, speech sounds, and learning a second
       language. Written in Korean, with English summaries.</p>
     <p class="more"><a href="writing.html">See all essays →</a></p>
@@ -1233,8 +1233,8 @@ def build_en_about():
                   f'<span class="cv-when">{s}</span></li>' for d, s in EDU_EN)
     body = f"""{nav("about.html", "en")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">Home</a> <span>›</span> About</p>
-  <h1 class="doc-title">About</h1>
+  <p class="crumb"><a href="index.html">Home</a> <span>›</span> Profile</p>
+  <h1 class="doc-title">Profile</h1>
   <p class="doc-lede">{F["tagline_en"]}</p>
   <div class="profile">
     <div class="profile-img"><img src="../images/profile.jpg" alt="{F["name_en"]}"
@@ -1262,7 +1262,7 @@ def build_en_about():
   </table>
 </main>
 {foot("en")}"""
-    return page(f'About | {F["name_en"]}',
+    return page(f'Profile | {F["name_en"]}',
                 f'{F["name_en"]} — {F["rank_en"]} at Chonnam National University. '
                 'Ph.D. in Linguistics, Stony Brook University.',
                 "/en/about.html", body, lang="en", alt=("/about.html", "/en/about.html"),
@@ -1354,8 +1354,8 @@ def build_en_writing():
       </li>""" for n, _, t_en, ym, _, tp, _, s_en in reversed(POSTS))
     body = f"""{nav("writing.html", "en")}
 <main class="wrap doc">
-  {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Writing</p>',
-            "Writing",
+  {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Essays</p>',
+            "Essays",
             "Essays on language change, speech sounds, and second-language "
             "learning — roughly two a month.", art_writing())}
   <div class="note"><p><strong>The essays are written in Korean.</strong> Titles and
@@ -1364,7 +1364,7 @@ def build_en_writing():
   <ul class="rows">{rows}</ul>
 </main>
 {foot("en")}"""
-    return page(f'Writing | {F["name_en"]}',
+    return page(f'Essays | {F["name_en"]}',
                 'Essays on language change, phonetics and second-language learning by '
                 f'{F["name_en"]}. Written in Korean with English summaries.',
                 "/en/writing.html", body, lang="en", alt=("/blog.html", "/en/writing.html"))
@@ -1431,9 +1431,9 @@ def build_404():
   <p class="doc-lede">주소가 바뀌었거나, 지워진 쪽일 수 있습니다.</p>
   <ul class="linklist">
     <li><a href="/">홈</a></li>
-    <li><a href="/blog.html">글 목록</a></li>
+    <li><a href="/blog.html">칼럼 목록</a></li>
     <li><a href="/research.html">연구</a></li>
-    <li><a href="/about.html">소개</a></li>
+    <li><a href="/about.html">프로필</a></li>
   </ul>
 </main>
 {foot()}"""
