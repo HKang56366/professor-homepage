@@ -55,17 +55,220 @@ FIELDS = [
      "frequency and analogy."),
 ]
 
-# 연구업적 (학과 페이지 게재 순, 중복 1건 제외)
+# 연구업적.
+# 출처는 셋을 합쳤다 — 학과 교수소개 페이지(정본), Crossref(「강희조」·「Hijo Kang」),
+# OpenAlex. DOI 가 있는 항목은 모두 DOI 로 원제·권호·쪽수를 확인했다.
+# 저자는 (한글, 영문) 쌍이고, 기록에 영문 표기가 없으면 한글을 그대로 쓴다.
+KANG = ("강희조", "Hijo Kang")
+OH = ("오미라", "Mira Oh")
+KIM_HJ = ("김현주", "Hyun-Ju Kim")
+KO_SY = ("고성연", "Seongyeon Ko")
+YUN = ("윤지원", "Jiwon Yun")
+LEE_ES = ("이은숙", "Eunsuk Lee")
+LEE_HY = ("이효영", "이효영")
+KIM_DH = ("김다희", "Dahee Kim")
+KIM_YJ = ("김연주", "Yeonju Kim")
+
+
+def P(pid, year, title, venue_ko, venue_en, detail, authors, doi=None,
+      kind="article", title_ko=None):
+    return {"id": pid, "year": year, "title": title, "title_ko": title_ko,
+            "venue_ko": venue_ko, "venue_en": venue_en, "detail": detail,
+            "authors": authors, "doi": doi, "kind": kind}
+
+
 PUBS = [
-    ("2024", "The Effect of L2 Immersion on English Stress Perception and Production by "
-             "Korean Learners.", "Studies in Phonetics, Phonology and Morphology", "30-2, 145-170."),
-    ("2024", "A phonetic study of bidirectional duration modulation in Korean oral stops.",
-     "Korean Journal of Linguistics", "49-1, 1-20."),
-    ("2023", "한국어 용언 활용에 나타나는 선택적 /ㄹ/ 삽입에 대한 유추 기반 분석.",
-     "언어학 연구", "69, 1-19."),
-    ("2023", "한국어 ‘ㄹ’ 말음 어간의 활용에서 나타나는 변이의 양상: 구어 말뭉치 및 "
-             "설문을 통한 연구.", "언어", "48-2, 399-416."),
+    P("l2immersion", "2024",
+      "The Effect of L2 Immersion on English Stress Perception and Production by "
+      "Korean Learners",
+      "음성·음운·형태론 연구", "Studies in Phonetics, Phonology and Morphology",
+      "30-2, 145–170", [KANG]),
+    P("bidirdur", "2024",
+      "A phonetic study of bidirectional duration modulation in Korean oral stops",
+      "언어", "Korean Journal of Linguistics", "49-1, 1–20", [KANG]),
+    P("coronal", "2024",
+      "The Roles of Phonology, Morphology, and Frequency in the Variation of "
+      "Noun-final Coronal Obstruents in Korean",
+      "언어학 연구", "Studies in Linguistics", "73, 7–33", [KANG, KIM_HJ],
+      "10.17002/sil..73.202410.7"),
+    P("vot", "2024",
+      "A perception-based analysis of voice onset time (VOT) dissimilation in Korean",
+      "말소리와 음성과학", "Phonetics and Speech Sciences", "16-1, 25–31", [KANG, OH],
+      "10.13064/ksss.2024.16.1.025"),
+    P("linsert", "2023",
+      "An Analogy-based Study of Optional /l/-insertion in Korean Verbal Conjugation",
+      "언어학 연구", "Studies in Linguistics", "69, 1–19", [KANG, OH],
+      "10.17002/sil..69.202310.1",
+      title_ko="한국어 용언 활용에 나타나는 선택적 /ㄹ/ 삽입에 대한 유추 기반 분석"),
+    P("lstem", "2023",
+      "한국어 ‘ㄹ’ 말음 어간의 활용에서 나타나는 변이의 양상: 구어 말뭉치 및 설문을 통한 연구",
+      "언어", "Korean Journal of Linguistics", "48-2, 399–416", [KANG]),
+    P("harmonycorpus", "2023",
+      "Transition of vowel harmony in Korean verbal conjugation: Patterns of "
+      "variation in a spoken corpus",
+      "말소리와 음성과학", "Phonetics and Speech Sciences", "15-2, 21–29", [KANG],
+      "10.13064/ksss.2023.15.2.021"),
+    P("durmod", "2020",
+      "Duration modulation in Korean stops: nonlocal similarity avoidance vs. "
+      "timing regulation",
+      "음성·음운·형태론 연구", "Studies in Phonetics, Phonology and Morphology",
+      "26-1, 103–125", [OH, KIM_DH, KANG], "10.17959/sppm.2020.26.1.103"),
+    P("hrealize", "2019", "The Realizations of /h/ in Seoul and Gwangju Koreans",
+      "언어학", "EONEOHAG", "84, 175–198", [KANG, LEE_HY], "10.17290/jlsk.2019..84.175"),
+    P("tensify", "2019",
+      "The Asymmetric tense consonant effects in compound and word-initial tensification",
+      "음성·음운·형태론 연구", "Studies in Phonetics, Phonology and Morphology",
+      "25-1, 3–30", [KANG, OH], "10.17959/sppm.2019.25.1.3"),
+    P("stressperc", "2019",
+      "Segmental and suprasegmental effects on Korean listeners’ English stress perception",
+      "언어", "Korean Journal of Linguistics", "44-4, 721–747", [KANG, KIM_HJ],
+      "10.18855/lisoko.2019.44.4.002"),
+    P("review", "2019",
+      "A Review of the Studies in English Linguistics from Studies in British and "
+      "American Language and Literature",
+      "영미어문학", "The British and American Language and Literature Association of Korea",
+      "135, 93–111", [KANG, LEE_ES], "10.21297/ballak.2019.135.93"),
+    P("prosodic", "2017", "The Prosodic Effect of Compound Tensification in Korean",
+      "언어학 연구", "Studies in Linguistics", "45, 1–27", [KIM_YJ, KANG],
+      "10.17002/sil..45.201710.1"),
+    P("ewen", "2017", "Vowels of Beryozovka Ewen: An acoustic phonetic study",
+      "알타이학보", "ALTAI HAKPO", "27, 1–23", [KANG, YUN, KO_SY],
+      "10.15816/ask.2017..27.001"),
+    P("laryngeal", "2016",
+      "Dynamic and static aspects of laryngeal co-occurrence restrictions in Korean",
+      "음성·음운·형태론 연구", "Studies in Phonetics, Phonology and Morphology",
+      "22-1, 3–34", [KANG], "10.17959/sppm.2016.22.1.3"),
+    P("harmonytime", "2016",
+      "Variation and Change of Korean Vowel Harmony in Verbal Conjugation: "
+      "An Apparent Time and Real Time Study",
+      "언어학", "EONEOHAG", "76, 27–56", [KANG], "10.17290/jlsk.2016..76.27"),
+    P("stressacoustic", "2016",
+      "Acoustic Correlates of English Stress in Korean L2 Learners’ Perception",
+      "영어학", "Korean Journal of English Language and Linguistics", "16-2, 169–196",
+      [KANG, KIM_HJ], "10.15738/kjell.16.2.201606.169"),
+    P("nanai", "2016",
+      "A phonetic study of Nanai vowels: Using automated post-transcriptional "
+      "processing techniques",
+      "알타이학보", "ALTAI HAKPO", "26, 29–44", [YUN, KO_SY, KANG],
+      "10.15816/ask.2016..26.003"),
+    P("ocpmemory", "2015", "Interaction of perception and memory in segmental OCP",
+      "알타이학보", "ALTAI HAKPO", "25, 145–165", [KANG], "10.15816/ask.2015..25.010"),
+    P("inconsistency", "2014", "Inconsistency in Phonological Phenomena",
+      "언어학", "EONEOHAG", "70, 93–115", [KANG], "10.17290/jlsk.2014..70.93",
+      title_ko="음운 현상의 동기적 비일관성과 음운 이론"),
+    P("hiatus", "2013",
+      "Phonetic grounding of position and height asymmetries in hiatus resolution: "
+      "An acoustic analysis of Korean VV sequences",
+      "음성·음운·형태론 연구", "Studies in Phonetics, Phonology and Morphology",
+      "19-2, 217–232", [KANG], "10.17959/sppm.2013.19.2.217"),
+    P("manchu", "2013", "Segmental OCP in Manchu syllables",
+      "알타이학보", "ALTAI HAKPO", "23, 1–22", [KANG], "10.15816/ask.2013..23.001"),
+    P("diss", "2012",
+      "Diachrony in Synchrony: Korean vowel harmony in verbal conjugation",
+      "박사학위논문, Stony Brook University", "Ph.D. dissertation, Stony Brook University",
+      "", [KANG], None, "dissertation"),
+    P("tongueroot", "2011",
+      "A phonetic study of the tongue root contrast in Buriat and Ewen",
+      "LSA 연차대회 확장초록", "LSA Annual Meeting Extended Abstracts", "2",
+      [KANG, KO_SY], "10.3765/exabs.v0i0.536", "conference"),
+    P("blshiatus", "2010",
+      "Position and Height Asymmetries in Hiatus Resolution: A case study of "
+      "Korean VV sequences",
+      "버클리 언어학회 논문집", "Proceedings of the Annual Meeting of the Berkeley "
+      "Linguistics Society", "36-1, 174", [KANG], "10.3765/bls.v36i1.3910", "conference"),
+    P("jasahiatus", "2010",
+      "Position and height asymmetries in hiatus resolution: Are they phonetically "
+      "driven phenomena?",
+      "미국음향학회지", "The Journal of the Acoustical Society of America",
+      "127-3 (Suppl.), 2018", [KANG], "10.1121/1.3385263", "conference"),
 ]
+
+PUB_BY_ID = {p["id"]: p for p in PUBS}
+
+
+def pub_li(p, lang="ko", show_authors=True):
+    """논문 한 줄. 저자가 여럿일 때만 이름을 적고, DOI 가 있으면 건다."""
+    i = 0 if lang == "ko" else 1
+    title = p["title_ko"] if (lang == "ko" and p.get("title_ko")) else p["title"]
+    venue = p["venue_ko"] if lang == "ko" else p["venue_en"]
+    src = f"{venue} {p['detail']}".strip()
+    extra = ""
+    if show_authors and len(p["authors"]) > 1:
+        extra = f'<span class="pub-au">{" · ".join(a[i] for a in p["authors"])}</span>'
+    if p["doi"]:
+        extra += (f'<a class="pub-doi" href="https://doi.org/{p["doi"]}" '
+                  f'rel="noopener">DOI</a>')
+    return (f'<li class="pub"><span class="pub-year">{p["year"]}</span>'
+            f'<span class="pub-body"><span class="pub-title">{title}</span>'
+            f'<span class="pub-src">{src}</span>'
+            f'{f"<span class=\'pub-meta\'>{extra}</span>" if extra else ""}'
+            f'</span></li>')
+
+
+def pubs_list(items, lang="ko", cls="pubs"):
+    return f'<ul class="{cls}">{"".join(pub_li(p, lang) for p in items)}</ul>'
+
+
+def pubs_by_kind(kind):
+    return [p for p in PUBS if p["kind"] == kind]
+
+
+def hero_svg():
+    """첫 화면 오른쪽 그림.
+
+    왼쪽은 실제 말소리처럼 들쭉날쭉한 파형, 오른쪽은 그 아래에서 찾아낸 규칙적인
+    무늬. 사이트 문장('말소리의 변화를 관찰하고, 그 안의 규칙을 찾습니다')을 그대로
+    그림으로 옮긴 것이다. 선만 쓰고 칠하지 않는다.
+    """
+    import math
+
+    W, H, MID = 560, 440, 214
+    bars = []
+    n_raw, x0, step = 44, 34, 5.9
+    for i in range(n_raw):
+        # 정해진 식으로 만든 들쭉날쭉함 — 매번 같은 모양이 나온다
+        a = (math.sin(i * 1.73) * 0.46 + math.sin(i * 0.61) * 0.30
+             + math.sin(i * 3.11) * 0.16 + math.sin(i * 0.23) * 0.08)
+        env = 0.45 + 0.55 * math.sin(min(i / n_raw, 1.0) * math.pi) ** 0.7
+        h = abs(a) * env * 96 + 3
+        x = x0 + i * step
+        bars.append(f'<line x1="{x:.1f}" y1="{MID - h:.1f}" x2="{x:.1f}" '
+                    f'y2="{MID + h:.1f}"/>')
+    raw = "".join(bars)
+
+    # 오른쪽 — 같은 자리에서 찾아낸 규칙
+    reg = []
+    n_reg, rx0, rstep = 15, 322, 13.4
+    for i in range(n_reg):
+        h = 26 + 40 * math.sin((i + 0.5) / n_reg * math.pi)
+        x = rx0 + i * rstep
+        reg.append(f'<line x1="{x:.1f}" y1="{MID - h:.1f}" x2="{x:.1f}" '
+                   f'y2="{MID + h:.1f}"/>')
+    regular = "".join(reg)
+
+    # 포먼트처럼 흐르는 두 곡선
+    def curve(y0, y1, y2, y3):
+        return (f'M34 {y0} C 150 {y1}, 240 {y2}, 320 {y2} '
+                f'S 470 {y3}, 526 {y3}')
+
+    f1 = curve(MID - 128, MID - 168, MID - 116, MID - 104)
+    f2 = curve(MID + 132, MID + 176, MID + 118, MID + 108)
+
+    ticks = "".join(f'<line x1="{34 + i * 61.6:.1f}" y1="{MID + 150}" '
+                    f'x2="{34 + i * 61.6:.1f}" y2="{MID + 158}"/>' for i in range(9))
+
+    return f'''<svg class="hero-art" viewBox="0 0 {W} {H}" role="img"
+  aria-label="들쭉날쭉한 말소리 파형이 오른쪽으로 가면서 규칙적인 무늬로 정리되는 그림"
+  xmlns="http://www.w3.org/2000/svg">
+  <g class="art-wave">{raw}</g>
+  <g class="art-reg">{regular}</g>
+  <path class="art-formant" d="{f1}"/>
+  <path class="art-formant" d="{f2}"/>
+  <line class="art-axis" x1="34" y1="{MID}" x2="526" y2="{MID}"/>
+  <g class="art-tick">{ticks}</g>
+  <line class="art-divide" x1="303" y1="{MID - 150}" x2="303" y2="{MID + 150}"/>
+  <circle class="art-dot" cx="303" cy="{MID}" r="3.2"/>
+</svg>'''
 
 CAREER = [("전남대학교 영어영문학과 부교수", "2025.03 – 현재"),
           ("조선대학교 영어교육과 교수", "2014.03 – 2025.02")]
@@ -179,21 +382,34 @@ POSTS = [
 # 연구 주제 ↔ 논문 ↔ 글 ↔ 강의를 잇는 실제 갈래
 THREADS = [
     ("한국어 활용의 변이와 유추", "Variation and Analogy in Korean Inflection",
-     "‘ㄹ’ 말음 어간의 활용에서 관찰되는 변이를 말뭉치와 설문으로 기술하고, 선택적 /ㄹ/ "
-     "삽입을 유추 기반으로 설명한 두 편의 논문이 여기에 있다.",
-     "Two papers describe variation in the inflection of ㄹ-final stems and account for "
-     "optional /ㄹ/ insertion through analogy.",
-     [2, 3], [9, 10, 12], ["영어음운론", "영어음운론심화"]),
+     "모음조화와 ‘ㄹ’ 말음 어간의 활용이 세대를 지나며 어떻게 흔들리는지를 말뭉치와 설문으로 "
+     "기술하고, 그 변이를 빈도와 유추로 설명한다. 박사학위논문에서 시작해 지금까지 이어지는 "
+     "가장 긴 줄기다.",
+     "How vowel harmony and the inflection of ㄹ-final stems shift across generations, "
+     "described from corpora and surveys and explained through frequency and analogy.",
+     ["linsert", "lstem", "harmonycorpus", "coronal", "harmonytime", "diss"],
+     [9, 10, 12], ["영어음운론", "영어음운론심화"]),
     ("제2언어의 강세 습득", "Acquiring Stress in a Second Language",
-     "몰입 환경이 한국인 학습자의 영어 강세 지각과 발화에 어떤 차이를 만드는지를 다룬다. "
-     "발음과 학습을 주제로 한 글들이 여기에 이어진다.",
-     "How immersion changes English stress perception and production in Korean learners.",
-     [0], [2, 5, 8], ["영어음성학", "영어학개론"]),
+     "한국인 학습자가 영어 강세를 어떤 음향 단서로 듣고 어떻게 발화하는지, 그리고 몰입 환경이 "
+     "그 차이를 얼마나 바꾸는지를 다룬다.",
+     "Which acoustic cues Korean learners rely on to hear and produce English stress, and "
+     "how far immersion changes them.",
+     ["l2immersion", "stressperc", "stressacoustic"],
+     [2, 5, 8], ["영어음성학", "영어학개론"]),
     ("조음과 음향의 미세한 조절", "Fine-Grained Articulatory and Acoustic Control",
-     "한국어 폐쇄음에서 나타나는 양방향 길이 조절을 음성학적으로 측정한 연구다. 소리의 "
-     "실현과 표기를 다룬 글들과 맞닿아 있다.",
-     "A phonetic study of bidirectional duration modulation in Korean oral stops.",
-     [1], [6, 11, 13], ["영어음성학", "영어학개관"]),
+     "폐쇄음의 길이와 성대 진동 시작 시간처럼, 귀로는 잘 구별되지 않는 미세한 조절을 측정한다. "
+     "모음 연쇄가 어떻게 해소되는지를 다룬 초기 연구도 여기에 닿아 있다.",
+     "Measuring fine control that the ear barely separates — stop duration, voice onset "
+     "time — reaching back to early work on how vowel sequences resolve.",
+     ["bidirdur", "vot", "durmod", "laryngeal", "hiatus", "blshiatus", "jasahiatus"],
+     [6, 11, 13], ["영어음성학", "영어학개관"]),
+    ("알타이 제어의 모음과 현장 음성학", "Vowels of Altaic Languages and Field Phonetics",
+     "부리야트어, 에벤어, 나나이어, 만주어처럼 사라져 가는 언어의 모음 체계를 현장에서 녹음해 "
+     "음향적으로 분석했다. 한국어에서 본 원리가 다른 언어에서도 작동하는지를 확인하는 자리다.",
+     "Acoustic fieldwork on the vowel systems of endangered languages — Buriat, Ewen, "
+     "Nanai, Manchu — testing whether principles found in Korean hold elsewhere.",
+     ["ewen", "nanai", "manchu", "ocpmemory", "tongueroot"],
+     [4, 5, 6], ["영어음성학", "영어학개론"]),
 ]
 
 # ── 원본에서 꺼내기 ──────────────────────────────────────────────────────
@@ -386,24 +602,24 @@ def build_home():
         </a>
         <span class="row-date">{ym.replace("-", ". ")}</span>
       </li>""" for n, t_ko, _, ym, _, tp, summ, _ in latest)
-    pubs = "".join(f"""
-      <li class="pub"><span class="pub-year">{y}</span>
-        <span class="pub-body"><span class="pub-title">{t}</span>
-        <span class="pub-src">{j} {v}</span></span></li>""" for y, t, j, v in PUBS[:3])
+    pubs = "".join(pub_li(p) for p in pubs_by_kind("article")[:4])
     ld = ('{"@context":"https://schema.org","@type":"WebSite","name":"강희조 | Hijo Kang",'
           '"url":"%s","inLanguage":["ko","en"],"about":["Phonetics","Phonology","Morphology"],'
           '"author":%s}' % (SITE, person_ld()))
     body = f"""{nav("index.html")}
 <main>
   <section class="hero">
-    <div class="wrap">
-      <p class="hero-en">{F["name_en"].upper()}</p>
-      <h1 class="hero-ko">{F["name_ko"]}</h1>
-      <p class="hero-tag">{F["tagline_ko"]}</p>
-      <p class="hero-role">{F["dept_ko"]} {F["rank_ko"]}<br>
-        음성학 · 음운론 · 형태론</p>
-      <p class="hero-cta"><a class="btn" href="research.html">연구 보기</a>
-        <a class="btn btn-ghost" href="blog.html">글 읽기</a></p>
+    <div class="wrap hero-in">
+      <div class="hero-text">
+        <p class="hero-en">{F["name_en"].upper()}</p>
+        <h1 class="hero-ko">{F["name_ko"]}</h1>
+        <p class="hero-tag">{F["tagline_ko"]}</p>
+        <p class="hero-role">{F["dept_ko"]} {F["rank_ko"]}<br>
+          음성학 · 음운론 · 형태론</p>
+        <p class="hero-cta"><a class="btn" href="research.html">연구 보기</a>
+          <a class="btn btn-ghost" href="blog.html">글 읽기</a></p>
+      </div>
+      <div class="hero-figure">{hero_svg()}</div>
     </div>
   </section>
 
@@ -526,6 +742,7 @@ def build_about():
 
 
 def build_research():
+    LANG = "ko"
     fields = "".join(f"""
     <article class="field-long">
       <p class="field-en">{en}</p>
@@ -534,10 +751,7 @@ def build_research():
     </article>""" for ko, en, d, _ in FIELDS)
     threads = ""
     for i, (ko, en, desc, _, pi, po, cs) in enumerate(THREADS, 1):
-        pl = "".join(f'<li><span class="pub-year">{PUBS[k][0]}</span>'
-                     f'<span class="pub-body"><span class="pub-title">{PUBS[k][1]}</span>'
-                     f'<span class="pub-src">{PUBS[k][2]} {PUBS[k][3]}</span></span></li>'
-                     for k in pi)
+        pl = "".join(pub_li(PUB_BY_ID[k], LANG) for k in pi)
         el = "".join(f'<li><a href="post{n}.html">{dict((p[0], p[1]) for p in POSTS)[n]}</a></li>'
                      for n in po)
         cl = "".join(f"<li>{c}</li>" for c in cs)
@@ -553,10 +767,7 @@ def build_research():
         <div><h4 class="thread-h">관련 강의</h4><ul class="linklist plain">{cl}</ul></div>
       </div>
     </section>"""
-    allpubs = "".join(f"""
-      <li class="pub"><span class="pub-year">{y}</span>
-        <span class="pub-body"><span class="pub-title">{t}</span>
-        <span class="pub-src">{j} {v}</span></span></li>""" for y, t, j, v in PUBS)
+    arts = pubs_by_kind("article")
     body = f"""{nav("research.html")}
 <main class="wrap doc">
   <p class="crumb"><a href="index.html">홈</a> <span>›</span> 연구</p>
@@ -570,10 +781,18 @@ def build_research():
     것입니다.</p>
   {threads}
 
-  <h2 class="doc-h2">논문</h2>
-  <ul class="pubs">{allpubs}</ul>
-  <p class="doc-note">전체 목록은 <a href="{F["jnu_url"]}" rel="noopener">학과 교수 소개
-    페이지</a>에서도 확인할 수 있습니다.</p>
+  <h2 class="doc-h2">학술지 논문 <span class="count">{len(arts)}편</span></h2>
+  {pubs_list(arts, LANG)}
+
+  <h2 class="doc-h2">학위논문</h2>
+  {pubs_list(pubs_by_kind("dissertation"), LANG)}
+
+  <h2 class="doc-h2">학술대회 발표</h2>
+  {pubs_list(pubs_by_kind("conference"), LANG)}
+
+  <p class="doc-note">서지는 <a href="{F["jnu_url"]}" rel="noopener">학과 교수 소개
+    페이지</a>와 Crossref·OpenAlex 기록을 대조해 정리했습니다. DOI 가 있는 항목은
+    제목을 눌러 원문 정보로 갈 수 있습니다.</p>
 </main>
 {foot()}"""
     return page(f'연구 | {F["name_ko"]}',
@@ -765,27 +984,28 @@ def build_post(meta, src_dir):
 # ── 영문 ────────────────────────────────────────────────────────────────
 
 def build_en_home():
+    LANG = "en"
     fields = "".join(f"""
       <article class="field">
         <p class="field-en">{ko}</p>
         <h3 class="field-ko">{en}</h3>
         <p class="field-desc">{d_en}</p>
       </article>""" for ko, en, _, d_en in FIELDS)
-    pubs = "".join(f"""
-      <li class="pub"><span class="pub-year">{y}</span>
-        <span class="pub-body"><span class="pub-title">{t}</span>
-        <span class="pub-src">{j} {v}</span></span></li>""" for y, t, j, v in PUBS)
+    pubs = "".join(pub_li(p, LANG) for p in pubs_by_kind("article")[:5])
     body = f"""{nav("index.html", "en")}
 <main>
   <section class="hero">
-    <div class="wrap">
-      <p class="hero-en">{F["name_en"].upper()}</p>
-      <h1 class="hero-ko">{F["name_en"]}</h1>
-      <p class="hero-tag">{F["tagline_en"]}</p>
-      <p class="hero-role">{F["rank_en"]}, Department of English Language and Literature<br>
-        Chonnam National University<br>Phonetics · Phonology · Morphology</p>
-      <p class="hero-cta"><a class="btn" href="research.html">Research</a>
-        <a class="btn btn-ghost" href="writing.html">Writing</a></p>
+    <div class="wrap hero-in">
+      <div class="hero-text">
+        <p class="hero-en">{F["name_en"].upper()}</p>
+        <h1 class="hero-ko">{F["name_en"]}</h1>
+        <p class="hero-tag">{F["tagline_en"]}</p>
+        <p class="hero-role">{F["rank_en"]}, Department of English Language and Literature<br>
+          Chonnam National University<br>Phonetics · Phonology · Morphology</p>
+        <p class="hero-cta"><a class="btn" href="research.html">Research</a>
+          <a class="btn btn-ghost" href="writing.html">Writing</a></p>
+      </div>
+      <div class="hero-figure">{hero_svg()}</div>
     </div>
   </section>
   <section class="band"><div class="wrap">
@@ -857,15 +1077,13 @@ def build_en_about():
 
 
 def build_en_research():
+    LANG = "en"
     fields = "".join(f"""
     <article class="field-long"><p class="field-en">{ko}</p>
       <h3 class="field-ko">{en}</h3><p>{d_en}</p></article>""" for ko, en, _, d_en in FIELDS)
     threads = ""
     for i, (ko, en, _, desc_en, pi, po, _) in enumerate(THREADS, 1):
-        pl = "".join(f'<li><span class="pub-year">{PUBS[k][0]}</span>'
-                     f'<span class="pub-body"><span class="pub-title">{PUBS[k][1]}</span>'
-                     f'<span class="pub-src">{PUBS[k][2]} {PUBS[k][3]}</span></span></li>'
-                     for k in pi)
+        pl = "".join(pub_li(PUB_BY_ID[k], LANG) for k in pi)
         el = "".join(f'<li><a href="../post{n}.html" hreflang="ko">'
                      f'{dict((p[0], p[2]) for p in POSTS)[n]}</a>'
                      f'<span class="g-date">in Korean</span></li>' for n in po)
@@ -877,10 +1095,7 @@ def build_en_research():
         <div><h4 class="thread-h">Papers</h4><ul class="pubs tight">{pl}</ul></div>
         <div><h4 class="thread-h">Related essays</h4><ul class="linklist">{el}</ul></div>
       </div></section>"""
-    allpubs = "".join(f"""
-      <li class="pub"><span class="pub-year">{y}</span>
-        <span class="pub-body"><span class="pub-title">{t}</span>
-        <span class="pub-src">{j} {v}</span></span></li>""" for y, t, j, v in PUBS)
+    arts = pubs_by_kind("article")
     body = f"""{nav("research.html", "en")}
 <main class="wrap doc">
   <p class="crumb"><a href="index.html">Home</a> <span>›</span> Research</p>
@@ -891,8 +1106,12 @@ def build_en_research():
   <div class="fields-long">{fields}</div>
   <p class="doc-note">Below, papers, essays and courses are grouped by topic.</p>
   {threads}
-  <h2 class="doc-h2">Publications</h2>
-  <ul class="pubs">{allpubs}</ul>
+  <h2 class="doc-h2">Journal Articles <span class="count">{len(arts)}</span></h2>
+  {pubs_list(arts, LANG)}
+  <h2 class="doc-h2">Dissertation</h2>
+  {pubs_list(pubs_by_kind("dissertation"), LANG)}
+  <h2 class="doc-h2">Conference Presentations</h2>
+  {pubs_list(pubs_by_kind("conference"), LANG)}
 </main>
 {foot("en")}"""
     return page(f'Research | {F["name_en"]}',

@@ -115,6 +115,28 @@ ul, ol { list-style: none; }
 
 .hero { padding: 86px 0 74px; border-bottom: 1px solid var(--rule); }
 
+.hero-in {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-text { min-width: 0; }
+.hero-figure { min-width: 0; }
+
+/* 첫 화면 그림 — 선만 쓰고 칠하지 않는다 */
+.hero-art { width: 100%; height: auto; display: block; overflow: visible; }
+.hero-art g, .hero-art path, .hero-art line, .hero-art circle { fill: none; }
+
+.art-wave line { stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; }
+.art-reg line { stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round; }
+.art-formant { stroke: var(--rule-2); stroke-width: 1; }
+.art-axis { stroke: var(--ink); stroke-width: 1; }
+.art-tick line { stroke: var(--rule-2); stroke-width: 1; }
+.art-divide { stroke: var(--rule-2); stroke-width: 1; stroke-dasharray: 3 5; }
+.art-dot { fill: var(--accent); stroke: none; }
+
 .hero-en {
   font-family: var(--serif);
   font-size: 12px;
@@ -332,10 +354,31 @@ ul, ol { list-style: none; }
   flex: 0 0 52px;
 }
 
-.pub-body { flex: 1; }
+.pub-body { flex: 1; min-width: 0; }
 .pub-title { display: block; font-size: 15px; line-height: 1.65; color: var(--ink); }
 .pub-src { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; }
 .pubs.tight li { padding: 12px 0; }
+
+.pub-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  margin-top: 6px;
+}
+
+.pub-au { font-size: 12.5px; color: var(--ink-3); }
+
+.pub-doi {
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  padding: 1px 7px;
+}
+
+.pub-doi:hover { border-color: var(--accent); }
 
 /* ── 문서형 쪽 ──────────────────────────────────────────────────────── */
 
@@ -672,6 +715,10 @@ ul, ol { list-style: none; }
   .hero-ko { font-size: 46px; }
   .hero-tag { font-size: 21px; margin-top: 20px; }
 
+  /* 첫 화면은 한 줄에 하나씩 — 글이 먼저, 그림이 아래로 */
+  .hero-in { grid-template-columns: 1fr; gap: 40px; }
+  .hero-figure { max-width: 460px; }
+
   .band { padding: 46px 0; }
 
   /* 카드 그리드는 한 줄에 하나씩 */
@@ -727,9 +774,14 @@ ul, ol { list-style: none; }
   .doc-lede { font-size: 16.5px; }
   .doc-h2 { margin: 44px 0 18px; }
 
+  /* 첫 화면 그림은 폭을 다 쓰되 여백을 줄인다 */
+  .hero-in { gap: 32px; }
+  .hero-figure { max-width: none; margin-right: -4px; }
+
   /* 논문·경력 줄도 세로로 */
   .pubs li { flex-direction: column; gap: 4px; }
   .pub-year { flex: 0 0 auto; }
+  .pub-meta { gap: 4px 10px; margin-top: 8px; }
   .cv, .course, .linklist li { flex-direction: column; align-items: flex-start; gap: 4px; }
   .cv-when, .course-en, .g-date { white-space: normal; }
 
