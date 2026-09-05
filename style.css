@@ -49,7 +49,17 @@ ul, ol { list-style: none; }
 
 /* ── 머리 ───────────────────────────────────────────────────────────── */
 
-.masthead { border-bottom: 1px solid var(--rule); background: var(--bg); }
+/* 스크롤을 내려도 따라온다. 흰 배경을 깔아야 본문이 비쳐 보이지 않는다 */
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+
+/* 앵커로 뛸 때 제목이 고정 헤더 뒤로 숨지 않게 */
+.group { scroll-margin-top: 132px; }
 
 .masthead-in {
   display: flex;
@@ -740,10 +750,29 @@ ul, ol { list-style: none; }
 @media (max-width: 900px) {
   :root { --pad: 24px; }
 
-  /* 제목은 그대로 두고 메뉴만 아랫줄로. 넘치면 가로로 민다 */
-  .masthead-in { flex-direction: column; align-items: stretch; gap: 14px; }
-  .gnb { gap: 18px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  /* 헤더가 화면에 붙어 있으므로 좁은 폭에서는 한 줄로 눌러 담는다.
+     소속 줄은 접고(발치와 소개 쪽에 그대로 있다) 이름과 메뉴만 남긴다 */
+  .masthead-in {
+    align-items: center;
+    gap: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .brand-sub { display: none; }
+  .brand-en { font-size: 10px; margin-bottom: 1px; }
+
+  /* 메뉴가 넘치면 가로로 민다 — 줄바꿈이나 찌그러짐 금지 */
+  .gnb {
+    gap: 15px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
   .gnb::-webkit-scrollbar { display: none; }
+
+  .group { scroll-margin-top: 84px; }
 
   .hero { padding: 58px 0 50px; }
   .hero-ko { font-size: 46px; }
