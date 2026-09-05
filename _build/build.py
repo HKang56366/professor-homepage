@@ -53,9 +53,10 @@ F = {
 #   강의 — 담당 과목(음성학·음운론·영어학개론)이 실제로 다루는 일
 #   에세이 — 글 목록 설명의 '강의실에서 다 하지 못한 이야기'
 PAGE_KEY = {
-    # about 은 쓰지 않는다 — 같은 문장이 프로필 본문에 이미 있어 두 번 나왔다
-    "about": ("프로필", "언어들의 차이를 걷어내면, 그 아래에서는 비슷한 일이 일어납니다",
-              "Profile", "Strip away the differences, and languages do much the same thing"),
+    # 프로필은 본문이 짧아 설명글을 따로 두지 않는다 — 큰 문장 하나로 세운다
+    "about": ("프로필", "말소리의 변화를 관찰하고, 그 안의 규칙을 찾습니다",
+              "Profile",
+              "Observing how speech sounds change, and finding the patterns behind them"),
     "research": ("연구분야", "귀로는 스쳐 지나가는 차이를, 숫자로 붙잡습니다",
                  "Research", "Catching in numbers the differences the ear lets slip past"),
     "teaching": ("강의", "말소리를 듣고, 적고, 설명하는 법을 가르칩니다",
@@ -502,11 +503,12 @@ def doc_head(crumb, key, lede, art=None, lang="ko"):
     art 를 주면 오른쪽에 그림이 붙고, 없으면 한 단으로 선다.
     """
     kicker, title = (key[0], key[1]) if lang == "ko" else (key[2], key[3])
+    sub = f'<p class="doc-lede">{lede}</p>' if lede else ""
     text = f'''<div class="doc-head-text">
       {crumb}
       <p class="doc-kicker">{kicker}</p>
       <h1 class="doc-title">{title}</h1>
-      <p class="doc-lede">{lede}</p>
+      {sub}
     </div>'''
     if art is None:
         return f'<div class="doc-head doc-head-solo">{text}</div>'
@@ -1020,9 +1022,8 @@ def build_about():
           '"mainEntity":%s,"dateModified":"%s"}' % (person_ld(), BUILD_DATE))
     body = f"""{nav("about.html")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">홈</a> <span>›</span> 프로필</p>
-  <h1 class="doc-title">프로필</h1>
-  <p class="doc-lede">{F["tagline_ko"]}</p>
+  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 프로필</p>',
+            PAGE_KEY["about"], "")}
 
   <div class="profile">
     <div class="profile-img"><img src="images/profile.jpg" alt="{F["name_ko"]} 교수"
@@ -1367,9 +1368,8 @@ def build_en_about():
                   f'<span class="cv-when">{s}</span></li>' for d, s in EDU_EN)
     body = f"""{nav("about.html", "en")}
 <main class="wrap doc">
-  <p class="crumb"><a href="index.html">Home</a> <span>›</span> Profile</p>
-  <h1 class="doc-title">Profile</h1>
-  <p class="doc-lede">{F["tagline_en"]}</p>
+  {doc_head('<p class="crumb"><a href="index.html">Home</a> <span>›</span> Profile</p>',
+            PAGE_KEY["about"], "", None, "en")}
   <div class="profile">
     <div class="profile-img"><img src="../images/profile.jpg" alt="{F["name_en"]}"
       width="240" height="300" loading="lazy"></div>
