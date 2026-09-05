@@ -213,6 +213,61 @@ def pubs_by_kind(kind):
     return [p for p in PUBS if p["kind"] == kind]
 
 
+# 절 제목 앞 아이콘. 선만 쓰고 칠하지 않는다 — 사이트의 다른 요소와 같은 규칙.
+# 16px 격자 안에서 1.5~14.5 사이에 그린다.
+ICONS = {
+    # 말소리 파형 — 연구 분야
+    "wave": '<path d="M2 6v4M5.2 3.2v9.6M8.4 5v6M11.6 2.4v11.2M14.8 6.4v3.2"/>',
+    # 논문 한 쪽
+    "doc": ('<path d="M4.5 1.8h4.6l3.4 3.4v9a1 1 0 0 1-1 1H4.5a1 1 0 0 1-1-1V2.8'
+            'a1 1 0 0 1 1-1z"/><path d="M9.1 1.8v3.4h3.4"/>'
+            '<path d="M6 9.2h4M6 11.6h4"/>'),
+    # 학사모 — 학력
+    "cap": ('<path d="M8 2.2 15 5.6 8 9 1 5.6z"/>'
+            '<path d="M4.2 7.1v3.5c0 1.1 1.7 2 3.8 2s3.8-.9 3.8-2V7.1"/>'),
+    # 펼친 책 — 학위논문·강의
+    "book": ('<path d="M8 4.6C8 3.3 6.6 2.6 4.9 2.6H1.8v9.2h3.1c1.7 0 3.1.7 3.1 2"/>'
+             '<path d="M8 4.6c0-1.3 1.4-2 3.1-2h3.1v9.2h-3.1c-1.7 0-3.1.7-3.1 2"/>'
+             '<path d="M8 4.6v9.2"/>'),
+    # 퍼져 나가는 소리 — 학술대회 발표
+    "talk": ('<circle cx="4.2" cy="8" r="1.7"/>'
+             '<path d="M7.8 4.9a4.6 4.6 0 0 1 0 6.2"/>'
+             '<path d="M10.9 2.5a8.2 8.2 0 0 1 0 11"/>'),
+    # 서류가방 — 경력
+    "career": ('<path d="M2.4 5.2h11.2a1 1 0 0 1 1 1v6.4a1 1 0 0 1-1 1H2.4'
+               'a1 1 0 0 1-1-1V6.2a1 1 0 0 1 1-1z"/>'
+               '<path d="M5.9 5.2V3.7a1 1 0 0 1 1-1h2.2a1 1 0 0 1 1 1v1.5"/>'
+               '<path d="M1.4 8.7h13.2"/>'),
+    # 편지 — 연락처
+    "mail": ('<path d="M2.4 4h11.2a1 1 0 0 1 1 1v6.2a1 1 0 0 1-1 1H2.4a1 1 0 0 1-1-1V5'
+             'a1 1 0 0 1 1-1z"/><path d="m1.7 5 6.3 4.1L14.3 5"/>'),
+    # 줄글 목록 — 글 전체
+    "list": ('<path d="M2 4.4h1.2M2 8h1.2M2 11.6h1.2"/>'
+             '<path d="M5.8 4.4h8.2M5.8 8h8.2M5.8 11.6h8.2"/>'),
+    # 꼬리표 — 주제로 찾기
+    "tag": ('<path d="M8.8 2.4H3.4a1 1 0 0 0-1 1v5.4a1 1 0 0 0 .3.7l5.4 5.4a1 1 0 0 0 '
+            '1.4 0l4.7-4.7a1 1 0 0 0 0-1.4L9.5 2.7a1 1 0 0 0-.7-.3z"/>'
+            '<circle cx="5.9" cy="5.9" r="1.1"/>'),
+    # 접어 둔 자리 — 이 달의 글
+    "mark": '<path d="M4.2 2.2h7.6v11.6l-3.8-2.9-3.8 2.9z"/>',
+    # 사람 — 소개
+    "person": ('<circle cx="8" cy="5.5" r="2.6"/>'
+               '<path d="M2.9 13.8a5.6 5.6 0 0 1 10.2 0"/>'),
+}
+
+
+def icon(name):
+    return (f'<svg class="sec-icon" viewBox="0 0 16 16" aria-hidden="true" '
+            f'focusable="false" xmlns="http://www.w3.org/2000/svg">'
+            f'{ICONS[name]}</svg>')
+
+
+def h2(title, name, cls="doc-h2", extra=""):
+    """아이콘을 앞에 단 절 제목."""
+    return (f'<h2 class="{cls}">{icon(name)}'
+            f'<span class="sec-label">{title}</span>{extra}</h2>')
+
+
 def hero_svg():
     """첫 화면 오른쪽 그림.
 
@@ -644,14 +699,14 @@ def build_home():
 
   <section class="band">
     <div class="wrap">
-      <h2 class="sec-title">연구 분야</h2>
+      {h2("연구 분야", "wave", "sec-title")}
       <div class="fields">{fields}</div>
     </div>
   </section>
 
   <section class="band">
     <div class="wrap">
-      <h2 class="sec-title">이 달의 글</h2>
+      {h2("이 달의 글", "mark", "sec-title")}
       <a class="feature" href="post{feat[0]}.html">
         <p class="feature-kicker">{" · ".join(TOPICS[t][0] for t in feat[5])}</p>
         <h3 class="feature-title">{feat[1]}</h3>
@@ -663,7 +718,7 @@ def build_home():
 
   <section class="band">
     <div class="wrap">
-      <h2 class="sec-title">최근 글</h2>
+      {h2("최근 글", "list", "sec-title")}
       <ul class="rows">{latest_html}</ul>
       <p class="more"><a href="blog.html">글 전체 보기 →</a></p>
     </div>
@@ -671,7 +726,7 @@ def build_home():
 
   <section class="band">
     <div class="wrap">
-      <h2 class="sec-title">대표 논문</h2>
+      {h2("대표 논문", "doc", "sec-title")}
       <ul class="pubs">{pubs}</ul>
       <p class="more"><a href="research.html">연구 전체 보기 →</a></p>
     </div>
@@ -679,7 +734,7 @@ def build_home():
 
   <section class="band">
     <div class="wrap">
-      <h2 class="sec-title">강의</h2>
+      {h2("강의", "book", "sec-title")}
       <p class="band-lede">학부에서 영어음성학, 영어음운론, 영어학개론, 영어학개관을,
         대학원에서 영어음운론과 영어음운론심화를 맡고 있습니다.</p>
       <p class="more"><a href="teaching.html">강의 전체 보기 →</a></p>
@@ -688,7 +743,7 @@ def build_home():
 
   <section class="band">
     <div class="wrap about-strip">
-      <h2 class="sec-title">소개</h2>
+      {h2("소개", "person", "sec-title")}
       <p class="band-lede">영어와 관련된 언어학개론, 음성학, 음운론을 가르치고 있으며,
         영어 및 한국어를 포함한 다양한 언어를 음운론적 관점에서 분석하는 연구를 수행하고
         있습니다.</p>
@@ -731,13 +786,13 @@ def build_about():
     </div>
   </div>
 
-  <h2 class="doc-h2">경력</h2>
+  {h2("경력", "career")}
   <ul class="cvlist">{career}</ul>
 
-  <h2 class="doc-h2">학력</h2>
+  {h2("학력", "cap")}
   <ul class="cvlist">{edu}</ul>
 
-  <h2 class="doc-h2">연락처</h2>
+  {h2("연락처", "mail")}
   <table class="kv">
     <tr><th>이메일</th><td><a href="mailto:{F["email_univ"]}">{F["email_univ"]}</a></td></tr>
     <tr><th>연구실</th><td>{F["office"]}</td></tr>
@@ -794,19 +849,19 @@ def build_research():
   <p class="doc-lede">음성학, 음운론, 형태론. 영어와 한국어를 함께 놓고 말소리의 실현과
     변화를 관찰합니다.</p>
 
-  <h2 class="doc-h2">연구 분야</h2>
+  {h2("연구 분야", "wave")}
   <div class="fields-long">{fields}</div>
   <p class="doc-note">아래는 논문과 글, 강의가 어떻게 이어지는지를 주제별로 묶은
     것입니다.</p>
   {threads}
 
-  <h2 class="doc-h2">학술지 논문 <span class="count">{len(arts)}편</span></h2>
+  {h2("학술지 논문", "doc", extra=f'<span class="count">{len(arts)}편</span>')}
   {pubs_list(arts, LANG)}
 
-  <h2 class="doc-h2">학위논문</h2>
+  {h2("학위논문", "book")}
   {pubs_list(pubs_by_kind("dissertation"), LANG)}
 
-  <h2 class="doc-h2">학술대회 발표</h2>
+  {h2("학술대회 발표", "talk")}
   {pubs_list(pubs_by_kind("conference"), LANG)}
 
   <p class="doc-note">서지는 <a href="{F["jnu_url"]}" rel="noopener">학과 교수 소개
@@ -826,14 +881,14 @@ def build_teaching():
     for level, courses in COURSES:
         rows = "".join(f'<li class="course"><span class="course-ko">{ko}</span>'
                        f'<span class="course-en">{en}</span></li>' for ko, en in courses)
-        secs += f'<h2 class="doc-h2">{level}</h2><ul class="courses">{rows}</ul>'
+        secs += (h2(level, "book") + f'<ul class="courses">{rows}</ul>')
     body = f"""{nav("teaching.html")}
 <main class="wrap doc">
   <p class="crumb"><a href="index.html">홈</a> <span>›</span> 강의</p>
   <h1 class="doc-title">강의</h1>
   <p class="doc-lede">영어와 관련된 언어학개론, 음성학, 음운론을 가르치고 있습니다.</p>
   {secs}
-  <h2 class="doc-h2">수강생에게</h2>
+  {h2("수강생에게", "mail")}
   <div class="note">
     <p>강의계획서와 과제 안내는 학교 LMS를 통해 공지합니다. 수업 관련 문의는
       <a href="mailto:{F["email_univ"]}">{F["email_univ"]}</a>로 편하게 연락 주세요.
@@ -890,10 +945,10 @@ def build_index_of_posts():
     한 달에 두 편 정도 적어 둡니다.</p>
   <ul class="chips chips-link">{chips}</ul>
 
-  <h2 class="doc-h2">전체 <span class="count">{len(POSTS)}편</span></h2>
+  {h2("전체", "list", extra=f'<span class="count">{len(POSTS)}편</span>')}
   <ul class="rows">{rows}</ul>
 
-  <h2 class="doc-h2">주제로 찾기</h2>
+  {h2("주제로 찾기", "tag")}
   <div class="groups">{groups}</div>
 </main>
 {foot()}"""
@@ -987,7 +1042,7 @@ def build_post(meta, src_dir):
     <nav class="pager">{pager}</nav>
 
     <section class="related">
-      <h2 class="rel-title">함께 읽기</h2>
+      {h2("함께 읽기", "list", "rel-title")}
       <ul class="rels">{rel}</ul>
     </section>
 
@@ -1028,16 +1083,16 @@ def build_en_home():
     </div>
   </section>
   <section class="band"><div class="wrap">
-    <h2 class="sec-title">Research Areas</h2>
+    {h2("Research Areas", "wave", "sec-title")}
     <div class="fields">{fields}</div>
   </div></section>
   <section class="band"><div class="wrap">
-    <h2 class="sec-title">Publications</h2>
+    {h2("Publications", "doc", "sec-title")}
     <ul class="pubs">{pubs}</ul>
     <p class="more"><a href="research.html">See research →</a></p>
   </div></section>
   <section class="band"><div class="wrap">
-    <h2 class="sec-title">Writing</h2>
+    {h2("Writing", "list", "sec-title")}
     <p class="band-lede">Essays on language change, speech sounds, and learning a second
       language. Written in Korean, with English summaries.</p>
     <p class="more"><a href="writing.html">See all essays →</a></p>
@@ -1074,11 +1129,11 @@ def build_en_about():
       <ul class="chips">{"".join(f'<li>{en}</li>' for _, en, _, _ in FIELDS)}</ul>
     </div>
   </div>
-  <h2 class="doc-h2">Appointments</h2>
+  {h2("Appointments", "career")}
   <ul class="cvlist">{career}</ul>
-  <h2 class="doc-h2">Education</h2>
+  {h2("Education", "cap")}
   <ul class="cvlist">{edu}</ul>
-  <h2 class="doc-h2">Contact</h2>
+  {h2("Contact", "mail")}
   <table class="kv">
     <tr><th>Email</th><td><a href="mailto:{F["email_univ"]}">{F["email_univ"]}</a></td></tr>
     <tr><th>Office</th><td>{F["office_en"]}</td></tr>
@@ -1121,15 +1176,15 @@ def build_en_research():
   <h1 class="doc-title">Research</h1>
   <p class="doc-lede">Phonetics, phonology, and morphology — observing how speech sounds
     are realised and how they change, with English and Korean side by side.</p>
-  <h2 class="doc-h2">Research Areas</h2>
+  {h2("Research Areas", "wave")}
   <div class="fields-long">{fields}</div>
   <p class="doc-note">Below, papers, essays and courses are grouped by topic.</p>
   {threads}
-  <h2 class="doc-h2">Journal Articles <span class="count">{len(arts)}</span></h2>
+  {h2("Journal Articles", "doc", extra=f'<span class="count">{len(arts)}</span>')}
   {pubs_list(arts, LANG)}
-  <h2 class="doc-h2">Dissertation</h2>
+  {h2("Dissertation", "book")}
   {pubs_list(pubs_by_kind("dissertation"), LANG)}
-  <h2 class="doc-h2">Conference Presentations</h2>
+  {h2("Conference Presentations", "talk")}
   {pubs_list(pubs_by_kind("conference"), LANG)}
 </main>
 {foot("en")}"""
@@ -1146,7 +1201,7 @@ def build_en_teaching():
         lv = "Undergraduate" if level == "학부" else "Graduate"
         rows = "".join(f'<li class="course"><span class="course-ko">{en}</span>'
                        f'<span class="course-en">{ko}</span></li>' for ko, en in courses)
-        secs += f'<h2 class="doc-h2">{lv}</h2><ul class="courses">{rows}</ul>'
+        secs += (h2(lv, "book") + f'<ul class="courses">{rows}</ul>')
     body = f"""{nav("teaching.html", "en")}
 <main class="wrap doc">
   <p class="crumb"><a href="index.html">Home</a> <span>›</span> Teaching</p>
@@ -1183,7 +1238,7 @@ def build_en_writing():
     learning — roughly two a month.</p>
   <div class="note"><p><strong>The essays are written in Korean.</strong> Titles and
     summaries below are in English; following a link opens the Korean text.</p></div>
-  <h2 class="doc-h2">All essays <span class="count">{len(POSTS)}</span></h2>
+  {h2("All essays", "list", extra=f'<span class="count">{len(POSTS)}</span>')}
   <ul class="rows">{rows}</ul>
 </main>
 {foot("en")}"""
