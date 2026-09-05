@@ -35,6 +35,16 @@ F = {
                 "Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG"),
     "tagline_ko": "말소리의 변화를 관찰하고, 그 안의 규칙을 찾습니다.",
     "tagline_en": "Observing how speech sounds change — and finding the patterns behind them.",
+    # 첫 화면의 키 메시지. 이름은 이미 머리글에 있으므로, 여기서는 이 사이트가
+    # 무엇을 말하는 곳인지를 먼저 말한다. 연구(변이·유추)와 칼럼(언어 변화)이
+    # 함께 향하는 한 문장이다.
+    "key_kicker": "PHONETICS · PHONOLOGY · MORPHOLOGY",
+    "key_ko": "말소리는 지금도 변하고 있습니다",
+    "key_sub_ko": "그 변화에는 규칙이 있습니다. 한국어와 영어를 함께 놓고 "
+                  "그 규칙을 찾습니다.",
+    "key_en": "Speech sounds are still changing",
+    "key_sub_en": "And the change follows rules. I look for them with Korean and "
+                  "English side by side.",
 }
 
 FIELDS = [
@@ -858,11 +868,10 @@ def build_home():
   <section class="hero">
     <div class="wrap hero-in">
       <div class="hero-text">
-        <p class="hero-en">{F["name_en"].upper()}</p>
-        <h1 class="hero-ko">{F["name_ko"]}</h1>
-        <p class="hero-tag">{F["tagline_ko"]}</p>
-        <p class="hero-role">{F["dept_ko"]} {F["rank_ko"]}<br>
-          음성학 · 음운론 · 형태론</p>
+        <p class="hero-en">{F["key_kicker"]}</p>
+        <h1 class="hero-ko">{F["key_ko"]}</h1>
+        <p class="hero-tag">{F["key_sub_ko"]}</p>
+        <p class="hero-role">{F["name_ko"]} · {F["dept_ko"]} {F["rank_ko"]}</p>
         <p class="hero-cta"><a class="btn" href="research.html">연구 보기</a>
           <a class="btn btn-ghost" href="blog.html">칼럼 읽기</a></p>
       </div>
@@ -1245,11 +1254,11 @@ def build_en_home():
   <section class="hero">
     <div class="wrap hero-in">
       <div class="hero-text">
-        <p class="hero-en">{F["name_en"].upper()}</p>
-        <h1 class="hero-ko">{F["name_en"]}</h1>
-        <p class="hero-tag">{F["tagline_en"]}</p>
-        <p class="hero-role">{F["rank_en"]}, Department of English Language and Literature<br>
-          Chonnam National University<br>Phonetics · Phonology · Morphology</p>
+        <p class="hero-en">{F["key_kicker"]}</p>
+        <h1 class="hero-ko">{F["key_en"]}</h1>
+        <p class="hero-tag">{F["key_sub_en"]}</p>
+        <p class="hero-role">{F["name_en"]} · {F["rank_en"]},
+          Chonnam National University</p>
         <p class="hero-cta"><a class="btn" href="research.html">Research</a>
           <a class="btn btn-ghost" href="writing.html">Essays</a></p>
       </div>
