@@ -1207,6 +1207,8 @@ def build_index_of_posts():
   <ul class="rows">{rows}</ul>
 
   {h2("주제로 찾기", "tag")}
+  <p class="doc-note">한 편이 여러 주제에 걸쳐 있습니다. 그래서 아래 편수를 모두
+    더하면 전체 {len(POSTS)}편보다 많습니다.</p>
   <div class="groups">{groups}</div>
 </main>
 {foot()}"""
