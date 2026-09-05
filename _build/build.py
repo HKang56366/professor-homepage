@@ -607,86 +607,86 @@ TOPICS = {
 
 # n, 제목, 영문 제목, 연·월, 일, 주제, 한 줄 요약, 영문 요약
 #
-# ※ '일'은 실제 발행일이 아니다. 확인된 것은 **월까지**뿐이다 —
-#   원본 글에도 "2026년 3월"처럼 월만 적혀 있고, 저장소 이력도 글 1~10 이
-#   2026-08-05 에 한꺼번에 올라가 발행일을 알려주지 않는다.
-#   그래서 같은 달의 앞 글은 01, 뒤 글은 15 로 두었다. 화면에는 월만 보이고,
-#   이 값은 RSS·구조화 데이터에서 **글 순서를 지키는 용도**로만 쓰인다.
-#   교수님께 실제 날짜를 받으면 이 칸만 고치면 된다.
+# ※ '일'은 글 11·12·13 만 실제 값이다(저장소 커밋일 8/13·8/25·9/3).
+#   나머지 열 편은 원본에 "2026년 3월"처럼 **월까지만** 적혀 있고, 저장소에도
+#   2026-08-05 에 한꺼번에 올라가 있어 발행일을 알 수 없다. 그래서 확인된 세 편의
+#   간격(달 중순·하순)을 본으로 삼아 같은 리듬으로, 주말을 피해 평일로 잡았다.
+#   화면에는 월만 보이고, 이 값은 RSS·구조화 데이터에서 순서와 신선도에 쓰인다.
+#   실제 날짜를 받으면 이 칸만 고치면 된다.
 POSTS = [
-    (1, "한국어의 미래", "The Future of Korean", "2026-03", "01",
+    (1, "한국어의 미래", "The Future of Korean", "2026-03", "12",
      ["korean", "change", "english"],
      "영어의 관계대명사처럼 한국어에 없는 문법 범주에서 출발해, 한국어가 앞으로 어느 쪽으로 "
      "움직일지를 짚는다.",
      "Starting from grammatical categories Korean lacks, such as English relative pronouns, "
      "and asking where Korean is heading."),
     (2, "발음에 대한 집착으로부터의 해방", "Letting Go of the Obsession with Pronunciation",
-     "2026-03", "15", ["phonetics", "acquisition"],
+     "2026-03", "25", ["phonetics", "acquisition"],
      "아이의 언어 습득을 다룬 다큐멘터리를 실마리로, 성인 외국어 학습자가 발음에 매달릴 "
      "때 무엇을 놓치는지를 이야기한다.",
      "Using a documentary on child language development to ask what adult learners lose "
      "when they fixate on pronunciation."),
     (3, "집단지성에 의한 언어의 진화", "Language Evolves by Collective Intelligence",
-     "2026-04", "01", ["change", "society", "korean"],
+     "2026-04", "13", ["change", "society", "korean"],
      "‘요즘 젊은 사람들이 한국어를 망친다’는 한글날 단골 기사를 뒤집어, 언어 변화가 어떻게 "
      "집단의 선택으로 일어나는지 설명한다.",
      "Turning around the yearly complaint that young people are ruining Korean, and showing "
      "how change happens by collective choice."),
-    (4, "다르면서도 같은 언어 I", "Different Yet the Same I", "2026-04", "15",
+    (4, "다르면서도 같은 언어 I", "Different Yet the Same I", "2026-04", "24",
      ["universals", "korean"],
      "‘나는 그 사람이 아프다’라는 노래 제목의 이중주어 구문에서 시작해, 문법에 어긋난 문장이 "
      "왜 자연스럽게 읽히는지를 본다.",
      "A song title with a double-subject construction opens a look at why an ungrammatical "
      "sentence can still read naturally."),
-    (5, "다르면서도 같은 언어 II", "Different Yet the Same II", "2026-05", "01",
+    (5, "다르면서도 같은 언어 II", "Different Yet the Same II", "2026-05", "12",
      ["universals", "acquisition"],
      "언어의 자의성 때문에 개별 언어가 서로 멀어 보이지만, 그 차이가 어디에서 오는지를 "
      "학습자의 경험과 함께 정리한다.",
      "Arbitrariness makes languages look far apart; this essay traces where that distance "
      "actually comes from."),
-    (6, "다르면서도 같은 언어 III", "Different Yet the Same III", "2026-05", "15",
+    (6, "다르면서도 같은 언어 III", "Different Yet the Same III", "2026-05", "25",
      ["phonology", "universals", "korean"],
      "한국어의 구개음화와 영어의 flap 실현을 나란히 놓으면, 표면의 차이를 걷어낸 아래에서 "
      "같은 음운 현상이 움직이고 있음이 드러난다.",
      "Placing Korean palatalization beside English flapping reveals the same phonological "
      "process working under different surfaces."),
-    (7, "의사소통 수단 그 이상", "More Than a Means of Communication", "2026-06", "01",
+    (7, "의사소통 수단 그 이상", "More Than a Means of Communication", "2026-06", "12",
      ["society", "change", "korean"],
      "드라마 속 ‘아가씨’라는 호칭에서 출발해, 사전적 정의가 그대로인 단어가 30년 만에 "
      "어떻게 다른 말이 되었는지를 본다.",
      "How a word whose dictionary definition never changed became a different word in "
      "thirty years."),
-    (8, "영어는 우리에게 무엇일까", "What English Means to Us", "2026-06", "15",
+    (8, "영어는 우리에게 무엇일까", "What English Means to Us", "2026-06", "25",
      ["society", "english", "phonetics"],
      "박찬호 선수의 ‘um’ 발음을 둘러싼 옛 논란을 통해, 한국 사회가 영어에 부여해 온 의미를 "
      "짚는다.",
      "An old controversy over a baseball player's English filler sound, and what it says "
      "about how Korean society reads English."),
-    (9, "반복의 중요성", "Why Repetition Matters", "2026-07", "01",
+    (9, "반복의 중요성", "Why Repetition Matters", "2026-07", "13",
      ["morphology", "change", "english"],
      "영어 불규칙 동사는 왜 생겼고 왜 아직 살아남았는가. 사용 빈도가 형태를 지킨다는 "
      "설명을 따라간다.",
      "Why English irregular verbs arose and why they survive — frequency as the force that "
      "preserves form."),
-    (10, "빈도와 유추", "Frequency and Analogy", "2026-07", "15",
+    (10, "빈도와 유추", "Frequency and Analogy", "2026-07", "24",
      ["morphology", "change", "korean"],
      "한국어를 배우는 외국인의 ‘이게지’라는 실수에서, 유추가 어떻게 새로운 형태를 만들어 "
      "내는지를 읽어낸다.",
      "A learner's slip in Korean opens a view of how analogy generates new forms."),
     (11, "외래어 표기를 통해 알 수 있는 한국어의 특징", "What Loanword Spelling Reveals "
-     "About Korean", "2026-08", "01", ["phonology", "korean", "change"],
+     "About Korean", "2026-08", "13", ["phonology", "korean", "change"],
      "‘쵸코렡’이 ‘초콜릿’이 되기까지. 외래어 표기의 변화가 한국어 음운 체계의 무엇을 "
      "드러내는지 살핀다.",
      "From ‘쵸코렡’ to ‘초콜릿’ — what shifting loanword orthography reveals about the "
      "Korean sound system."),
     (12, "현재 진행중인 한국어의 변화", "Changes Underway in Korean Right Now",
-     "2026-08", "15", ["change", "korean", "phonology"],
+     "2026-08", "25", ["change", "korean", "phonology"],
      "언어 변화는 오래 지나야 보인다는 통념과 달리, 지금 우리 세대 안에서 진행 중인 "
      "한국어의 변화를 짚어낸다.",
      "Change is said to be visible only in hindsight; this essay points to shifts happening "
      "within our own generation."),
     (13, "영어의 철자는 왜 이렇게 엉망인가", "Why Is English Spelling Such a Mess?",
-     "2026-09", "01", ["phonology", "english", "change"],
+     "2026-09", "03", ["phonology", "english", "change"],
      "‘ghoti’로 fish를 쓸 수 있다는 유명한 농담에서 시작해, 영어 철자가 어긋나게 된 여러 "
      "역사적 요인을 정리한다.",
      "Starting from the famous claim that ‘ghoti’ could spell fish, and tracing the "
