@@ -452,39 +452,45 @@ def doc_head(crumb, title, lede, art):
 
 
 def hero_svg():
-    """첫 화면 오른쪽 그림.
+    """첫 화면 그림 — 움직이는 파형.
 
-    왼쪽은 실제 말소리처럼 들쭉날쭉한 파형, 오른쪽은 그 아래에서 찾아낸 규칙적인
-    무늬. 사이트 문장('말소리의 변화를 관찰하고, 그 안의 규칙을 찾습니다')을 그대로
-    그림으로 옮긴 것이다. 선만 쓰고 칠하지 않는다.
+    왼쪽은 실제 말소리처럼 제각각 떨리고(변화), 오른쪽은 일정한 간격으로 물결이
+    지나간다(규칙). 키 메시지 '말소리는 지금도 변하고 있습니다 / 그 변화에는
+    규칙이 있습니다'를 그대로 움직임으로 옮긴 것이다.
+
+    움직임은 CSS 만으로 만든다. 막대마다 시작 시각과 주기를 다르게 심어 두고,
+    나머지는 style.css 의 keyframes 가 맡는다. 자바스크립트를 쓰지 않는다.
     """
     import math
 
     W, H, MID = 560, 440, 214
-    bars = []
+
+    raw = []
     n_raw, x0, step = 44, 34, 5.9
     for i in range(n_raw):
-        # 정해진 식으로 만든 들쭉날쭉함 — 매번 같은 모양이 나온다
         a = (math.sin(i * 1.73) * 0.46 + math.sin(i * 0.61) * 0.30
              + math.sin(i * 3.11) * 0.16 + math.sin(i * 0.23) * 0.08)
         env = 0.45 + 0.55 * math.sin(min(i / n_raw, 1.0) * math.pi) ** 0.7
         h = abs(a) * env * 96 + 3
         x = x0 + i * step
-        bars.append(f'<line x1="{x:.1f}" y1="{MID - h:.1f}" x2="{x:.1f}" '
-                    f'y2="{MID + h:.1f}"/>')
-    raw = "".join(bars)
+        # 제각각인 떨림 — 주기와 시작 시각을 막대마다 다르게 준다
+        dur = 1.55 + abs(math.sin(i * 2.17)) * 1.15
+        delay = (i * 0.047 + abs(math.sin(i * 1.31)) * 0.6) % 2.2
+        raw.append(f'<rect x="{x - 0.8:.1f}" y="{MID - h:.1f}" width="1.6" '
+                   f'height="{2 * h:.1f}" rx="0.8" '
+                   f'style="animation-duration:{dur:.2f}s;'
+                   f'animation-delay:-{delay:.2f}s"/>')
 
-    # 오른쪽 — 같은 자리에서 찾아낸 규칙
     reg = []
     n_reg, rx0, rstep = 15, 322, 13.4
     for i in range(n_reg):
         h = 26 + 40 * math.sin((i + 0.5) / n_reg * math.pi)
         x = rx0 + i * rstep
-        reg.append(f'<line x1="{x:.1f}" y1="{MID - h:.1f}" x2="{x:.1f}" '
-                   f'y2="{MID + h:.1f}"/>')
-    regular = "".join(reg)
+        # 한 방향으로 지나가는 물결 — 주기는 같고 시작 시각만 고르게 밀린다
+        reg.append(f'<rect x="{x - 0.8:.1f}" y="{MID - h:.1f}" width="1.6" '
+                   f'height="{2 * h:.1f}" rx="0.8" '
+                   f'style="animation-delay:-{i * 0.16:.2f}s"/>')
 
-    # 포먼트처럼 흐르는 두 곡선
     def curve(y0, y1, y2, y3):
         return (f'M34 {y0} C 150 {y1}, 240 {y2}, 320 {y2} '
                 f'S 470 {y3}, 526 {y3}')
@@ -496,10 +502,10 @@ def hero_svg():
                     f'x2="{34 + i * 61.6:.1f}" y2="{MID + 158}"/>' for i in range(9))
 
     return f'''<svg class="hero-art" viewBox="0 0 {W} {H}" role="img"
-  aria-label="들쭉날쭉한 말소리 파형이 오른쪽으로 가면서 규칙적인 무늬로 정리되는 그림"
+  aria-label="왼쪽에서 제각각 떨리던 말소리 파형이 오른쪽으로 가면서 일정한 물결로 정리되는 그림"
   xmlns="http://www.w3.org/2000/svg">
-  <g class="art-wave">{raw}</g>
-  <g class="art-reg">{regular}</g>
+  <g class="art-wave">{"".join(raw)}</g>
+  <g class="art-reg">{"".join(reg)}</g>
   <path class="art-formant" d="{f1}"/>
   <path class="art-formant" d="{f2}"/>
   <line class="art-axis" x1="34" y1="{MID}" x2="526" y2="{MID}"/>

@@ -138,15 +138,61 @@ ul, ol { list-style: none; }
 
 /* 첫 화면 그림 — 선만 쓰고 칠하지 않는다 */
 .hero-art { width: 100%; height: auto; display: block; overflow: visible; }
-.hero-art g, .hero-art path, .hero-art line, .hero-art circle { fill: none; }
+.hero-art path, .hero-art line { fill: none; }
 
-.art-wave line { stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; }
-.art-reg line { stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round; }
 .art-formant { stroke: var(--rule-2); stroke-width: 1; }
 .art-axis { stroke: var(--ink); stroke-width: 1; }
 .art-tick line { stroke: var(--rule-2); stroke-width: 1; }
 .art-divide { stroke: var(--rule-2); stroke-width: 1; stroke-dasharray: 3 5; }
 .art-dot { fill: var(--accent); stroke: none; }
+
+/* 막대는 가운데를 축으로 위아래로 늘었다 줄었다 한다.
+   transform-box 를 fill-box 로 둬야 제 자리에서 커진다 */
+.art-wave rect,
+.art-reg rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(.45, 0, .55, 1);
+  will-change: transform;
+}
+
+/* 왼쪽 — 제각각인 떨림. 주기와 시작 시각은 막대마다 다르게 심어 두었다 */
+.art-wave rect {
+  fill: var(--ink);
+  animation-name: hero-speak;
+}
+
+/* 오른쪽 — 한 방향으로 지나가는 물결. 주기는 모두 같다 */
+.art-reg rect {
+  fill: var(--accent);
+  animation-name: hero-flow;
+  animation-duration: 2.4s;
+}
+
+.art-dot { animation: hero-dot 2.4s ease-in-out infinite; }
+
+@keyframes hero-speak {
+  0%, 100% { transform: scaleY(.62); }
+  50%      { transform: scaleY(1.14); }
+}
+
+@keyframes hero-flow {
+  0%, 100% { transform: scaleY(.80); }
+  50%      { transform: scaleY(1.12); }
+}
+
+@keyframes hero-dot {
+  0%, 100% { opacity: .45; }
+  50%      { opacity: 1; }
+}
+
+/* 움직임을 줄여 달라는 설정이면 멈춘 그림으로 보여 준다 */
+@media (prefers-reduced-motion: reduce) {
+  .art-wave rect,
+  .art-reg rect,
+  .art-dot { animation: none; }
+}
 
 .hero-en {
   font-family: var(--serif);
