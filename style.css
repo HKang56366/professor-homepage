@@ -512,7 +512,73 @@ ul, ol { list-style: none; }
 .art-sheets .rule { stroke: var(--accent); stroke-width: 2; }
 .art-sheets .txt { stroke: var(--rule-2); stroke-width: 2.6; stroke-linecap: round; }
 .art-sheets .fig { fill: none; stroke: var(--rule); stroke-width: 1; }
-.art-sheets .wv line { stroke: var(--accent); stroke-width: 1.4; stroke-linecap: round; }
+.art-sheets .wv rect { fill: var(--accent); }
+
+/* ── 쪽 그림의 움직임 ────────────────────────────────────────────────
+   히어로와 같은 어법. 요소마다 시작 시각을 심어 두고 여기서 주기를 준다. */
+
+/* 연구분야 — 측정값이 하나씩 찍히듯 드러났다 잦아든다 */
+.art-plot .pt {
+  animation: plot-blink 3.4s ease-in-out infinite;
+}
+
+/* 강조된 무리의 분포는 천천히 숨쉰다 */
+.art-plot .ell.hot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: plot-breathe 4.6s ease-in-out infinite;
+}
+
+/* 이동 화살표 — 점선이 e 에서 a 쪽으로 흘러간다 */
+.art-plot .shift { animation: plot-shift 1.9s linear infinite; }
+.art-plot .head { animation: plot-blink 1.9s ease-in-out infinite; }
+
+@keyframes plot-blink {
+  0%, 100% { opacity: .38; }
+  50%      { opacity: 1; }
+}
+
+@keyframes plot-breathe {
+  0%, 100% { transform: scale(.96); }
+  50%      { transform: scale(1.05); }
+}
+
+@keyframes plot-shift {
+  to { stroke-dashoffset: -18; }
+}
+
+/* 강의 — 마디가 위에서 아래로 차례로 밝아지고, 아래 파형이 함께 뛴다 */
+.art-teach-tree .art-node-o circle {
+  animation: node-pulse 2.7s ease-in-out infinite;
+}
+
+.art-teach-tree .art-foot rect,
+.art-sheets .wv rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bar-flow 2.2s cubic-bezier(.45, 0, .55, 1) infinite;
+  will-change: transform;
+}
+
+@keyframes node-pulse {
+  0%, 62%, 100% { stroke: var(--rule-2); }
+  18%, 34%      { stroke: var(--accent); }
+}
+
+@keyframes bar-flow {
+  0%, 100% { transform: scaleY(.72); }
+  50%      { transform: scaleY(1.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-plot .pt,
+  .art-plot .ell.hot,
+  .art-plot .shift,
+  .art-plot .head,
+  .art-teach-tree .art-node-o circle,
+  .art-teach-tree .art-foot rect,
+  .art-sheets .wv rect { animation: none; }
+}
 
 .page-art .art-edge line { stroke: var(--ink); stroke-width: 1.1; }
 .page-art .art-node-o circle { stroke: var(--ink); stroke-width: 1.2; fill: #fff; }
@@ -524,7 +590,7 @@ ul, ol { list-style: none; }
 }
 
 .page-art .art-base { stroke: var(--ink); stroke-width: 1; }
-.page-art .art-foot line { stroke: var(--accent); stroke-width: 1.4; stroke-linecap: round; }
+.page-art .art-foot rect { fill: var(--accent); }
 .page-art .art-text line { stroke: var(--rule-2); stroke-width: 3.4; stroke-linecap: round; }
 .page-art .art-text-2 line { stroke: var(--rule); }
 .page-art .art-wave line { stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round; }
