@@ -599,13 +599,26 @@ ul, ol { list-style: none; }
 .crumb a { text-decoration: none; border-bottom: 1px solid var(--rule); }
 .crumb span { margin: 0 6px; color: var(--rule-2); }
 
+/* 쪽 이름은 작게 남겨 길찾기를 돕는다. 큰 글자는 그 쪽이 하는 말이 가져간다 */
+.doc-kicker {
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: .26em;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+/* 이름이 아니라 한 문장이 들어오므로 크기를 낮추고 줄간격을 넓힌다 */
 .doc-title {
   font-family: var(--serif);
-  font-size: 46px;
-  line-height: 1.15;
+  font-size: 36px;
+  line-height: 1.32;
   font-weight: 400;
   letter-spacing: -.02em;
+  max-width: 15em;
 }
+
+.doc-head-solo .doc-title { max-width: 20em; }
 
 .doc-lede {
   font-family: var(--serif);
@@ -980,8 +993,8 @@ ul, ol { list-style: none; }
   .row-date { order: -1; }
   .row-title { font-size: 21px; }
 
-  .doc-title { font-size: 36px; }
-  .doc-lede { font-size: 18px; }
+  .doc-title { font-size: 28px; max-width: none; }
+  .doc-lede { font-size: 17px; }
 
   /* 문서형 머리도 한 줄에 하나씩 — 제목이 먼저, 그림이 아래로 */
   .doc-head { grid-template-columns: 1fr; gap: 28px; margin-bottom: 4px; }
@@ -1020,8 +1033,9 @@ ul, ol { list-style: none; }
   .row-sum { font-size: 13.5px; }
 
   .doc { padding-top: 32px; padding-bottom: 60px; }
-  .doc-title { font-size: 29px; }
-  .doc-lede { font-size: 16.5px; }
+  .doc-title { font-size: 24px; }
+  .doc-lede { font-size: 15.5px; }
+  .doc-kicker { font-size: 11px; margin-bottom: 10px; }
   .doc-h2 { margin: 44px 0 18px; }
 
   /* 첫 화면 그림은 폭을 다 쓰되 여백을 줄인다 */
