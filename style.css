@@ -563,13 +563,6 @@ ul, ol { list-style: none; }
   animation: node-fade 6.4s ease-in-out infinite both;
 }
 
-.art-teach-tree .art-foot rect {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: foot-sweep 6.4s cubic-bezier(.4, 0, .5, 1) infinite both;
-  will-change: transform;
-}
-
 @keyframes tree-draw {
   0%           { stroke-dashoffset: var(--len); }
   16%, 88%     { stroke-dashoffset: 0; }
@@ -587,13 +580,6 @@ ul, ol { list-style: none; }
   0%, 8%    { opacity: 0; }
   20%, 88%  { opacity: 1; }
   97%, 100% { opacity: 0; }
-}
-
-@keyframes foot-sweep {
-  0%, 6%    { transform: scaleY(.06); opacity: .25; }
-  14%       { transform: scaleY(1.15); opacity: 1; }
-  24%, 86%  { transform: scaleY(.8); opacity: 1; }
-  96%, 100% { transform: scaleY(.06); opacity: .25; }
 }
 
 /* 에세이 — 글이 왼쪽부터 실제로 써진다. 다 쓰고 잠시 머물렀다 지워진다.
@@ -634,7 +620,6 @@ ul, ol { list-style: none; }
   .art-teach-tree .art-edge line,
   .art-teach-tree .art-node-o circle,
   .art-teach-tree .art-label text,
-  .art-teach-tree .art-foot rect,
   .art-sheets .ttl,
   .art-sheets .rule,
   .art-sheets .txt,
