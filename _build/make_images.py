@@ -62,11 +62,16 @@ def warm(im, gamma, r_gain, b_gain, saturation, contrast, lift):
 
 # 피부 결 정리. 얼굴에만 적용하고, 눈·안경·머리카락 같은 윤곽은 지킨다.
 # strength 를 0.8 넘게 올리면 밀랍처럼 보이므로 이 선을 넘기지 않는다.
-SKIN = dict(strength=0.62, radius=3.0, edge_keep=20)
+#
+# protect 는 **안경이 지나가는 띠**다. 금테가 얇고 살색과 밝기가 비슷해
+# edge_keep 문턱에 걸리지 않고 뭉개졌다. 그 구간만 통째로 빼면 테는 원본대로
+# 남으면서 이마·볼 보정은 그대로 간다. feather 로 가장자리를 풀어 이음매를 없앤다.
+SKIN = dict(strength=0.62, radius=3.0, edge_keep=20,
+            protect=(295, 415, 775, 645), feather=26)
 
 
-def smooth_skin(im, strength, radius, edge_keep):
-    """살색인 곳만 부드럽게. 원본과 흐린 것의 차이가 큰 자리(윤곽)는 덜 건드린다."""
+def smooth_skin(im, strength, radius, edge_keep, protect, feather):
+    """살색인 곳만 부드럽게. 윤곽과 안경 띠는 건드리지 않는다."""
     import numpy as np
 
     a = np.asarray(im, dtype=np.float32)
@@ -79,10 +84,15 @@ def smooth_skin(im, strength, radius, edge_keep):
     skin = np.asarray(Image.fromarray(skin).filter(ImageFilter.GaussianBlur(6)),
                       dtype=np.float32) / 255.0
 
+    zone = Image.new("L", im.size, 255)
+    ImageDraw.Draw(zone).rectangle(protect, fill=0)
+    zone = np.asarray(zone.filter(ImageFilter.GaussianBlur(feather)),
+                      dtype=np.float32) / 255.0
+
     edge = np.abs(a - blur).mean(axis=2)
     keep = np.clip(1.0 - edge / edge_keep, 0, 1)
 
-    w = (skin * keep * strength)[..., None]
+    w = (skin * keep * zone * strength)[..., None]
     return Image.fromarray(np.clip(a * (1 - w) + blur * w, 0, 255).astype(np.uint8))
 
 
