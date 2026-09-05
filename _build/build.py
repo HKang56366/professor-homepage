@@ -389,11 +389,11 @@ def art_teaching():
     lines = []
     for gi, (a, b, c, d) in enumerate(edges):
         y1, y2 = b + 15, d - 15
-        ln = math.hypot(c - a, y2 - y1)
         lag = 0.0 if gi < 2 else 0.9      # 위 두 가지 먼저, 아래 두 가지 나중
+        # pathLength 로 길이를 100 으로 맞춘다 — keyframes 에서 var() 를 쓰지
+        # 않게 되어 사파리를 포함해 어디서나 같게 그어진다
         lines.append(f'<line x1="{a}" y1="{y1}" x2="{c}" y2="{y2}" '
-                     f'style="--len:{ln:.1f};stroke-dasharray:{ln:.1f};'
-                     f'animation-delay:{lag:.2f}s"/>')
+                     f'pathLength="100" style="animation-delay:{lag:.2f}s"/>')
     lines = "".join(lines)
 
     # 마디는 제 가지가 다 그어진 뒤에 톡 하고 켜진다

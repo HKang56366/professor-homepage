@@ -60,6 +60,32 @@ def warm(im, gamma, r_gain, b_gain, saturation, contrast, lift):
     return ImageEnhance.Contrast(im).enhance(contrast)
 
 
+# 피부 결 정리. 얼굴에만 적용하고, 눈·안경·머리카락 같은 윤곽은 지킨다.
+# strength 를 0.8 넘게 올리면 밀랍처럼 보이므로 이 선을 넘기지 않는다.
+SKIN = dict(strength=0.62, radius=3.0, edge_keep=20)
+
+
+def smooth_skin(im, strength, radius, edge_keep):
+    """살색인 곳만 부드럽게. 원본과 흐린 것의 차이가 큰 자리(윤곽)는 덜 건드린다."""
+    import numpy as np
+
+    a = np.asarray(im, dtype=np.float32)
+    blur = np.asarray(im.filter(ImageFilter.GaussianBlur(radius)), dtype=np.float32)
+
+    hsv = np.asarray(im.convert("HSV"), dtype=np.float32)
+    hue, sat, val = hsv[..., 0], hsv[..., 1], hsv[..., 2]
+    skin = (((hue <= 30) | (hue >= 235)) & (sat > 28) & (sat < 190)
+            & (val > 70)).astype(np.uint8) * 255
+    skin = np.asarray(Image.fromarray(skin).filter(ImageFilter.GaussianBlur(6)),
+                      dtype=np.float32) / 255.0
+
+    edge = np.abs(a - blur).mean(axis=2)
+    keep = np.clip(1.0 - edge / edge_keep, 0, 1)
+
+    w = (skin * keep * strength)[..., None]
+    return Image.fromarray(np.clip(a * (1 - w) + blur * w, 0, 255).astype(np.uint8))
+
+
 # 배경 회색 처리. 사진 뒤의 현수막이 원색이라 흰 바탕 사이트에서 튄다.
 # 배경을 **잘라내지 않고 채도만 뺀다** — 마스크가 조금 어긋나도 잘린 자국이 안 생긴다.
 BG = dict(erode=5, blur=1.8, lighten=1.06,
@@ -118,6 +144,7 @@ def main(src_path, out_dir):
     print("원본:", im.size)
     im = straighten_rail(im, **RAIL)
     im = warm(im, **TONE)
+    im = smooth_skin(im, **SKIN)
     im = gray_background(im, **BG)
     print("배경 회색 처리 완료")
 
