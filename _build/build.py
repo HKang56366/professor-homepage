@@ -25,16 +25,12 @@ F = {
     "rank_ko": "부교수",
     "rank_en": "Associate Professor",
     "dept_ko": "전남대학교 영어영문학과",
-    "dept_en": "Department of English Language and Literature,\nChonnam National University",
     "office": "인문대 2호관 404호",
     "office_en": "Humanities Bldg. 2, Room 404",
     "tel": "062-530-3165",
     "email_univ": "hijokang@jnu.ac.kr",
-    "email_alt": "hijo.kang@gmail.com",
     "jnu_url": ("https://ell.jnu.ac.kr/ell/14378/subview.do?enc="
                 "Zm5jdDF8QEB8JTJGcHJvZiUyRmVsbCUyRjI2MyUyRjI2OTUlMkZ2aWV3LmRvJTNG"),
-    "tagline_ko": "말소리의 변화를 관찰하고, 그 안의 규칙을 찾습니다.",
-    "tagline_en": "Observing how speech sounds change — and finding the patterns behind them.",
     # 첫 화면의 키 메시지. 이름은 이미 머리글에 있으므로, 여기서는 이 사이트가
     # 무엇을 말하는 곳인지를 먼저 말한다. 연구(변이·유추)와 에세이(언어 변화)이
     # 함께 향하는 한 문장이다.
@@ -53,7 +49,7 @@ F = {
 #   강의 — 담당 과목(음성학·음운론·영어학개론)이 실제로 다루는 일
 #   에세이 — 글 목록 설명의 '강의실에서 다 하지 못한 이야기'
 PAGE_KEY = {
-    # 프로필은 본문이 짧아 설명글을 따로 두지 않는다 — 큰 문장 하나로 세운다
+    # 프로필은 본문이 짧아 설명글 없이 큰 문장 하나로 세운다
     "about": ("프로필", "말소리의 변화를 관찰하고, 그 안의 규칙을 찾습니다",
               "Profile",
               "Observing how speech sounds change, and finding the patterns behind them"),
