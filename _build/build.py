@@ -380,23 +380,38 @@ def art_teaching():
              ("N", 300, 264), ("C", 432, 264)]
     edges = [(260, 54, 150, 158), (260, 54, 366, 158),
              (366, 158, 300, 264), (366, 158, 432, 264)]
-    lines = "".join(f'<line x1="{a}" y1="{b + 15}" x2="{c}" y2="{d - 15}"/>'
-                    for a, b, c, d in edges)
-    # 마디는 위에서 아래로 차례차례 밝아진다 — 구조가 갈라져 내려가는 순서
-    step = {"σ": 0.0, "O": 0.45, "R": 0.45, "N": 0.9, "C": 0.9}
+    import math
+
+    # 가지는 위에서 아래로 차례차례 그어진다 — 칠판에 나무를 그리는 순서 그대로.
+    # 선 길이를 재서 stroke-dasharray 에 넣어야 '그어지는' 모양이 나온다.
+    lines = []
+    for gi, (a, b, c, d) in enumerate(edges):
+        y1, y2 = b + 15, d - 15
+        ln = math.hypot(c - a, y2 - y1)
+        lag = 0.0 if gi < 2 else 0.9      # 위 두 가지 먼저, 아래 두 가지 나중
+        lines.append(f'<line x1="{a}" y1="{y1}" x2="{c}" y2="{y2}" '
+                     f'style="--len:{ln:.1f};stroke-dasharray:{ln:.1f};'
+                     f'animation-delay:{lag:.2f}s"/>')
+    lines = "".join(lines)
+
+    # 마디는 제 가지가 다 그어진 뒤에 톡 하고 켜진다
+    step = {"σ": 0.0, "O": 0.9, "R": 0.9, "N": 1.8, "C": 1.8}
     circles = "".join(f'<circle cx="{x}" cy="{y}" r="15" '
-                      f'style="animation-delay:-{2.7 - step[t]:.2f}s"/>'
+                      f'style="animation-delay:{step[t]:.2f}s"/>'
                       for t, x, y in nodes)
-    labels = "".join(f'<text x="{x}" y="{y + 5.5}">{t}</text>' for t, x, y in nodes)
-    # 구조가 결국 말소리로 실현된다 — 마디 아래에 짧은 파형을 둔다
+    labels = "".join(f'<text x="{x}" y="{y + 5.5}" '
+                     f'style="animation-delay:{step[t]:.2f}s">{t}</text>'
+                     for t, x, y in nodes)
+
+    # 구조가 다 서면 아래에서 말소리가 왼쪽부터 훑고 지나간다
     feet = []
     for gi, x in enumerate((150, 300, 432)):
-        for i in range(5):
-            h = 6 + (i % 3) * 9
-            fx = x - 26 + i * 13
-            feet.append(f'<rect x="{fx - 0.8}" y="{318 - h}" width="1.6" '
-                        f'height="{h}" rx="0.8" '
-                        f'style="animation-delay:-{(gi * 0.5 + i * 0.13):.2f}s"/>')
+        for i in range(7):
+            h = 7 + abs(math.sin(gi * 1.7 + i * 0.9)) * 20
+            fx = x - 34 + i * 11.5
+            feet.append(f'<rect x="{fx - 0.9:.1f}" y="{318 - h:.1f}" width="1.8" '
+                        f'height="{h:.1f}" rx="0.9" '
+                        f'style="animation-delay:{2.4 + gi * 0.34 + i * 0.075:.2f}s"/>')
     feet = "".join(feet)
     return f'''<svg class="page-art art-teach-tree" viewBox="0 0 520 360" role="img"
   aria-label="음절 구조를 나타낸 나무 그림과 그 아래의 말소리 파형"
@@ -425,15 +440,22 @@ def art_writing():
     front = f'<rect class="sheet front" x="{x0}" y="{y0}" width="{w}" height="268"/>'
 
     tx = x0 + 26
-    # 제목 두 줄과 그 아래 강조선
-    head = (f'<line class="ttl" x1="{tx}" y1="{y0 + 34}" x2="{tx + 176}" y2="{y0 + 34}"/>'
-            f'<line class="ttl" x1="{tx}" y1="{y0 + 52}" x2="{tx + 120}" y2="{y0 + 52}"/>'
-            f'<line class="rule" x1="{tx}" y1="{y0 + 70}" x2="{tx + 44}" y2="{y0 + 70}"/>')
+    # 글이 실제로 써지듯 왼쪽부터 한 줄씩 그어진다. 줄마다 시작 시각을 심는다.
+    d = [0.0]
+
+    def w_line(cls, y, wd, gap=0.34):
+        d[0] += gap
+        return (f'<line class="{cls}" x1="{tx}" y1="{y}" x2="{tx + wd}" y2="{y}" '
+                f'style="animation-delay:{d[0]:.2f}s"/>')
+
+    head = (w_line("ttl", y0 + 34, 176, 0.30)
+            + w_line("ttl", y0 + 52, 120)
+            + w_line("rule", y0 + 70, 44))
 
     body = ""
     y = y0 + 92
     for wd in (232, 210, 226, 168):
-        body += f'<line class="txt" x1="{tx}" y1="{y}" x2="{tx + wd}" y2="{y}"/>'
+        body += w_line("txt", y, wd)
         y += 15
 
     # 글 속 도판 — 파형
@@ -449,13 +471,14 @@ def art_writing():
         # 글 속 도판이 살아 움직인다 — 한 방향으로 지나가는 물결
         bars.append(f'<rect x="{bx - 0.7:.1f}" y="{fy - h:.1f}" width="1.4" '
                     f'height="{2 * h:.1f}" rx="0.7" '
-                    f'style="animation-delay:-{i * 0.07:.2f}s"/>')
+                    f'style="animation-delay:{2.6 + i * 0.045:.2f}s"/>')
     fig += f'<g class="wv">{"".join(bars)}</g>'
 
     tail = ""
     y = fy + 40
+    d[0] = 3.9
     for wd in (226, 196):
-        tail += f'<line class="txt" x1="{tx}" y1="{y}" x2="{tx + wd}" y2="{y}"/>'
+        tail += w_line("txt", y, wd)
         y += 15
 
     return f'''<svg class="page-art art-sheets" viewBox="0 0 520 340" role="img"
