@@ -268,47 +268,80 @@ def h2(title, name, cls="doc-h2", extra=""):
             f'<span class="sec-label">{title}</span>{extra}</h2>')
 
 
+def _jitter(seed, n):
+    """정해진 씨앗에서 나오는 흔들림. 매번 같은 그림이 나온다."""
+    x = seed
+    out = []
+    for _ in range(n):
+        x = (1103515245 * x + 12345) % 2147483648
+        a = x / 2147483648
+        x = (1103515245 * x + 12345) % 2147483648
+        b = x / 2147483648
+        out.append((a * 2 - 1, b * 2 - 1))
+    return out
+
+
 def art_research():
-    """연구 — 모음 사각도. 음성학·음운론에서 모음을 놓는 그 자리."""
-    # 사각도 네 꼭짓점 (전설고모음 → 후설고모음 → 후설저모음 → 전설저모음)
-    tl, tr, br, bl = (86, 62), (430, 62), (368, 292), (176, 292)
+    """연구분야 — 모음 포먼트 도면.
 
-    def on_edge(a, b, t):
-        return (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
-
-    rows = []
-    for t in (1 / 3, 2 / 3):
-        p, q = on_edge(tl, bl, t), on_edge(tr, br, t)
-        rows.append(f'<line x1="{p[0]:.1f}" y1="{p[1]:.1f}" '
-                    f'x2="{q[0]:.1f}" y2="{q[1]:.1f}"/>')
-    mid = (f'<line x1="{(tl[0] + tr[0]) / 2:.1f}" y1="{tl[1]}" '
-           f'x2="{(bl[0] + br[0]) / 2:.1f}" y2="{bl[1]}"/>')
-
-    dots = []
-    for t in (0, 1 / 3, 2 / 3, 1):
-        for e in (0.0, 1.0):
-            p = on_edge(on_edge(tl, bl, t), on_edge(tr, br, t), e)
-            dots.append(f'<circle cx="{p[0]:.1f}" cy="{p[1]:.1f}" r="3"/>')
-    plot = "".join(dots)
-
-    # 실제로 측정한 값처럼 흩어진 점들 — 한 모음 주위의 분포
-    cloud = []
+    실제 음성학 논문의 F1-F2 산점도를 그대로 옮겼다. 모음마다 측정값이 흩어지고,
+    그 분포를 타원으로 감싼다. 점선 화살표는 세대를 지나며 일어난 이동이다.
+    """
     import math
-    for i in range(22):
-        a = i * 2.399
-        r = 16 + (i % 5) * 7
-        cloud.append(f'<circle cx="{188 + math.cos(a) * r:.1f}" '
-                     f'cy="{140 + math.sin(a) * r * 0.72:.1f}" r="1.9"/>')
-    scatter = "".join(cloud)
 
-    return f'''<svg class="page-art" viewBox="0 0 520 360" role="img"
-  aria-label="모음 사각도 위에 측정값이 흩어져 있는 그림"
+    L, R, T, B = 78, 452, 56, 300
+
+    grid = "".join(
+        f'<line x1="{L}" y1="{T + (B - T) * i / 4:.1f}" x2="{R}" '
+        f'y2="{T + (B - T) * i / 4:.1f}"/>' for i in range(1, 4))
+    grid += "".join(
+        f'<line x1="{L + (R - L) * i / 4:.1f}" y1="{T}" '
+        f'x2="{L + (R - L) * i / 4:.1f}" y2="{B}"/>' for i in range(1, 4))
+
+    ticks = "".join(f'<line x1="{L + (R - L) * i / 4:.1f}" y1="{B}" '
+                    f'x2="{L + (R - L) * i / 4:.1f}" y2="{B + 6}"/>'
+                    for i in range(5))
+    ticks += "".join(f'<line x1="{L - 6}" y1="{T + (B - T) * i / 4:.1f}" '
+                     f'x2="{L}" y2="{T + (B - T) * i / 4:.1f}"/>' for i in range(5))
+
+    # (이름, 중심x, 중심y, 반지름x, 반지름y, 기울기, 점 개수, 씨앗, 강조여부)
+    clusters = [
+        ("i", 132, 96, 33, 21, -20, 13, 7, False),
+        ("u", 396, 108, 29, 23, 16, 12, 23, False),
+        ("e", 176, 194, 37, 23, -8, 14, 41, True),
+        ("a", 286, 268, 42, 26, 7, 15, 59, False),
+    ]
+    dots, rings, labels = [], [], []
+    for name, cx, cy, rx, ry, rot, n, seed, hot in clusters:
+        cls = " hot" if hot else ""
+        for jx, jy in _jitter(seed, n):
+            t = math.atan2(jy, jx)
+            r = (jx * jx + jy * jy) ** 0.5
+            r = min(r, 1.0) ** 0.75
+            px = cx + math.cos(t) * rx * r * 0.92
+            py = cy + math.sin(t) * ry * r * 0.92
+            dots.append(f'<circle class="pt{cls}" cx="{px:.1f}" cy="{py:.1f}" r="2.2"/>')
+        rings.append(f'<ellipse class="ell{cls}" cx="{cx}" cy="{cy}" rx="{rx}" '
+                     f'ry="{ry}" transform="rotate({rot} {cx} {cy})"/>')
+        labels.append(f'<text x="{cx}" y="{cy - ry - 9}">{name}</text>')
+
+    # 이동 — e 에서 a 쪽으로
+    shift = ('<path class="shift" d="M204 210 C 236 228, 250 240, 262 252"/>'
+             '<path class="head" d="M255 240 L266 256 L248 255 Z"/>')
+
+    return f'''<svg class="page-art art-plot" viewBox="0 0 520 340" role="img"
+  aria-label="모음별 포먼트 측정값이 흩어진 산점도와 그 분포를 감싼 타원, 이동을 나타낸 화살표"
   xmlns="http://www.w3.org/2000/svg">
-  <g class="art-grid">{"".join(rows)}{mid}</g>
-  <path class="art-frame" d="M{tl[0]} {tl[1]}H{tr[0]}L{br[0]} {br[1]}H{bl[0]}Z"/>
-  <g class="art-node">{plot}</g>
-  <g class="art-scatter">{scatter}</g>
-  <ellipse class="art-ring" cx="188" cy="140" rx="46" ry="34"/>
+  <g class="grid">{grid}</g>
+  <g class="tick">{ticks}</g>
+  <path class="axis" d="M{L} {T}V{B}H{R}"/>
+  <g class="rings">{"".join(rings)}</g>
+  <g class="pts">{"".join(dots)}</g>
+  {shift}
+  <g class="lab">{"".join(labels)}</g>
+  <text class="ax" x="{(L + R) / 2:.0f}" y="{B + 30}">F2</text>
+  <text class="ax" x="{L - 22}" y="{(T + B) / 2:.0f}"
+    transform="rotate(-90 {L - 22} {(T + B) / 2:.0f})">F1</text>
 </svg>'''
 
 
@@ -338,40 +371,61 @@ def art_teaching():
 
 
 def art_writing():
-    """글 — 문단이 이어지다 말소리로 풀리는 모양."""
+    """칼럼 — 겹쳐 놓인 원고.
+
+    뒤로 지난 호들이 쌓이고, 맨 앞 장에 제목·본문·그리고 글 속 도판으로
+    말소리 파형이 들어 있다. 말소리에 관한 글이라는 성격을 그대로 옮겼다.
+    """
     import math
-    rows = []
-    y = 66
-    widths = [(0, 300), (0, 336), (0, 258), (0, 318), (0, 210)]
-    for i, (x0, w) in enumerate(widths):
-        rows.append(f'<line x1="{96 + x0}" y1="{y}" x2="{96 + x0 + w}" y2="{y}"/>')
-        y += 26
-    block1 = "".join(rows)
 
-    rows2 = []
-    y = 214
-    for w in (330, 276, 348):
-        rows2.append(f'<line x1="96" y1="{y}" x2="{96 + w}" y2="{y}"/>')
-        y += 26
-    block2 = "".join(rows2)
+    # 뒤에 쌓인 지난 원고 두 장
+    back = ('<rect class="sheet back2" x="150" y="30" width="286" height="268" />'
+            '<rect class="sheet back1" x="136" y="42" width="286" height="268" />')
 
-    # 마지막 줄이 파형으로 풀린다
-    wave = []
-    for i in range(30):
-        a = (math.sin(i * 1.63) * 0.5 + math.sin(i * 0.71) * 0.32
-             + math.sin(i * 2.9) * 0.18)
-        env = math.sin(min(i / 29, 1.0) * math.pi) ** 0.6
-        hgt = abs(a) * env * 30 + 1.5
-        x = 96 + i * 11.6
-        wave.append(f'<line x1="{x:.1f}" y1="{318 - hgt:.1f}" '
-                    f'x2="{x:.1f}" y2="{318 + hgt:.1f}"/>')
-    return f'''<svg class="page-art" viewBox="0 0 520 360" role="img"
-  aria-label="문단의 줄들이 아래에서 말소리 파형으로 바뀌는 그림"
+    x0, y0, w = 118, 56, 286
+    front = f'<rect class="sheet front" x="{x0}" y="{y0}" width="{w}" height="268"/>'
+
+    tx = x0 + 26
+    # 제목 두 줄과 그 아래 강조선
+    head = (f'<line class="ttl" x1="{tx}" y1="{y0 + 34}" x2="{tx + 176}" y2="{y0 + 34}"/>'
+            f'<line class="ttl" x1="{tx}" y1="{y0 + 52}" x2="{tx + 120}" y2="{y0 + 52}"/>'
+            f'<line class="rule" x1="{tx}" y1="{y0 + 70}" x2="{tx + 44}" y2="{y0 + 70}"/>')
+
+    body = ""
+    y = y0 + 92
+    for wd in (232, 210, 226, 168):
+        body += f'<line class="txt" x1="{tx}" y1="{y}" x2="{tx + wd}" y2="{y}"/>'
+        y += 15
+
+    # 글 속 도판 — 파형
+    fy = y + 18
+    fig = f'<rect class="fig" x="{tx}" y="{fy - 26}" width="232" height="52"/>'
+    bars = []
+    for i in range(34):
+        a = (math.sin(i * 1.71) * 0.5 + math.sin(i * 0.63) * 0.31
+             + math.sin(i * 2.87) * 0.19)
+        env = math.sin(min(i / 33, 1.0) * math.pi) ** 0.55
+        h = abs(a) * env * 19 + 1.2
+        bx = tx + 12 + i * 6.2
+        bars.append(f'<line x1="{bx:.1f}" y1="{fy - h:.1f}" x2="{bx:.1f}" '
+                    f'y2="{fy + h:.1f}"/>')
+    fig += f'<g class="wv">{"".join(bars)}</g>'
+
+    tail = ""
+    y = fy + 40
+    for wd in (226, 196):
+        tail += f'<line class="txt" x1="{tx}" y1="{y}" x2="{tx + wd}" y2="{y}"/>'
+        y += 15
+
+    return f'''<svg class="page-art art-sheets" viewBox="0 0 520 340" role="img"
+  aria-label="겹쳐 놓인 원고 더미. 맨 앞 장에 제목과 본문, 그리고 말소리 파형 도판이 있다"
   xmlns="http://www.w3.org/2000/svg">
-  <g class="art-text">{block1}</g>
-  <g class="art-text art-text-2">{block2}</g>
-  <line class="art-base" x1="96" y1="318" x2="432" y2="318"/>
-  <g class="art-wave">{"".join(wave)}</g>
+  {back}
+  {front}
+  {head}
+  <g>{body}</g>
+  {fig}
+  <g>{tail}</g>
 </svg>'''
 
 
@@ -679,8 +733,8 @@ def head(title, desc, canon, *, lang="ko", alt=None, extra="", og_type="website"
 
 def nav(active, lang="ko"):
     p = "" if lang == "ko" else "../"
-    items = ([("about.html", "프로필"), ("research.html", "연구"),
-              ("teaching.html", "교육"), ("blog.html", "칼럼")] if lang == "ko" else
+    items = ([("about.html", "프로필"), ("research.html", "연구분야"),
+              ("teaching.html", "강의"), ("blog.html", "칼럼")] if lang == "ko" else
              [("about.html", "Profile"), ("research.html", "Research"),
               ("teaching.html", "Teaching"), ("writing.html", "Essays")])
     base = "" if lang == "ko" else "en/"
@@ -853,10 +907,10 @@ def build_home():
 
   <section class="band">
     <div class="wrap">
-      {h2("교육", "book", "sec-title")}
+      {h2("강의", "book", "sec-title")}
       <p class="band-lede">학부에서 영어음성학, 영어음운론, 영어학개론, 영어학개관을,
         대학원에서 영어음운론과 영어음운론심화를 맡고 있습니다.</p>
-      <p class="more"><a href="teaching.html">교육 전체 보기 →</a></p>
+      <p class="more"><a href="teaching.html">강의 전체 보기 →</a></p>
     </div>
   </section>
 
@@ -922,7 +976,7 @@ def build_about():
 
   <div class="note">
     <p>연구 분야와 논문 목록은 <a href="research.html">연구</a>에, 담당 과목은
-      <a href="teaching.html">교육</a>에 정리해 두었습니다.</p>
+      <a href="teaching.html">강의</a>에 정리해 두었습니다.</p>
   </div>
 </main>
 {foot()}"""
@@ -1003,8 +1057,8 @@ def build_teaching():
         secs += (h2(level, "book") + f'<ul class="courses">{rows}</ul>')
     body = f"""{nav("teaching.html")}
 <main class="wrap doc">
-  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 교육</p>',
-            "교육",
+  {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 강의</p>',
+            "강의",
             "영어와 관련된 언어학개론, 음성학, 음운론을 가르치고 있습니다.",
             art_teaching())}
   {secs}
@@ -1019,11 +1073,11 @@ def build_teaching():
   </div>
 </main>
 {foot()}"""
-    return page(f'교육 | {F["name_ko"]}',
+    return page(f'강의 | {F["name_ko"]}',
                 '학부 영어음성학·영어음운론·영어학개론·영어학개관, 대학원 영어음운론·'
                 '영어음운론심화를 담당합니다.',
                 "/teaching.html", body, alt=("/teaching.html", "/en/teaching.html"),
-                extra=jsonld(crumbs_ld([("홈", "/"), ("교육", "/teaching.html")])))
+                extra=jsonld(crumbs_ld([("홈", "/"), ("강의", "/teaching.html")])))
 
 
 def build_index_of_posts():
