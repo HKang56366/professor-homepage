@@ -12,8 +12,8 @@
   --line-second: #d3edfb;   /* 줄이 두 개 겹칠 때 아래쪽 줄 */
   --accent:     #155684;
   --bg:         #ffffff;
-  --bg-soft:    #f7f8fa;
-  --bg-header:  #eeeeee;
+  --bg-header:  #f7f8fa;   /* 상단 */
+  --bg-footer:  #eeeeee;   /* 발치 */
 
   --serif: Georgia, "Times New Roman", "Noto Serif KR", "Nanum Myeongjo", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo",
@@ -826,8 +826,14 @@ ul, ol { list-style: none; }
 
 .groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .group { border-top: 1px solid var(--ink); padding-top: 14px; }
-.group-title { font-family: var(--serif); font-size: 19px; font-weight: 400; margin-bottom: 6px; }
-.group-en { font-size: 11px; letter-spacing: .14em; color: var(--muted); margin-left: 8px; }
+.group-title {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.group-en { font-size: 11px; letter-spacing: .14em; color: var(--accent); margin-left: 8px; }
 .group-n { font-size: 11.5px; color: var(--accent); margin-left: 8px; font-family: var(--sans); }
 
 /* ── 글 ─────────────────────────────────────────────────────────────── */
@@ -979,7 +985,7 @@ ul, ol { list-style: none; }
 
 /* ── 꼬리 ───────────────────────────────────────────────────────────── */
 
-.foot { padding: 46px 0 36px; background: var(--bg-soft); }
+.foot { padding: 46px 0 36px; background: var(--bg-footer); }
 .foot-in { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
 .foot-name { font-family: var(--serif); font-size: 18px; margin-bottom: 8px; }
 .foot-line { font-size: 13px; line-height: 1.8; color: var(--muted); }
