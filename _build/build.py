@@ -250,7 +250,10 @@ def head(title, desc, canon, *, lang="ko", alt=None, extra="", og_type="website"
         f'<meta property="og:title" content="{title}">',
         f'<meta property="og:description" content="{desc}">',
         f'<meta property="og:url" content="{SITE}{canon}">',
-        f'<meta property="og:image" content="{SITE}/images/profile.jpg">',
+        f'<meta property="og:image" content="{SITE}/images/og-image.jpg">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
+        f'<meta property="og:image:alt" content="{F["name_ko"]} · {F["name_en"]}">',
         f'<meta property="og:locale" content="{"ko_KR" if lang == "ko" else "en_US"}">',
         '<meta name="twitter:card" content="summary_large_image">',
     ]
@@ -701,7 +704,7 @@ def build_post(meta, src_dir):
           '"headline":"%s","description":"%s","url":"%s/post%d.html",'
           '"mainEntityOfPage":{"@type":"WebPage","@id":"%s/post%d.html"},'
           '"datePublished":"%s","dateModified":"%s","inLanguage":"ko",'
-          '"image":"%s/images/profile.jpg",'
+          '"image":"%s/images/og-image.jpg",'
           '"about":[%s],"keywords":"%s","author":%s,'
           '"publisher":{"@type":"Person","name":"Hijo Kang","url":"%s/about.html"},'
           '"isPartOf":{"@type":"Blog","name":"강희조의 글","url":"%s/blog.html"}}'
@@ -731,7 +734,7 @@ def build_post(meta, src_dir):
     <ul class="chips chips-link essay-tags">{tags}</ul>
 
     <aside class="author">
-      <img class="author-img" src="images/profile.jpg" alt="{F["name_ko"]}"
+      <img class="author-img" src="images/profile-square.jpg" alt="{F["name_ko"]}"
         width="72" height="72" loading="lazy">
       <div class="author-body">
         <p class="author-name">글 · {F["name_ko"]} <span class="p-en">Hijo Kang</span></p>
