@@ -9,6 +9,7 @@
   --muted:      #767676;
   --rule:       #e3e3e3;
   --rule-2:     #cfcfcf;
+  --line-second: #d3edfb;   /* 줄이 두 개 겹칠 때 아래쪽 줄 */
   --accent:     #8a2f2f;
   --bg:         #ffffff;
   --bg-soft:    #f7f8fa;
@@ -448,15 +449,15 @@ ul, ol { list-style: none; }
   gap: 9px;
 }
 
-/* 절 제목 아래에 목록이 바로 오면 굵은 가로줄이 두 줄로 겹친다.
-   제목의 줄 하나만 남기고, 목록이 스스로 긋던 줄은 지운다.
-   (목록이 제목 없이 홀로 설 때는 제 줄을 그대로 쓴다) */
+/* 절 제목 아래에 목록이 바로 오면 굵은 가로줄이 두 줄이 된다.
+   위는 제목의 검정 줄, 아래는 목록의 줄 — 아래 줄만 옅은 하늘색으로 낮춰
+   같은 굵기가 겹쳐 보이지 않게 한다.
+   (목록이 제목 없이 홀로 설 때는 제 검정 줄을 그대로 쓴다) */
 .doc-h2 + .pubs,
 .doc-h2 + .rows,
-.doc-h2 + .courses { border-top: none; }
-
+.doc-h2 + .courses,
 .doc-h2 + .fields-long .field-long,
-.doc-h2 + .groups .group { border-top-color: var(--rule); }
+.doc-h2 + .groups .group { border-top-color: var(--line-second); }
 
 .doc-note { font-size: 13.5px; color: var(--muted); margin-top: 16px; }
 .doc-note a { border-bottom: 1px solid var(--rule-2); text-decoration: none; }
