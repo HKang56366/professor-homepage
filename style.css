@@ -12,6 +12,7 @@
   --accent:     #8a2f2f;
   --bg:         #ffffff;
   --bg-soft:    #f7f8fa;
+  --bg-header:  #eeeeee;
 
   --serif: Georgia, "Times New Roman", "Noto Serif KR", "Nanum Myeongjo", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo",
@@ -49,13 +50,13 @@ ul, ol { list-style: none; }
 
 /* ── 머리 ───────────────────────────────────────────────────────────── */
 
-/* 스크롤을 내려도 따라온다. 흰 배경을 깔아야 본문이 비쳐 보이지 않는다 */
+/* 스크롤을 내려도 따라온다. 바탕을 채워야 본문이 비쳐 보이지 않는다 */
 .masthead {
   position: sticky;
   top: 0;
   z-index: 20;
-  border-bottom: 1px solid var(--rule);
-  background: var(--bg);
+  border-bottom: 1px solid var(--rule-2);
+  background: var(--bg-header);
 }
 
 /* 앵커로 뛸 때 제목이 고정 헤더 뒤로 숨지 않게 */
