@@ -28,6 +28,19 @@ TONE = dict(gamma=0.78, r_gain=1.050, b_gain=0.950,
             saturation=0.87, contrast=0.95, lift=0.12)
 
 
+# 배경 손질. 오른쪽 흰 난간이 y≈120 에서 꺾여 위로 비스듬히 빠지는데,
+# 크롭을 넓히면서 그 꺾인 부분이 화면에 들어와 세로선이 틀어져 보였다.
+# 곧게 뻗은 아래 구간을 위로 이어 붙여 난간이 곧게 지나가게 한다.
+RAIL = dict(src=(986, 146, 1104, 286), paste_at=(6, -134), x=986)
+
+
+def straighten_rail(im, src, paste_at, x):
+    strip = im.crop(src)
+    for top in paste_at:
+        im.paste(strip, (x, top))
+    return im
+
+
 def _lut(gamma, gain, lift):
     out = []
     for v in range(256):
@@ -87,7 +100,7 @@ def gray_background(im, erode, blur, lighten, skin_hi, skin_lo,
 
 INK = (17, 17, 17)
 MUTED = (118, 118, 118)
-ACCENT = (138, 47, 47)
+ACCENT = (21, 86, 132)          # style.css 의 --accent 와 같은 값 (#155684)
 RULE = (207, 207, 207)
 
 
@@ -103,6 +116,7 @@ def main(src_path, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     im = Image.open(src_path).convert("RGB")
     print("원본:", im.size)
+    im = straighten_rail(im, **RAIL)
     im = warm(im, **TONE)
     im = gray_background(im, **BG)
     print("배경 회색 처리 완료")
