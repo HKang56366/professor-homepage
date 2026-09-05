@@ -405,15 +405,15 @@ def art_teaching():
                      f'style="animation-delay:{step[t]:.2f}s">{t}</text>'
                      for t, x, y in nodes)
 
-    # 구조가 다 서면 아래에서 말소리가 왼쪽부터 훑고 지나간다
+    # 아래 파형은 움직이지 않는다 — 나무가 그려지는 동안 시선이 흩어지지 않게
+    # 바닥에 깔린 채로만 둔다
     feet = []
     for gi, x in enumerate((150, 300, 432)):
         for i in range(7):
             h = 7 + abs(math.sin(gi * 1.7 + i * 0.9)) * 20
             fx = x - 34 + i * 11.5
             feet.append(f'<rect x="{fx - 0.9:.1f}" y="{318 - h:.1f}" width="1.8" '
-                        f'height="{h:.1f}" rx="0.9" '
-                        f'style="animation-delay:{2.4 + gi * 0.34 + i * 0.075:.2f}s"/>')
+                        f'height="{h:.1f}" rx="0.9"/>')
     feet = "".join(feet)
     return f'''<svg class="page-art art-teach-tree" viewBox="0 0 520 360" role="img"
   aria-label="음절 구조를 나타낸 나무 그림과 그 아래의 말소리 파형"
