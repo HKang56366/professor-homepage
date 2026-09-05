@@ -10,7 +10,7 @@
 """
 import os
 import sys
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageEnhance, ImageFont
 
 SERIF = "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf"
 SANS = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
@@ -18,6 +18,32 @@ SANS = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
 # 원본(1145x1374) 기준 잘라낼 자리
 PORTRAIT_BOX = (210, 150, 1110, 1275)   # 4:5, 흔드는 손까지
 FACE_BOX = (145, 140, 805, 800)         # 정사각, 얼굴 중심 (머리 위 여백 확보)
+
+# 톤 보정 — 사이트가 흰 바탕이라 원본 그대로 쓰면 사진만 무겁게 가라앉는다.
+# 중간톤을 올리고(GAMMA), 검정을 들어올리고(LIFT), 빨강을 조금 더해 따뜻하게 한다.
+# 배경 현수막의 원색이 튀므로 채도는 낮춘다.
+TONE = dict(gamma=0.78, r_gain=1.050, b_gain=0.950,
+            saturation=0.87, contrast=0.95, lift=0.12)
+
+
+def _lut(gamma, gain, lift):
+    out = []
+    for v in range(256):
+        x = (v / 255.0) ** gamma
+        x = lift + (1 - lift) * x
+        out.append(max(0, min(255, round(x * 255 * gain))))
+    return out
+
+
+def warm(im, gamma, r_gain, b_gain, saturation, contrast, lift):
+    """따뜻하고 밝게. 얼굴 윤곽이 뭉개지지 않을 만큼만 대비를 눕힌다."""
+    r, g, b = im.split()
+    im = Image.merge("RGB", (r.point(_lut(gamma, r_gain, lift)),
+                             g.point(_lut(gamma, 1.0, lift)),
+                             b.point(_lut(gamma, b_gain, lift))))
+    im = ImageEnhance.Color(im).enhance(saturation)
+    return ImageEnhance.Contrast(im).enhance(contrast)
+
 
 INK = (17, 17, 17)
 MUTED = (118, 118, 118)
@@ -37,6 +63,7 @@ def main(src_path, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     im = Image.open(src_path).convert("RGB")
     print("원본:", im.size)
+    im = warm(im, **TONE)
 
     # 1) 소개 페이지용 세로 사진
     portrait = im.crop(PORTRAIT_BOX).resize((640, 800), Image.LANCZOS)
