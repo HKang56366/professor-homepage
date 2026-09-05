@@ -725,16 +725,18 @@ ul, ol { list-style: none; }
 
 .chips-link li { padding: 0; border: none; }
 
+/* 주제 이름은 어디에 있든 키컬러로 — 글 목록의 주제 줄과 같은 색이라
+   같은 종류의 정보임이 한눈에 보인다 */
 .chips-link a {
   display: block;
   text-decoration: none;
   font-size: 12.5px;
-  color: var(--ink-3);
+  color: var(--accent);
   border: 1px solid var(--rule);
   padding: 5px 12px;
 }
 
-.chips-link a:hover { border-color: var(--ink); color: var(--ink); }
+.chips-link a:hover { border-color: var(--accent); }
 
 /* 경력·학력 */
 
