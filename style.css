@@ -428,11 +428,43 @@ ul, ol { list-style: none; }
 .page-art { width: 100%; height: auto; display: block; overflow: visible; }
 .page-art line, .page-art path, .page-art circle, .page-art ellipse { fill: none; }
 
-.page-art .art-frame { stroke: var(--ink); stroke-width: 1.2; }
-.page-art .art-grid line { stroke: var(--rule-2); stroke-width: 1; }
-.page-art .art-node circle { fill: var(--ink); stroke: none; }
-.page-art .art-scatter circle { fill: var(--accent); stroke: none; opacity: .75; }
-.page-art .art-ring { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 4 4; }
+/* 연구분야 — 포먼트 산점도 */
+.art-plot .grid line { stroke: var(--rule); stroke-width: 1; }
+.art-plot .tick line { stroke: var(--rule-2); stroke-width: 1; }
+.art-plot .axis { stroke: var(--ink); stroke-width: 1.2; }
+.art-plot .ell { stroke: var(--rule-2); stroke-width: 1; }
+.art-plot .ell.hot { stroke: var(--accent); stroke-width: 1.2; }
+.art-plot .pt { fill: var(--ink-3); stroke: none; opacity: .7; }
+.art-plot .pt.hot { fill: var(--accent); opacity: .9; }
+.art-plot .shift { stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.art-plot .head { fill: var(--accent); stroke: none; }
+
+.art-plot .lab text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  fill: var(--ink);
+  text-anchor: middle;
+}
+
+.art-plot .ax {
+  font-family: var(--serif);
+  font-size: 11px;
+  letter-spacing: .12em;
+  fill: var(--muted);
+  text-anchor: middle;
+}
+
+/* 칼럼 — 겹쳐 놓인 원고 */
+.art-sheets .sheet { fill: #fff; stroke: var(--rule-2); stroke-width: 1; }
+.art-sheets .sheet.front { stroke: var(--ink); }
+.art-sheets .sheet.back1 { stroke: var(--rule); }
+.art-sheets .sheet.back2 { stroke: var(--rule); }
+.art-sheets .ttl { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
+.art-sheets .rule { stroke: var(--accent); stroke-width: 2; }
+.art-sheets .txt { stroke: var(--rule-2); stroke-width: 2.6; stroke-linecap: round; }
+.art-sheets .fig { fill: none; stroke: var(--rule); stroke-width: 1; }
+.art-sheets .wv line { stroke: var(--accent); stroke-width: 1.4; stroke-linecap: round; }
 
 .page-art .art-edge line { stroke: var(--ink); stroke-width: 1.1; }
 .page-art .art-node-o circle { stroke: var(--ink); stroke-width: 1.2; fill: #fff; }
