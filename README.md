@@ -21,11 +21,24 @@
 
 ## 다시 찍기
 
-`_build/build.py` 가 기존 `post*.html` 에서 본문을 그대로 꺼내 새 템플릿으로
-다시 찍는다. **본문 문장은 건드리지 않는다** — 하드랩된 줄만 문단으로 합친다.
+작업 사본은 서버의 `~/Workspace/kang/professor-homepage` 에 둔다.
 
 ```bash
-python3 _build/build.py <원본_post들이_있는_디렉토리> <출력_디렉토리>
+cd ~/Workspace/kang/professor-homepage
+python3 _build/build.py . .        # 제자리에서 다시 찍는다
+git diff --stat                    # 무엇이 바뀌었는지 본다
+```
+
+`_build/build.py` 는 `post*.html` 에서 본문을 그대로 꺼내 새 템플릿으로 다시 찍는다.
+**본문 문장은 건드리지 않는다** — 하드랩된 줄만 문단으로 합친다. 자기가 찍어낸
+결과도 다시 읽을 수 있어(멱등) 몇 번을 돌려도 같은 결과가 나온다. 아무것도 안 고치고
+돌리면 `git status` 가 비어 있어야 정상이다.
+
+프로필 사진을 바꿀 때는 원본 한 장을 주고 아래를 돌리면 세 크기가 함께 나온다.
+잘라내는 자리는 `_build/make_images.py` 위쪽 `PORTRAIT_BOX`·`FACE_BOX` 두 줄이다.
+
+```bash
+python3 _build/make_images.py <원본사진> images/
 ```
 
 글을 새로 올릴 때는 `_build/build.py` 의 `POSTS` 목록에 한 줄
