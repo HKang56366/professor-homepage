@@ -180,7 +180,7 @@ POSTS = [
 THREADS = [
     ("한국어 활용의 변이와 유추", "Variation and Analogy in Korean Inflection",
      "‘ㄹ’ 말음 어간의 활용에서 관찰되는 변이를 말뭉치와 설문으로 기술하고, 선택적 /ㄹ/ "
-     "삽입을 유추 기반으로 설명한 두 편의 논문이 이 갈래에 있다.",
+     "삽입을 유추 기반으로 설명한 두 편의 논문이 여기에 있다.",
      "Two papers describe variation in the inflection of ㄹ-final stems and account for "
      "optional /ㄹ/ insertion through analogy.",
      [2, 3], [9, 10, 12], ["영어음운론", "영어음운론심화"]),
@@ -509,7 +509,7 @@ def build_about():
   </table>
 
   <div class="note">
-    <p>연구 갈래와 논문 목록은 <a href="research.html">연구</a>에, 담당 과목은
+    <p>연구 분야와 논문 목록은 <a href="research.html">연구</a>에, 담당 과목은
       <a href="teaching.html">강의</a>에 정리해 두었습니다.</p>
   </div>
 </main>
@@ -540,7 +540,7 @@ def build_research():
         cl = "".join(f"<li>{c}</li>" for c in cs)
         threads += f"""
     <section class="thread">
-      <p class="thread-no">갈래 {i}</p>
+      <p class="thread-no">{i:02d}</p>
       <h3 class="thread-title">{ko}</h3>
       <p class="thread-en">{en}</p>
       <p class="thread-desc">{desc}</p>
@@ -563,9 +563,8 @@ def build_research():
 
   <h2 class="doc-h2">연구 분야</h2>
   <div class="fields-long">{fields}</div>
-
-  <h2 class="doc-h2">연구 갈래</h2>
-  <p class="doc-note">논문과 글, 강의가 어떻게 이어지는지를 갈래별로 묶었습니다.</p>
+  <p class="doc-note">아래는 논문과 글, 강의가 어떻게 이어지는지를 주제별로 묶은
+    것입니다.</p>
   {threads}
 
   <h2 class="doc-h2">논문</h2>
@@ -868,7 +867,7 @@ def build_en_research():
                      f'{dict((p[0], p[2]) for p in POSTS)[n]}</a>'
                      f'<span class="g-date">in Korean</span></li>' for n in po)
         threads += f"""
-    <section class="thread"><p class="thread-no">Thread {i}</p>
+    <section class="thread"><p class="thread-no">{i:02d}</p>
       <h3 class="thread-title">{en}</h3><p class="thread-en">{ko}</p>
       <p class="thread-desc">{desc_en}</p>
       <div class="thread-grid">
@@ -885,9 +884,9 @@ def build_en_research():
   <h1 class="doc-title">Research</h1>
   <p class="doc-lede">Phonetics, phonology, and morphology — observing how speech sounds
     are realised and how they change, with English and Korean side by side.</p>
-  <h2 class="doc-h2">Areas</h2>
+  <h2 class="doc-h2">Research Areas</h2>
   <div class="fields-long">{fields}</div>
-  <h2 class="doc-h2">Threads</h2>
+  <p class="doc-note">Below, papers, essays and courses are grouped by topic.</p>
   {threads}
   <h2 class="doc-h2">Publications</h2>
   <ul class="pubs">{allpubs}</ul>
