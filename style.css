@@ -695,7 +695,11 @@ ul, ol { list-style: none; }
 .doc-h2 + .rows,
 .doc-h2 + .courses,
 .doc-h2 + .fields-long .field-long,
-.doc-h2 + .groups .group { border-top-color: var(--line-second); }
+.doc-h2 + .groups .group,
+/* 제목과 목록 사이에 안내문이 낀 경우도 같게 */
+.doc-h2 + .doc-note + .groups .group,
+.doc-h2 + .doc-note + .pubs,
+.doc-h2 + .doc-note + .rows { border-top-color: var(--line-second); }
 
 .doc-note { font-size: 13.5px; color: var(--muted); margin-top: 16px; }
 .doc-note a { border-bottom: 1px solid var(--rule-2); text-decoration: none; }
