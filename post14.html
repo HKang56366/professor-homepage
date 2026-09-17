@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>언어의 개인화 - 언어학 블로그</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 50px; }
+        .header { margin-bottom: 40px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
+        h1 { color: #333; font-size: 2.2em; margin-bottom: 10px; }
+        .meta { color: #666; font-size: 1em; }
+        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
+        .nav { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .nav a { background: #667eea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
+        .nav a:hover { background: #764ba2; }
+        .post-number { color: #667eea; font-size: 0.9em; font-weight: bold; }
+        
+        /* 댓글 섹션 스타일 */
+        .comments-section {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+        }
+        
+        .comments-section h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        
+        .comments-list {
+            margin-bottom: 40px;
+            min-height: 20px;
+        }
+        
+        .comment-item {
+            background: #f9f9f9;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .comment-date {
+            font-size: 0.9em;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .comment-text {
+            color: #555;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .comment-form {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .comment-form h3 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1em;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        
+        .submit-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: #764ba2;
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        #comment-status {
+            margin-left: 15px;
+            font-weight: 500;
+        }
+        
+        .status-success {
+            color: #28a745;
+        }
+        
+        .status-error {
+            color: #dc3545;
+        }
+        
+        .no-comments {
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>언어의 개인화</h1>
+            <div class="meta">
+                <span class="post-number">글 14</span> | 2026년 10월
+            </div>
+        </div>
+        
+        <div class="content">
+필자는 20세기에 태어나 현재 21세기로 넘어와 살고 있다. 이 두 세기를
+구별하는 많은 차이들이 있으나 개인적으로 많이 실감하는 차이는 바로
+'표준화 vs. 개인화'이다. 20세기 한국은 산업화가 진행되면서 표준적인
+상품들을 대량으로 생산하여 공급하는 방식으로 성장하였다. 그래서 어렸을
+적 소위 'KS'마크가 부여된, 한국산업표준을 지킨 상품을 구매해야 한다는
+이야기를 많이 들었다. 방송은 공중파로 송출되는 세 채널(SBS가 개통되면서
+네 채널) 중 하나를 선택해서 봐야 했고, 초중고 교육 역시 '표준화'된
+시민을 양성하는 데 초점이 맞춰져 있었다. 20세기 말에 들어선 대형마트들은
+표준화, 산업화의 끝판을 보여주었다.
+
+이런 어린 시절을 보냈던 필자에게 21세기는 너무나 다른 모습으로 다가왔다.
+자동차와 같은 상품들도 (일부에 해당하는 이야기지만) 개인에 맞춘
+주문제작이 가능하고, 방송은 개개인이 선택해서 볼 수 있게 되었으며,
+교육에서는 개성과 창의성을 추구한다(고 주장한다). 그리고 소비자가 마트에
+갈 필요 없이 클릭 몇 번으로 상품이 내 집 앞에 배송되도록 할 수 있다.
+이렇듯 사회는 점점 개인의 개성이나 필요에 맞춰 공급해 주는 방향으로
+발전하고 있으며 그러한 변화는 언어에도 적용되고 있다.
+
+한국어 역시 20세기에는 '표준화'가 대세였다. 1933년 조선어학회에서
+'한글맞춤법통일안'을 발표하였고, 1988년에 이르러 '표준어규정'이
+고시된다. 규정의 유무를 떠나 20세기 한국인들은 급속한 미디어의 발달과
+병행하여 말의 표준화도 경험하게 된다. 방송에서는 방언, 혹은 사투리는
+배제되는 것이 당연하게 여겨졌고, 교육에서도 표준어를 사용하는 것이 권장
+내지 강요되는 경우가 많았다. 더불어 많은 사람들이 고향을 떠나 수도권으로
+와서 각 지역 사투리의 특색을 점점 잃게 되었다. 그 결과 현재 젊은이들은
+고향과 상관없이 부모세대의 사투리를 많이 잃어버렸다.
+
+그러나 21세기에 들어서 방송(드라마)에서도 본격적으로 사투리가 등장하기
+시작하였고 (대표적으로 '응답하라' 시리즈가 있다), 사회적으로 사투리 역시
+보존해야 하는 언어자원임을 인식하기 시작하였다. 물론 늦은 감이 있어서
+사투리가 이전처럼 완전히 복원되기는 어려울 수도 있다. 지역 사투리의
+복원과는 별개로, 필자는 한국어 역시 사회의 흐름에 따라 '개인화'하고
+있다고 생각하고 있다. 정확하기 말하면 '개인 맞춤형 표현'의 출현이라고 할
+수 있겠다. 20세기까지 개별 인물과 관련된 단어는 사람의 이름과 같은
+고유명사에 한정되어 있었다면 21세기에는 다양한 표현들이 개인 맞춤형으로
+등장한다.
+
+첫 번째 예로는 '고유명사+하다'의 표현이다. 이는 영어의 conversion을
+참고한 것이라 추정된다. 예를 들어 류현진 선수가 LA 다저스에서 활동하던
+전성기 시절에 6이닝, 7이닝을 무실점으로 막았다면 '류현진이
+류현진했다'라는 표현을 사용하곤 했다. 필자의 좋지 않은 버릇 중 하나가
+운전을 하면서 예민해진다는 점인데 운전 중 짜증을 내면 필자의 아들들은
+어김없이 '아빠가 아빠했다'라는 표현을 쓰곤 했다.
+
+더 나아가 특정 인물의 이름과 일반 단어를 혼합해서 사용하는 형태들이
+등장했다. '윤식당'에서 등장한 '윤며들다(윤여정에 스며들다)', 유튜브에서
+팽수가 사용하는 '팽하(팽수+하이)', 벤투감독이 2022년 카타르 월드컵에서
+한국대표팀을 16강으로 진출시켰을 때 사용되던 '벤버지(벤투+아버지)' 등,
+'시무룩', '금쪽이'와 같은 일반적인 표현을 특정 이름과 결합하여 사용하는
+빈도가 늘고 있다.
+
+이러한 개인화 내지 개별화는 철자에서도 많이 드러나는데 예를 들어
+'수지'라는 이름을 로마자로 표기할 때 기존에는 로마자 표기법에 맞춰
+'suji'라고 썼다면 최근에는 'suzy'와 같이 표기법에서 벗어난 선택을 하는
+경우가 많다. 이는 상표에서 흔하게 일어났던 일인데 'Kleenex'를 예로 들면
+일반적인 'cl-'을 택하는 대신 영어 단어에서는 보기 드문 'kl-'을 선택하여
+일종의 차별화를 했다고 볼 수 있다. 다소 결이 다르기는 하나 이런 차별화된
+표기는 꽤 오래 전부터 일어났었는데 우리가 지금도 많이 사용하는 'OK'는
+사실 1830년대에 'all correct'를 장난스럽게 사용하던 것이 굳어진
+표현이다. 최근에는 'easy'를 'EZ'로 쓴다거나, 'light'를 'lite'로 쓰는
+것들 역시 차별화를 반영한 표현이라고 생각된다. 이렇듯 개인 맞춤형 시대에
+언어에도 개인에 맞추고 싶은 사람들의 생각이 반영된 것일까? 명확한 논리적
+근거는 없으나 필자는 그렇다고 생각한다. 그리고 당분간은 이러한 표현들이
+지속적으로 나타날 것이라 본다. 그리고 이에 따라 교육에 의해서 '획일화'를
+강요받았던 한국인들의 생각도 보다 개성을 존중하는 방향으로 나아가고
+있으며, 또 그래야 한다고 생각한다.
+        </div>
+        
+        <div class="comments-section">
+            <h2>댓글</h2>
+            
+            <div id="comments-list" class="comments-list"></div>
+            
+            <div class="comment-form">
+                <h3>의견을 남겨주세요</h3>
+                <form id="comment-form">
+                    <div class="form-group">
+                        <label for="name">이름 *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">이메일 *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">의견 *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="6LcumoMtAAAAAEF0tYDGZfFX1gM9VwaxdZw6TUsW" data-action="submit"></div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">댓글 게시</button>
+                    <span id="comment-status"></span>
+                </form>
+            </div>
+        </div>
+        
+        <div class="nav">
+            <a href="blog.html">← 목록으로</a>
+            <span>
+                <a href="post13.html">← 이전 글</a>
+            </span>
+        </div>
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        // 댓글 데이터를 저장할 변수
+        let allComments = [];
+        
+        // 현재 페이지의 slug (파일명에서 확장자 제거)
+        const currentSlug = window.location.pathname.split('/').pop().replace('.html', '');
+        const commentStorageKey = `comments_${currentSlug}`;
+        
+        // 페이지 로드 시 댓글 로드
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComments();
+            setupCommentForm();
+        });
+        
+        // 로컬 스토리지에서 댓글 로드
+        function loadComments() {
+            const stored = localStorage.getItem(commentStorageKey);
+            if (stored) {
+                allComments = JSON.parse(stored);
+                displayComments();
+            }
+        }
+        
+        // 댓글 표시
+        function displayComments() {
+            const commentsList = document.getElementById('comments-list');
+            
+            if (allComments.length === 0) {
+                commentsList.innerHTML = '<div class="no-comments">아직 댓글이 없습니다. 첫 댓글을 남겨주세요!</div>';
+                return;
+            }
+            
+            commentsList.innerHTML = allComments.map((comment, index) => `
+                <div class="comment-item">
+                    <div class="comment-author">${escapeHtml(comment.name)}</div>
+                    <div class="comment-date">${formatDate(comment.timestamp)}</div>
+                    <div class="comment-text">${escapeHtml(comment.message)}</div>
+                </div>
+            `).join('');
+        }
+        
+        // 댓글 폼 설정
+        function setupCommentForm() {
+            const form = document.getElementById('comment-form');
+            const statusSpan = document.getElementById('comment-status');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                
+                // 유효성 검사
+                if (!name || !email || !message) {
+                    statusSpan.textContent = '모든 필드를 채워주세요';
+                    statusSpan.className = 'status-error';
+                    return;
+                }
+                
+                // 이메일 형식 검사
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    statusSpan.textContent = '유효한 이메일을 입력해주세요';
+                    statusSpan.className = 'status-error';
+                    return;
+                }
+                
+                try {
+                    statusSpan.textContent = '댓글을 게시하고 있습니다...';
+                    statusSpan.className = '';
+                    
+                    // reCAPTCHA 토큰 획득
+                    const token = await grecaptcha.execute('6LcumoMtAAAAAEF0tYDGZfFX1gM9VwaxdZw6TUsW', {action: 'submit'});
+                    
+                    // 새 댓글 객체 생성
+                    const newComment = {
+                        name: name,
+                        email: email,
+                        message: message,
+                        timestamp: new Date().toISOString(),
+                        recaptchaToken: token
+                    };
+                    
+                    // 댓글 배열에 추가
+                    allComments.push(newComment);
+                    
+                    // 로컬 스토리지에 저장
+                    localStorage.setItem(commentStorageKey, JSON.stringify(allComments));
+                    
+                    // 댓글 목록 갱신
+                    displayComments();
+                    
+                    // 폼 초기화
+                    form.reset();
+                    
+                    statusSpan.textContent = '✓ 댓글이 게시되었습니다!';
+                    statusSpan.className = 'status-success';
+                    
+                    // 3초 후 메시지 제거
+                    setTimeout(() => {
+                        statusSpan.textContent = '';
+                        statusSpan.className = '';
+                    }, 3000);
+                    
+                } catch (error) {
+                    console.error('댓글 제출 오류:', error);
+                    statusSpan.textContent = '댓글 제출 중 오류가 발생했습니다';
+                    statusSpan.className = 'status-error';
+                }
+            });
+        }
+        
+        // HTML 이스케이프 (XSS 방지)
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+        
+        // 날짜 포맷팅
+        function formatDate(isoString) {
+            const date = new Date(isoString);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
+        }
+    </script>
+
+    <script>
+        // 복사 방지 처리
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            alert('본 글의 내용 복사는 제한되어 있습니다.');
+            return false;
+        }, false);
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('우클릭은 허용되지 않습니다.');
+            return false;
+        }, false);
+
+        // 드래그 방지
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+    </script>
+</body>
+</html>
