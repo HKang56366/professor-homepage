@@ -63,9 +63,9 @@ bash _build/release.sh '에세이 제목'
 올리지 않는다. `release.sh`만 커밋·푸시하므로, Timely AI는 사용자가 명시적으로
 「발행」을 승인한 뒤에만 마지막 명령을 실행한다.
 
-GitHub 인증은 `HKang56366/professor-homepage` 하나에 `Contents: Read and write`
-권한을 준 fine-grained PAT 또는 SSH 키를 사용한다. 토큰은 저장소 파일이나 명령행에
-적지 않는다.
+GitHub 인증은 이 서버의 `github-professor-homepage` SSH 별칭과 저장소 전용
+read/write 배포 키를 사용한다. 다른 저장소에는 접근할 수 없다. 개인 키는
+`~/.ssh/professor_homepage_ed25519`에만 있고 저장소나 원고에는 들어가지 않는다.
 
 ## 사실관계
 
