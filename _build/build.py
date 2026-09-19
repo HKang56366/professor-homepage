@@ -18,6 +18,7 @@ import sys
 
 SITE = "https://hijokang.duckdns.org"
 BUILD_DATE = "2026-09-05"
+GA_ID = "G-NH7WLM4DJN"
 
 # ── 정본 사실관계 (전남대 교수 소개 페이지) ──────────────────────────────
 F = {
@@ -839,6 +840,11 @@ def head(title, desc, canon, *, lang="ko", alt=None, extra="", og_type="website"
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width,initial-scale=1">',
         '<meta name="google-site-verification" content="GtSYcOTLztDFM8FqRMaz_-U4LjYArPUYrozn7-bfp6o">',
+        f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>',
+        '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'
+        "gtag('js',new Date());"
+        f"gtag('config','{GA_ID}',{{'allow_google_signals':false,"
+        "'allow_ad_personalization_signals':false}});</script>",
         f"<title>{title}</title>",
         f'<meta name="description" content="{desc}">',
         f'<link rel="canonical" href="{SITE}{canon}">',
