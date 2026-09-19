@@ -132,6 +132,13 @@ PUBS = [
       "variation in a spoken corpus",
       "말소리와 음성과학", "Phonetics and Speech Sciences", "15-2, 21–29", [KANG],
       "10.13064/ksss.2023.15.2.021"),
+    P("stressprod2022", "2022",
+      "Does perception lead production?: A case study of English stress by Korean "
+      "EFL learners",
+      "언어", "Korean Journal of Linguistics", "47-1, 1–28", [KANG]),
+    P("vowelclass2022", "2022",
+      "조음과 청취에 근거한 수업을 통한 한국인 대학생의 영어모음 발음 변화",
+      "언어학", "Linguistics", "30-4, 1–18", [KANG]),
     P("durmod", "2020",
       "Duration modulation in Korean stops: nonlocal similarity avoidance vs. "
       "timing regulation",
@@ -158,6 +165,10 @@ PUBS = [
     P("ewen", "2017", "Vowels of Beryozovka Ewen: An acoustic phonetic study",
       "알타이학보", "ALTAI HAKPO", "27, 1–23", [KANG, YUN, KO_SY],
       "10.15816/ask.2017..27.001"),
+    P("tongueroot2012", "2012",
+      "In search of the acoustic correlates of tongue root contrast in three Altaic "
+      "languages: Western Buriat, Tsongol Buriat, and Ewen",
+      "알타이학보", "ALTAI HAKPO", "22", [KANG]),
     P("laryngeal", "2016",
       "Dynamic and static aspects of laryngeal co-occurrence restrictions in Korean",
       "음성·음운·형태론 연구", "Studies in Phonetics, Phonology and Morphology",
@@ -593,6 +604,11 @@ COURSES = [("학부", [("영어음성학", "Phonetics of English"), ("영어음�
            ("대학원", [("영어음운론", "English Phonology"),
                      ("영어음운론심화", "Advanced English Phonology")])]
 
+PAST_COURSES = [("학부", ["영어학개론", "영어음운론", "영어학특강", "초급영문법",
+                           "중급영문법", "영어발음을 통한 영어의 이해"]),
+                ("대학원", ["영어음성학연구", "영어음운론연구", "영어화용론연구",
+                            "영어문법과교육"])]
+
 TOPICS = {
     "change":     ("언어 변화", "Language Change"),
     "phonetics":  ("음성학", "Phonetics"),
@@ -691,7 +707,27 @@ POSTS = [
      "역사적 요인을 정리한다.",
      "Starting from the famous claim that ‘ghoti’ could spell fish, and tracing the "
      "historical forces that pulled English spelling apart."),
+    (14, "언어의 개인화", "The Personalization of Language", "2026-09", "19",
+     ["society", "change", "korean", "morphology"],
+     "표준화의 시대를 지나 개인화된 사회로 이동하면서, 사람 이름을 활용한 새 표현과 "
+     "차별화된 철자가 한국어에 어떻게 나타나는지 살핀다.",
+     "How personalized expressions and distinctive spellings emerge as Korean moves from "
+     "an age of standardization toward a more individualized society."),
 ]
+
+# 기고문 원문은 손대지 않는다. 검색·AI 답변에서 핵심을 바로 파악할 수 있도록
+# 편집자 요약만 본문 앞에 별도 영역으로 붙인다.
+POST_INTROS = {
+    14: {
+        "question": "언어도 사회처럼 개인화되고 있을까?",
+        "answer": ("이 글은 그렇다고 본다. 표준어와 맞춤법을 중심으로 언어를 통일하던 "
+                   "흐름 옆에서, 이제는 ‘류현진이 류현진했다’ 같은 개인 맞춤형 표현, "
+                   "이름과 일반어의 혼성, 규범을 벗어난 차별화된 철자가 늘고 있다."),
+        "points": ["표준화에서 개인화로 이동한 사회 변화가 언어에도 반영된다.",
+                   "고유명사+하다, 이름을 섞은 신조어가 개인의 특성을 표현한다.",
+                   "Suzy·Kleenex·EZ 같은 철자 선택도 차별화 욕구를 보여준다."],
+    },
+}
 
 # 연구 주제 ↔ 논문 ↔ 글 ↔ 강의를 잇는 실제 갈래
 THREADS = [
@@ -708,7 +744,7 @@ THREADS = [
      "그 차이를 얼마나 바꾸는지를 다룬다.",
      "Which acoustic cues Korean learners rely on to hear and produce English stress, and "
      "how far immersion changes them.",
-     ["l2immersion", "stressperc", "stressacoustic"],
+     ["l2immersion", "stressprod2022", "vowelclass2022", "stressperc", "stressacoustic"],
      [2, 5, 8], ["영어음성학", "영어학개론"]),
     ("조음과 음향의 미세한 조절", "Fine-Grained Articulatory and Acoustic Control",
      "폐쇄음의 길이와 성대 진동 시작 시간처럼, 귀로는 잘 구별되지 않는 미세한 조절을 측정한다. "
@@ -722,7 +758,7 @@ THREADS = [
      "음향적으로 분석했다. 한국어에서 본 원리가 다른 언어에서도 작동하는지를 확인하는 자리다.",
      "Acoustic fieldwork on the vowel systems of endangered languages — Buriat, Ewen, "
      "Nanai, Manchu — testing whether principles found in Korean hold elsewhere.",
-     ["ewen", "nanai", "manchu", "ocpmemory", "tongueroot"],
+     ["ewen", "tongueroot2012", "nanai", "manchu", "ocpmemory", "tongueroot"],
      [4, 5, 6], ["영어음성학", "영어학개론"]),
 ]
 
@@ -1139,6 +1175,12 @@ def build_teaching():
         rows = "".join(f'<li class="course"><span class="course-ko">{ko}</span>'
                        f'<span class="course-en">{en}</span></li>' for ko, en in courses)
         secs += (h2(level, "book") + f'<ul class="courses">{rows}</ul>')
+    past = ""
+    for level, courses in PAST_COURSES:
+        rows = "".join(f'<li class="course"><span class="course-ko">{course}</span></li>'
+                       for course in courses)
+        past += (f'<section><h3 class="past-course-title">{level}</h3>'
+                 f'<ul class="courses">{rows}</ul></section>')
     body = f"""{nav("teaching.html")}
 <main class="wrap doc">
   {doc_head('<p class="crumb"><a href="index.html">홈</a> <span>›</span> 강의</p>',
@@ -1146,6 +1188,8 @@ def build_teaching():
             "영어와 관련된 언어학개론, 음성학, 음운론을 가르치고 있습니다.",
             art_teaching())}
   {secs}
+  {h2("조선대학교에서 가르친 과목들 (2014–2025)", "list")}
+  <div class="past-courses">{past}</div>
   {h2("수강생에게", "mail")}
   <div class="note">
     <p>강의계획서와 과제 안내는 학교 LMS를 통해 공지합니다. 수업 관련 문의는
@@ -1223,6 +1267,16 @@ def build_post(meta, src_dir):
     n, t_ko, t_en, ym, day, tp, summ, summ_en = meta
     para_list, comments, scripts = read_source(os.path.join(src_dir, f"post{n}.html"))
     paras = "\n".join(f"<p>{p}</p>" for p in para_list)
+    intro = ""
+    if n in POST_INTROS:
+        ed = POST_INTROS[n]
+        points = "".join(f"<li>{p}</li>" for p in ed["points"])
+        intro = f'''<aside class="answer-summary" aria-labelledby="answer-{n}">
+      <p class="answer-label">한눈에 보기</p>
+      <h2 id="answer-{n}">{ed["question"]}</h2>
+      <p class="answer-direct">{ed["answer"]}</p>
+      <ul>{points}</ul>
+    </aside>'''
     date_iso = f"{ym}-{day}"
     y, mo = ym.split("-")
     disp = f"{y}년 {int(mo)}월"
@@ -1257,11 +1311,13 @@ def build_post(meta, src_dir):
           '"headline":"%s","description":"%s","url":"%s/post%d.html",'
           '"mainEntityOfPage":{"@type":"WebPage","@id":"%s/post%d.html"},'
           '"datePublished":"%s","dateModified":"%s","inLanguage":"ko",'
-          '"image":"%s/images/og-image.jpg",'
+          '"articleSection":"%s","wordCount":%d,"image":"%s/images/og-image.jpg",'
           '"about":[%s],"keywords":"%s","author":%s,'
           '"publisher":{"@type":"Person","name":"Hijo Kang","url":"%s/about.html"},'
           '"isPartOf":{"@type":"Blog","name":"강희조의 글","url":"%s/blog.html"}}'
-          % (t_ko, desc, SITE, n, SITE, n, date_iso, date_iso, SITE,
+          % (t_ko, desc, SITE, n, SITE, n, date_iso, date_iso,
+             ", ".join(TOPICS[t][0] for t in tp),
+             len(plain(" ".join(para_list)).split()), SITE,
              ",".join('{"@type":"Thing","name":"%s"}' % TOPICS[t][1] for t in tp),
              ", ".join(TOPICS[t][0] for t in tp), person_ld(), SITE, SITE))
     crumb = crumbs_ld([("홈", "/"), ("에세이", "/blog.html"), (t_ko, f"/post{n}.html")])
@@ -1279,6 +1335,8 @@ def build_post(meta, src_dir):
         <span class="dot">·</span> 글 {n}
         <span class="dot">·</span> {F["name_ko"]}</p>
     </header>
+
+{intro}
 
     <div class="essay-body">
 {paras}
