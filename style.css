@@ -802,6 +802,16 @@ ul, ol { list-style: none; }
 .thread-grid .pubs { border-top: none; }
 .thread-grid .pubs li:last-child { border-bottom: none; }
 
+.past-courses { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.past-course-title { font-size: 15px; margin-bottom: 12px; font-weight: 600; }
+
+.answer-summary { margin: 0 0 42px; padding: 24px 0; border-top: 1px solid var(--line-second); border-bottom: 1px solid var(--rule); }
+.answer-label { margin: 0 0 8px; color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+.answer-summary h2 { margin: 0 0 14px; font-family: var(--serif); font-size: 24px; line-height: 1.4; font-weight: 400; }
+.answer-direct { margin: 0; font-size: 15px; line-height: 1.85; }
+.answer-summary ul { margin: 18px 0 0; padding: 16px 0 0 20px; border-top: 1px solid var(--rule); }
+.answer-summary li { margin: 6px 0; line-height: 1.65; }
+
 .linklist li { padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 14px; display: flex; justify-content: space-between; gap: 12px; }
 .linklist li:last-child { border-bottom: none; }
 .linklist a { text-decoration: none; border-bottom: 1px solid transparent; }
@@ -1039,6 +1049,7 @@ ul, ol { list-style: none; }
   /* 카드 그리드는 한 줄에 하나씩 */
   .fields, .fields-long, .groups { grid-template-columns: 1fr; gap: 26px; }
   .thread-grid { grid-template-columns: 1fr; gap: 24px; }
+  .past-courses { grid-template-columns: 1fr; gap: 24px; }
 
   .feature { padding: 30px; }
   .feature-title { font-size: 30px; }
