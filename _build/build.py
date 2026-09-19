@@ -827,6 +827,7 @@ def head(title, desc, canon, *, lang="ko", alt=None, extra="", og_type="website"
     t = [
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width,initial-scale=1">',
+        '<meta name="google-site-verification" content="GtSYcOTLztDFM8FqRMaz_-U4LjYArPUYrozn7-bfp6o">',
         f"<title>{title}</title>",
         f'<meta name="description" content="{desc}">',
         f'<link rel="canonical" href="{SITE}{canon}">',
