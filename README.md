@@ -56,7 +56,7 @@ python3 _build/post_tool.py prepare content/drafts/<원고>.md
 python3 _build/post_tool.py publish content/drafts/<원고>.md
 
 # 3. 미리보기를 확인한 뒤 승인된 제목으로 커밋·푸시한다.
-_build/release.sh '에세이 제목'
+bash _build/release.sh '에세이 제목'
 ```
 
 `prepare`는 항상 읽기 전용이다. `publish`는 로컬 파일을 생성하지만 GitHub에는
