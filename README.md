@@ -14,10 +14,12 @@
 | `research.html` | 연구 분야, 논문과 글·강의를 주제별로 묶은 정리 |
 | `teaching.html` | 담당 과목 |
 | `blog.html` | 글 목록 (전체 + 주제별) |
-| `post1.html` … `post13.html` | 글 본문 |
+| `post1.html` … | 글 본문 |
 | `en/` | 영문 페이지 (About · Research · Teaching · Writing) |
 | `sitemap.xml` `robots.txt` `feed.xml` | 검색·구독용 |
 | `_build/` | 사이트를 다시 찍는 스크립트 (게시되지 않음) |
+| `content/drafts/` | Timely AI가 작성·검토할 Markdown 원고 |
+| `content/published/` | 발행된 Markdown 원고 보관 |
 
 ## 다시 찍기
 
@@ -41,9 +43,29 @@ git diff --stat                    # 무엇이 바뀌었는지 본다
 python3 _build/make_images.py <원본사진> images/
 ```
 
-글을 새로 올릴 때는 `_build/build.py` 의 `POSTS` 목록에 한 줄
-(번호, 제목, 영문 제목, 연-월, 일, 주제, 한 줄 요약, 영문 요약)을 더하고
-다시 돌리면 목록·주제 묶음·사이트맵·RSS 가 함께 갱신된다.
+## Timely AI에서 새 글 발행
+
+`content/drafts/example.md`를 복사해 원고를 작성한다. 본문은 수정하지 않고,
+제목·날짜·주제·요약은 파일 위쪽 front matter에 적는다.
+
+```bash
+# 1. 검증만 한다. 저장소는 바뀌지 않는다.
+python3 _build/post_tool.py prepare content/drafts/<원고>.md
+
+# 2. 강희조 교수님의 발행 승인을 받은 뒤 HTML·목록·RSS·사이트맵을 생성한다.
+python3 _build/post_tool.py publish content/drafts/<원고>.md
+
+# 3. 미리보기를 확인한 뒤 승인된 제목으로 커밋·푸시한다.
+_build/release.sh '에세이 제목'
+```
+
+`prepare`는 항상 읽기 전용이다. `publish`는 로컬 파일을 생성하지만 GitHub에는
+올리지 않는다. `release.sh`만 커밋·푸시하므로, Timely AI는 사용자가 명시적으로
+「발행」을 승인한 뒤에만 마지막 명령을 실행한다.
+
+GitHub 인증은 `HKang56366/professor-homepage` 하나에 `Contents: Read and write`
+권한을 준 fine-grained PAT 또는 SSH 키를 사용한다. 토큰은 저장소 파일이나 명령행에
+적지 않는다.
 
 ## 사실관계
 

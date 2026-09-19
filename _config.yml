@@ -13,3 +13,4 @@ exclude:
   - README.md
   - COMMENTS.md
   - staticman.yml
+  - content
