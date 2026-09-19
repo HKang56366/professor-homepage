@@ -844,7 +844,7 @@ def head(title, desc, canon, *, lang="ko", alt=None, extra="", og_type="website"
         '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'
         "gtag('js',new Date());"
         f"gtag('config','{GA_ID}',{{'allow_google_signals':false,"
-        "'allow_ad_personalization_signals':false}});</script>",
+        "'allow_ad_personalization_signals':false});</script>",
         f"<title>{title}</title>",
         f'<meta name="description" content="{desc}">',
         f'<link rel="canonical" href="{SITE}{canon}">',
