@@ -10,6 +10,7 @@
 (강희조 / Kang, Hijo · 부교수 · 음성학, 음운론, 형태론)
 """
 import html
+import json
 import os
 import re
 import shutil
@@ -715,6 +716,16 @@ POSTS = [
      "an age of standardization toward a more individualized society."),
 ]
 
+# 새 글 메타데이터는 Timely AI 발행 도구가 관리하는 JSON을 우선한다.
+# 파일이 없으면 위 목록을 그대로 사용하므로 기존 작업 방식도 깨지지 않는다.
+POSTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "posts.json")
+if os.path.exists(POSTS_FILE):
+    with open(POSTS_FILE, encoding="utf-8") as fh:
+        POSTS = [tuple(p[:5]) + (list(p[5]),) + tuple(p[6:]) for p in json.load(fh)]
+
+# 사이트맵의 수정일은 가장 최근 에세이의 실제 발행일을 따른다.
+BUILD_DATE = max(f"{p[3]}-{p[4]}" for p in POSTS)
+
 # 기고문 원문은 손대지 않는다. 검색·AI 답변에서 핵심을 바로 파악할 수 있도록
 # 편집자 요약만 본문 앞에 별도 영역으로 붙인다.
 POST_INTROS = {
@@ -1258,7 +1269,7 @@ def build_index_of_posts():
 </main>
 {foot()}"""
     return page(f'에세이 | {F["name_ko"]}',
-                '언어의 변화, 말소리, 외국어 습득에 관한 글 13편. 전남대 영어영문학과 '
+                f'언어의 변화, 말소리, 외국어 습득에 관한 글 {len(POSTS)}편. 전남대 영어영문학과 '
                 f'{F["name_ko"]} 교수가 씁니다.',
                 "/blog.html", body, alt=("/blog.html", "/en/writing.html"),
                 extra=jsonld(ld) + jsonld(crumbs_ld([("홈", "/"), ("에세이", "/blog.html")])))
