@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>언어 놀이 - 언어학 블로그</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Segoe UI", sans-serif; background: #f5f5f5; padding: 40px 20px; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 50px; }
+        .header { margin-bottom: 40px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
+        h1 { color: #333; font-size: 2.2em; margin-bottom: 10px; }
+        .meta { color: #666; font-size: 1em; }
+        .content { color: #444; line-height: 1.8; font-size: 1.05em; white-space: pre-wrap; word-wrap: break-word; margin: 30px 0; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -webkit-user-drag: none; }
+        .nav { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .nav a { background: #667eea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
+        .nav a:hover { background: #764ba2; }
+        .post-number { color: #667eea; font-size: 0.9em; font-weight: bold; }
+        
+        /* 댓글 섹션 스타일 */
+        .comments-section {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+        }
+        
+        .comments-section h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        
+        .comments-list {
+            margin-bottom: 40px;
+            min-height: 20px;
+        }
+        
+        .comment-item {
+            background: #f9f9f9;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .comment-date {
+            font-size: 0.9em;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .comment-text {
+            color: #555;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .comment-form {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .comment-form h3 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1em;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        
+        .submit-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: #764ba2;
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        #comment-status {
+            margin-left: 15px;
+            font-weight: 500;
+        }
+        
+        .status-success {
+            color: #28a745;
+        }
+        
+        .status-error {
+            color: #dc3545;
+        }
+        
+        .no-comments {
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>언어 놀이</h1>
+            <div class="meta">
+                <span class="post-number">글 15</span> | 2026년 10월
+            </div>
+        </div>
+        
+        <div class="content">
+언어는 '소리'라는 형식과 '의미'라는 내용으로 구성된다. 언어의 기본
+기능은 의사소통이므로 우리는 일상적으로 의미에 초점을 두고 문장을
+구성하여 의미를 전달한다. 즉 의미적으로 연관된 단어들을 결합하여 하나의
+문장으로 만든다는 뜻이다. 만약 소리에 초점을 두고 음성적 연관성을 가진
+단어들로 문장을 구성한다면, '달이 달달하게 달린다' 혹은 '왜가리가
+가리비를 가리킨다'와 같이 의미 없는 문장이 만들어질 확률이 매우 높다.
+
+그러나 네덜란드의 역사학/철학자 요한 하위징아(Johan Huizinga)가 인간을
+'호모 루덴스(놀이의 인간)'로 명명했듯이, 고등동물로서 인간의 특징 중
+하나는 '유희'를 즐긴다는 것이다. 즉 본래의 목적과 상관없이, 여기서는
+의미와 상관없이, 소리의 연관성만을 가지고 표현들을 만들어 낸다. 2025년
+봄에 유행했던 'Italian Brainrot'은 이러한 유희의 대표적인 사례이다.
+'트랄랄레로 트랄라라(Tralalero Tralala)', '봄바르디로
+크로코딜로(Bombardiro Crocodilo)', '리릴리 라릴라(Lirilì Larilà)',
+'침팬지니 바나니니(Chimpanzini Bananini)', '카푸치노 아사시니(Cappuccino
+Assassino)', '트리피 트로피(Trippi Troppi)' 등을 보면 동일하거나 유사한
+소리가 반복되고 있음을 알 수 있다. 이탈리아어 단어처럼 보이는 이
+표현들은 실제 단어가 그대로 사용된 경우도 있으나 대부분의 경우 단어들을
+살짝 비틀어 소리를 맞춘 형태이며 '폭격기+악어'나 '커피+암살자'처럼
+의미적으로는 연관이 없는 단어들을 조합해서 만들어졌다.
+
+많은 사람들이 Italian Brainrot을 보고 말 그대로 '뇌가 썩는' 경험을
+하기도 하지만 다른 한편에서는 이를 즐기며 확대재생산하였다. 이러한
+언어유희는 당연히 처음 등장한 것이 아니며 인간의 역사에서 오랫동안
+존재해 왔다. 가깝게는 우리가 즐기는 노래들에 등장하는 라이밍(rhyming)을
+예로 들 수 있다. 싸이의 '나팔바지' 중 내 '여자는 쌈빡하지'와 '내 바지는
+나팔바지'가 댓구를 이루면서 마지막 '아지'가 라임으로 맞춰져 있는데
+의미적으로는 큰 연관이 없어 보인다. 가장 극단적인 곡으로는 형돈이와
+대준이의 '한 번도 안 틀리고 누구도 부르기 어려운 노래'가 있다. 가사를
+들어보면 의미는 온데 간데 없고 따라하기 힘든 말소리의 반복으로 구성되어
+있음을 쉽게 알 수 있다.
+
+너를 처음 만난 그 날은 드미트리 메드베데프
+
+러시아 대통령 재임 시절 확률분포표상에는
+
+있을 수 없는 청 단풍잎이 우거진 붉은 수수밭에서
+
+수사슴 수사에 붙은 수수료가 얼마인지
+
+알아보기 위해 간 그곳이었지
+
+너의 얼굴은 마치 페니실린 살균 항균작용을 한 듯
+
+하얗고 입술은 붉은 팥 풋 팥죽처럼 고왔어
+
+그 시절 박남정 춤을 추며 안흥팥찐빵을 먹던
+
+네 모습은 마치 내게 접근금지라고 말하는 듯했어
+
+하지만 이내 우리는 강력접착제처럼 철수 책상
+
+철 책상에 앉아 서로를 액자 속 사진 속에
+
+홍합을 나눠 먹으며 그렇게 그렇게 행복해했지
+
+이렇게 소리를 맞추면서 의미적으로도 말이 되게 만들면 좀 더 우아한
+라이밍이 완성되고 그러한 라이밍은 영시에서 많이 발견할 수 있다. 물론
+현대의 영어로 된 곡들에서도, 특히 힙합에서 많이 찾아볼 수 있고 한국어로
+된 노래들에서도 발견된다. 물론 동양의 한시에서도 오래전부터 '각운'이라는
+형태로 존재해 왔다. 왜 사람들은 이렇게 언어를 기능적으로 사용하는 데
+그치지 않고 가지고 노는 장난감으로도 이용하는 것일까?
+
+앞서 기술했듯이 인간의 '유희의 동물'이다. 그리고 그 '유희', 즉 놀이는
+인간에게 즐거움을 선사해 줄 뿐 아니라 인간의 창작을 돕고 인간의 삶을
+윤택하게 하기도 했다. 위에서 제시한 Italian Brainrot의 예처럼, 기능적인
+관점에서는 연결할 이유가 전혀 없는 개념들을 연결했을 때 우리가 몰랐던
+새로운 개체들이 탄생하고, 이는 더 큰 상상력으로 연결된다. 아르키메데스가
+왕의 요청으로 왕관에 은이 섞여 있는지 고심하던 중 목욕탕에 들어가 물의
+흘러넘침을 보고, 즉 이전에는 상관없이 보이던 두 사건의 연관성을 발견하고
+'유레카'를 외쳤던 것처럼, 우리도 나이키 운동화를 신은 상어를 보고
+유레카를 외치게 된 것이다. 비록 그 연결이 가져다 준 것은 그저
+웃음뿐이지만.
+        </div>
+        
+        <div class="comments-section">
+            <h2>댓글</h2>
+            
+            <div id="comments-list" class="comments-list"></div>
+            
+            <div class="comment-form">
+                <h3>의견을 남겨주세요</h3>
+                <form id="comment-form">
+                    <div class="form-group">
+                        <label for="name">이름 *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">이메일 *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">의견 *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="6LcumoMtAAAAAEF0tYDGZfFX1gM9VwaxdZw6TUsW" data-action="submit"></div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">댓글 게시</button>
+                    <span id="comment-status"></span>
+                </form>
+            </div>
+        </div>
+        
+        <div class="nav">
+            <a href="blog.html">← 목록으로</a>
+            <span>
+                <a href="post14.html">← 이전 글</a>
+            </span>
+        </div>
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        // 댓글 데이터를 저장할 변수
+        let allComments = [];
+        
+        // 현재 페이지의 slug (파일명에서 확장자 제거)
+        const currentSlug = window.location.pathname.split('/').pop().replace('.html', '');
+        const commentStorageKey = `comments_${currentSlug}`;
+        
+        // 페이지 로드 시 댓글 로드
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComments();
+            setupCommentForm();
+        });
+        
+        // 로컬 스토리지에서 댓글 로드
+        function loadComments() {
+            const stored = localStorage.getItem(commentStorageKey);
+            if (stored) {
+                allComments = JSON.parse(stored);
+                displayComments();
+            }
+        }
+        
+        // 댓글 표시
+        function displayComments() {
+            const commentsList = document.getElementById('comments-list');
+            
+            if (allComments.length === 0) {
+                commentsList.innerHTML = '<div class="no-comments">아직 댓글이 없습니다. 첫 댓글을 남겨주세요!</div>';
+                return;
+            }
+            
+            commentsList.innerHTML = allComments.map((comment, index) => `
+                <div class="comment-item">
+                    <div class="comment-author">${escapeHtml(comment.name)}</div>
+                    <div class="comment-date">${formatDate(comment.timestamp)}</div>
+                    <div class="comment-text">${escapeHtml(comment.message)}</div>
+                </div>
+            `).join('');
+        }
+        
+        // 댓글 폼 설정
+        function setupCommentForm() {
+            const form = document.getElementById('comment-form');
+            const statusSpan = document.getElementById('comment-status');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                
+                // 유효성 검사
+                if (!name || !email || !message) {
+                    statusSpan.textContent = '모든 필드를 채워주세요';
+                    statusSpan.className = 'status-error';
+                    return;
+                }
+                
+                // 이메일 형식 검사
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    statusSpan.textContent = '유효한 이메일을 입력해주세요';
+                    statusSpan.className = 'status-error';
+                    return;
+                }
+                
+                try {
+                    statusSpan.textContent = '댓글을 게시하고 있습니다...';
+                    statusSpan.className = '';
+                    
+                    // reCAPTCHA 토큰 획득
+                    const token = await grecaptcha.execute('6LcumoMtAAAAAEF0tYDGZfFX1gM9VwaxdZw6TUsW', {action: 'submit'});
+                    
+                    // 새 댓글 객체 생성
+                    const newComment = {
+                        name: name,
+                        email: email,
+                        message: message,
+                        timestamp: new Date().toISOString(),
+                        recaptchaToken: token
+                    };
+                    
+                    // 댓글 배열에 추가
+                    allComments.push(newComment);
+                    
+                    // 로컬 스토리지에 저장
+                    localStorage.setItem(commentStorageKey, JSON.stringify(allComments));
+                    
+                    // 댓글 목록 갱신
+                    displayComments();
+                    
+                    // 폼 초기화
+                    form.reset();
+                    
+                    statusSpan.textContent = '✓ 댓글이 게시되었습니다!';
+                    statusSpan.className = 'status-success';
+                    
+                    // 3초 후 메시지 제거
+                    setTimeout(() => {
+                        statusSpan.textContent = '';
+                        statusSpan.className = '';
+                    }, 3000);
+                    
+                } catch (error) {
+                    console.error('댓글 제출 오류:', error);
+                    statusSpan.textContent = '댓글 제출 중 오류가 발생했습니다';
+                    statusSpan.className = 'status-error';
+                }
+            });
+        }
+        
+        // HTML 이스케이프 (XSS 방지)
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+        
+        // 날짜 포맷팅
+        function formatDate(isoString) {
+            const date = new Date(isoString);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
+        }
+    </script>
+
+    <script>
+        // 복사 방지 처리
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            alert('본 글의 내용 복사는 제한되어 있습니다.');
+            return false;
+        }, false);
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('우클릭은 허용되지 않습니다.');
+            return false;
+        }, false);
+
+        // 드래그 방지
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+    </script>
+</body>
+</html>
