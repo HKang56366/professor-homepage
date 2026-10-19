@@ -715,6 +715,12 @@ POSTS = [
      "차별화된 철자가 한국어에 어떻게 나타나는지 살핀다.",
      "How personalized expressions and distinctive spellings emerge as Korean moves from "
      "an age of standardization toward a more individualized society."),
+    (15, "언어 놀이", "Language Play", "2026-10", "19",
+     ["phonology", "society", "korean"],
+     "‘Italian Brainrot’에서 노래 속 라임까지, 의미를 떼어 놓고 소리의 연관만으로 표현을 "
+     "만들어 내는 언어유희를 살핀다.",
+     "From ‘Italian Brainrot’ to rhyming in pop songs, a look at language play that sets "
+     "meaning aside and builds expressions from sound alone."),
 ]
 
 # 새 글 메타데이터는 Timely AI 발행 도구가 관리하는 JSON을 우선한다.
