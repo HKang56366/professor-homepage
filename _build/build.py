@@ -104,6 +104,10 @@ def P(pid, year, title, venue_ko, venue_en, detail, authors, doi=None,
 
 
 PUBS = [
+    P("nonlocalfric", "2026",
+      "Nonlocal Effects of Fricatives on Duration Modulation in Korean Words",
+      "언어", "Korean Journal of Linguistics", "51-3, 511–529", [KANG, OH],
+      "10.18855/lisoko.2026.51.3.001"),
     P("l2immersion", "2024",
       "The Effect of L2 Immersion on English Stress Perception and Production by "
       "Korean Learners",
