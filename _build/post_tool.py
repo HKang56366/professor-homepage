@@ -90,6 +90,16 @@ def validate(meta, paragraphs, posts):
     return number
 
 
+def comment_parts():
+    """14번 글의 댓글 칸과 스크립트(reCAPTCHA·저장 코드)를 새 글에도 붙인다."""
+    ref = (ROOT / "post14.html").read_text(encoding="utf-8")
+    a = ref.index('<div class="comments-section">')
+    b = ref.index("  </article>", a)
+    c = ref.index('<script src="https://www.google.com/recaptcha/api.js">')
+    d = ref.rindex("</body>")
+    return ref[a:b].rstrip(), ref[c:d].rstrip()
+
+
 def publish(path: Path, meta, paragraphs, posts, build):
     number = max(p[0] for p in posts) + 1
     year_month, day = meta["date"][:7], meta["date"][8:]
@@ -99,8 +109,9 @@ def publish(path: Path, meta, paragraphs, posts, build):
                           encoding="utf-8")
     body = "\n".join(f"    <p>{inline(p)}</p>" for p in paragraphs)
     source = ROOT / f"post{number}.html"
-    source.write_text(f'<!doctype html>\n<div class="essay-body">\n{body}\n</div>\n',
-                      encoding="utf-8")
+    comments, scripts = comment_parts()
+    source.write_text(f'<!doctype html>\n<div class="essay-body">\n{body}\n</div>\n'
+                      f'{comments}\n{scripts}\n', encoding="utf-8")
     # JSON을 다시 읽은 build 모듈로 전체 파생물을 생성한다.
     build = load_build()
     build.BUILD_DATE = meta["date"]

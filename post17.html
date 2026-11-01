@@ -82,6 +82,38 @@
     </section>
 
 
+<div class="comments-section">
+            <h2>댓글</h2>
+            
+            <div id="comments-list" class="comments-list"></div>
+            
+            <div class="comment-form">
+                <h3>의견을 남겨주세요</h3>
+                <form id="comment-form">
+                    <div class="form-group">
+                        <label for="name">이름 *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">이메일 *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">의견 *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="6LcumoMtAAAAAEF0tYDGZfFX1gM9VwaxdZw6TUsW" data-action="submit"></div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">댓글 게시</button>
+                    <span id="comment-status"></span>
+                </form>
+            </div>
+        </div>
   </article>
 </main>
 <footer class="foot">
@@ -102,5 +134,167 @@
 </footer>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NH7WLM4DJN"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NH7WLM4DJN',{'allow_google_signals':false,'allow_ad_personalization_signals':false});</script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+        // 댓글 데이터를 저장할 변수
+        let allComments = [];
+        
+        // 현재 페이지의 slug (파일명에서 확장자 제거)
+        const currentSlug = window.location.pathname.split('/').pop().replace('.html', '');
+        const commentStorageKey = `comments_${currentSlug}`;
+        
+        // 페이지 로드 시 댓글 로드
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComments();
+            setupCommentForm();
+        });
+        
+        // 로컬 스토리지에서 댓글 로드
+        function loadComments() {
+            const stored = localStorage.getItem(commentStorageKey);
+            if (stored) {
+                allComments = JSON.parse(stored);
+                displayComments();
+            }
+        }
+        
+        // 댓글 표시
+        function displayComments() {
+            const commentsList = document.getElementById('comments-list');
+            
+            if (allComments.length === 0) {
+                commentsList.innerHTML = '<div class="no-comments">아직 댓글이 없습니다. 첫 댓글을 남겨주세요!</div>';
+                return;
+            }
+            
+            commentsList.innerHTML = allComments.map((comment, index) => `
+                <div class="comment-item">
+                    <div class="comment-author">${escapeHtml(comment.name)}</div>
+                    <div class="comment-date">${formatDate(comment.timestamp)}</div>
+                    <div class="comment-text">${escapeHtml(comment.message)}</div>
+                </div>
+            `).join('');
+        }
+        
+        // 댓글 폼 설정
+        function setupCommentForm() {
+            const form = document.getElementById('comment-form');
+            const statusSpan = document.getElementById('comment-status');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                
+                // 유효성 검사
+                if (!name || !email || !message) {
+                    statusSpan.textContent = '모든 필드를 채워주세요';
+                    statusSpan.className = 'status-error';
+                    return;
+                }
+                
+                // 이메일 형식 검사
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    statusSpan.textContent = '유효한 이메일을 입력해주세요';
+                    statusSpan.className = 'status-error';
+                    return;
+                }
+                
+                try {
+                    statusSpan.textContent = '댓글을 게시하고 있습니다...';
+                    statusSpan.className = '';
+                    
+                    // reCAPTCHA 토큰 획득
+                    const token = await grecaptcha.execute('6LcumoMtAAAAAEF0tYDGZfFX1gM9VwaxdZw6TUsW', {action: 'submit'});
+                    
+                    // 새 댓글 객체 생성
+                    const newComment = {
+                        name: name,
+                        email: email,
+                        message: message,
+                        timestamp: new Date().toISOString(),
+                        recaptchaToken: token
+                    };
+                    
+                    // 댓글 배열에 추가
+                    allComments.push(newComment);
+                    
+                    // 로컬 스토리지에 저장
+                    localStorage.setItem(commentStorageKey, JSON.stringify(allComments));
+                    
+                    // 댓글 목록 갱신
+                    displayComments();
+                    
+                    // 폼 초기화
+                    form.reset();
+                    
+                    statusSpan.textContent = '✓ 댓글이 게시되었습니다!';
+                    statusSpan.className = 'status-success';
+                    
+                    // 3초 후 메시지 제거
+                    setTimeout(() => {
+                        statusSpan.textContent = '';
+                        statusSpan.className = '';
+                    }, 3000);
+                    
+                } catch (error) {
+                    console.error('댓글 제출 오류:', error);
+                    statusSpan.textContent = '댓글 제출 중 오류가 발생했습니다';
+                    statusSpan.className = 'status-error';
+                }
+            });
+        }
+        
+        // HTML 이스케이프 (XSS 방지)
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+        
+        // 날짜 포맷팅
+        function formatDate(isoString) {
+            const date = new Date(isoString);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
+        }
+    </script>
+<script>
+        // 복사 방지 처리
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            alert('본 글의 내용 복사는 제한되어 있습니다.');
+            return false;
+        }, false);
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('우클릭은 허용되지 않습니다.');
+            return false;
+        }, false);
+
+        // 드래그 방지
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+    </script>
 </body>
 </html>

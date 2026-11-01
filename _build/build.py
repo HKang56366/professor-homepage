@@ -824,8 +824,10 @@ def read_source(path):
 
     comments = div_block(src, '<div class="comments-section">')
     # 구조화 데이터(ld+json)는 매번 새로 만드므로 가져오지 않는다 — 가져오면 겹친다
+    # 애널리틱스 코드도 head()가 매번 넣으므로 가져오지 않는다(가져오면 쌓인다)
     scripts = [s for s in re.findall(r"<script\b.*?</script>", src, re.S)
-               if "application/ld+json" not in s]
+               if "application/ld+json" not in s
+               and "googletagmanager" not in s and "gtag(" not in s]
     return paras, comments, scripts
 
 
